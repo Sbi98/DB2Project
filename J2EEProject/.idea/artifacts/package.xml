@@ -1,0 +1,29 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="package">
+    <output-path>$PROJECT_DIR$/out/artifacts/package</output-path>
+    <root id="archive" name="package.war">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ejbModule" />
+          <element id="jpa-descriptors" facet="ejbModule/jpa/JPA" />
+          <element id="module-output" name="J2EEProject" />
+          <element id="module-output" name="webModule" />
+          <element id="jpa-descriptors" facet="webModule/jpa/JPA" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.eclipse.persistence:commonj.sdo:2.1.1" />
+          <element id="library" level="project" name="Maven: org.eclipse.persistence:eclipselink:2.7.8" />
+          <element id="library" level="project" name="Maven: org.eclipse.persistence:jakarta.persistence:2.2.3" />
+          <element id="library" level="project" name="Maven: ognl:ognl:3.1.26" />
+          <element id="library" level="project" name="Maven: org.attoparser:attoparser:2.0.5.RELEASE" />
+          <element id="library" level="project" name="Maven: org.javassist:javassist:3.20.0-GA" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.25" />
+          <element id="library" level="project" name="Maven: org.thymeleaf:thymeleaf:3.0.12.RELEASE" />
+          <element id="library" level="project" name="Maven: org.unbescape:unbescape:1.1.6.RELEASE" />
+        </element>
+        <element id="javaee-facet-resources" facet="ejbModule/ejb/EJB" />
+      </element>
+      <element id="javaee-facet-resources" facet="webModule/web/Web" />
+    </root>
+  </artifact>
+</component>
