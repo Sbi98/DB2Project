@@ -2,6 +2,7 @@ package db2project.controllers;
 
 import db2project.entity.User;
 import db2project.services.UserService;
+
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.annotation.WebServlet;
