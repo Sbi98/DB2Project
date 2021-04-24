@@ -1,7 +1,7 @@
 package db2project.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -12,6 +12,8 @@ public class Product {
     private int id;
 
     private String name;
+
+    @Temporal(TemporalType.DATE)
     private Date date;
 
     @Basic(fetch = FetchType.LAZY)
@@ -37,6 +39,13 @@ public class Product {
     )
     private List<Review> reviews;
 
+    public Product() {}
+
+    public Product(String name, Date date, byte[] image) {
+        this.name = name;
+        this.date = date;
+        this.image = image;
+    }
 
     public List<MQuestion> getQuestions() { return questions; }
 
