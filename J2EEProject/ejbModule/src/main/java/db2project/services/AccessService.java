@@ -1,7 +1,7 @@
-package services;
+package db2project.services;
 
-import entity.*;
-import entity.Access;
+import db2project.entity.*;
+import db2project.entity.Access;
 
 import javax.ejb.Stateless;
 import javax.persistence.*;

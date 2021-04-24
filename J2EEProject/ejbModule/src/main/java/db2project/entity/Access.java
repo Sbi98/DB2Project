@@ -1,4 +1,4 @@
-package entity;
+package db2project.entity;
 
 import javax.persistence.*;
 import java.util.Date;

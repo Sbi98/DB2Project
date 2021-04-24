@@ -1,16 +1,13 @@
-package services;
+package db2project.controllers;
+
+import db2project.entity.User;
+import db2project.services.UserService;
 
 import java.io.IOException;
-
 import javax.ejb.EJB;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import org.apache.commons.text.StringEscapeUtils;
-
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templatemode.TemplateMode;
@@ -21,8 +18,8 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 public class CheckLogin extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private TemplateEngine templateEngine;
-    //@EJB(name = "it.polimi.db2.teaching.services/TeacherService")
-    //private TeacherService usrService;
+    @EJB(name = "db2project.services/UserService")
+    private UserService usrService;
 
     public CheckLogin() {
         super();
@@ -47,32 +44,20 @@ public class CheckLogin extends HttpServlet {
                 throw new Exception("Missing or empty credential value");
             }
         } catch (Exception e) {
-            // for debugging only e.printStackTrace();
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing credential value");
             return;
         }
-        Integer userId = null;
         try {
-            System.err.println("TODO");
-            //TODO
-            // query db to authenticate for user
-            //userId = usrService.checkCredentials(usrn, pwd);
+            User user = usrService.checkCredentials(usrn, pwd);
+            request.getSession().setAttribute("user", user);
+            response.sendRedirect(getServletContext().getContextPath()+"/GoToHomePage");
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Could not check credentials");
+            final WebContext ctx = new WebContext(request, response, getServletContext());
+            ctx.setVariable("errorMsg", e.getMessage());
+            templateEngine.process("/index", ctx, response.getWriter());
             return;
         }
-        // If the user exists, add info to the session and go to home page, otherwise
-        // show login page with error message
-        if (userId == null) {
-            final WebContext ctx = new WebContext(request, response, getServletContext());
-            ctx.setVariable("errorMsg", "Incorrect username or password");
-            templateEngine.process("/index", ctx, response.getWriter());
-        } else {
-            request.getSession().setAttribute("userId", userId);
-            response.sendRedirect(getServletContext().getContextPath()+"/GoToHomePage");
-        }
-
     }
 
     public void destroy() { }
