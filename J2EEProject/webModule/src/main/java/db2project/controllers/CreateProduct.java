@@ -10,12 +10,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import org.apache.commons.text.StringEscapeUtils;
 
 
 @WebServlet("/CreateProduct")
+@MultipartConfig
 public class CreateProduct extends HttpServlet {
     private static final long serialVersionUID = 1L;
     @EJB(name = "db2project.services/ProductService")

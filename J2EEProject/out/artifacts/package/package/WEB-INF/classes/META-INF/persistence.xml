@@ -13,5 +13,8 @@
         <class>db2project.entity.Product</class>
         <class>db2project.entity.Review</class>
         <class>db2project.entity.User</class>
+        <properties>
+            <property name="eclipselink.target-database" value="MySQL"/>
+        </properties>
     </persistence-unit>
 </persistence>

@@ -27,7 +27,7 @@ public class GoToCreationPage extends HttpServlet {
         templateResolver.setTemplateMode(TemplateMode.HTML);
         this.templateEngine = new TemplateEngine();
         this.templateEngine.setTemplateResolver(templateResolver);
-        templateResolver.setPrefix("/WEB-INF/");
+        templateResolver.setPrefix("/WEB-INF/admin/");
         templateResolver.setSuffix(".html");
     }
 
