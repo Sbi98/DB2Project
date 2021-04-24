@@ -6,5 +6,12 @@
     <persistence-unit name="DB2Project">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <jta-data-source>DB2Project</jta-data-source>
+        <class>entity.MQuestion</class>
+        <class>entity.Access</class>
+        <class>entity.MAnswer</class>
+        <class>entity.OffensiveWords</class>
+        <class>entity.Product</class>
+        <class>entity.Review</class>
+        <class>entity.User</class>
     </persistence-unit>
 </persistence>

@@ -10,38 +10,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4dc1e564-c530-43ed-82f0-553f90e13115" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/package.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_ejb_javax_ejb_api_3_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_faces_javax_faces_api_2_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_4_0_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_transaction_javax_transaction_api_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ognl_ognl_3_1_26.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_attoparser_attoparser_2_0_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_persistence_commonj_sdo_2_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_persistence_eclipselink_2_7_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_persistence_jakarta_persistence_2_2_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_20_0_GA.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_3_0_12_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_unbescape_unbescape_1_1_6_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/J2EEProject.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejbModule/ejbModule.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejbModule/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejbModule/src/main/resources/META-INF/ejb-jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejbModule/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webModule/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webModule/src/main/resources/logging.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webModule/src/main/webapp/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webModule/webModule.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_11.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_text_1_9.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ejbModule/src/main/java/entity/Access.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ejbModule/src/main/java/entity/MAnswer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ejbModule/src/main/java/entity/MQuestion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ejbModule/src/main/java/entity/OffensiveWords.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ejbModule/src/main/java/entity/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ejbModule/src/main/java/entity/Review.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ejbModule/src/main/java/entity/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webModule/src/main/java/services/CheckLogin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webModule/src/main/java/services/GoToTestPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webModule/src/main/java/services/LoginFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webModule/src/main/java/services/Logout.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/package.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/package.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ejbModule/ejbModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/ejbModule.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ejbModule/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/classes/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/webModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/webModule.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +45,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -77,6 +71,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mariadb" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="JPA.DatabaseSchemaImportDialog" value="b82016a4-b3d2-4631-a740-a95a8d32d835" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -86,17 +81,22 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="shared-indexes" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/ejbModule/src/main/resources/META-INF" />
       <recent name="$PROJECT_DIR$/webModule/src/main/webapp" />
     </key>
+    <key name="ImportMappingsDialog.RecentPackages">
+      <recent name="entity" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="services" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="TomEE 9.0.41" type="TomeeConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="TomEE 9.0.41" ALTERNATIVE_JRE_ENABLED="false">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/package/" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="package">
@@ -108,7 +108,7 @@
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="f8a3ebcb-c364-4c32-980f-2e498709e637" />
       </server-settings>
-      <predefined_log_file enabled="true" id="Tomcat" />
+      <log_file checked="false" alias="Tomcat Localhost Log" path="%IDEA_RUN:CATALINA_BASE%/logs/localhost.*" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
       <predefined_log_file id="Tomcat Manager" />
       <predefined_log_file id="Tomcat Host Manager" />
@@ -193,6 +193,17 @@
       <option name="presentableId" value="Default" />
       <updated>1618310488118</updated>
       <workItem from="1618310490281" duration="2543000" />
+      <workItem from="1618481073716" duration="1016000" />
+      <workItem from="1618483099771" duration="33000" />
+      <workItem from="1618483344297" duration="7000" />
+      <workItem from="1618684970384" duration="3447000" />
+      <workItem from="1618752745229" duration="10000" />
+      <workItem from="1618753256708" duration="396000" />
+      <workItem from="1618755602985" duration="3772000" />
+      <workItem from="1618774353813" duration="5637000" />
+      <workItem from="1618780381573" duration="138000" />
+      <workItem from="1618826852109" duration="4302000" />
+      <workItem from="1618844379721" duration="17000" />
     </task>
     <servers />
   </component>
@@ -209,6 +220,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
