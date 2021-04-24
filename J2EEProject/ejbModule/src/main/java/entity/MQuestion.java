@@ -24,6 +24,8 @@ public class MQuestion {
     )
     private List<MAnswer> answers;
 
+    public void addAnswer(MAnswer a) { answers.add(a); }
+
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }

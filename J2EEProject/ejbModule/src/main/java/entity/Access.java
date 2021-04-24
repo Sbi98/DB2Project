@@ -17,6 +17,13 @@ public class Access {
     private Date at;
 
 
+    public Access() {}
+
+    public Access(User user, Date at) {
+        this.user = user;
+        this.at = at;
+    }
+
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

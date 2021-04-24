@@ -33,6 +33,16 @@ public class User {
     private List<Review> reviews;
 
 
+    public List<Access> getAccesses() { return accesses; }
+
+    public List<Review> getReviews() { return reviews; }
+
+    public void addAccess(Access a) {
+        accesses.add(a);
+    }
+
+
+
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

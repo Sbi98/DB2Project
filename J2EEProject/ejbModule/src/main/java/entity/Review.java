@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Review {
@@ -20,6 +21,15 @@ public class Review {
     private Integer age;
     private String sex;
     private String level;
+
+    @OneToMany(
+        fetch = FetchType.EAGER,
+        mappedBy = "review",
+        // quando viene effettuata l'operazione X su di me (Review), effettuala anche a questa relazione (MAnswer)
+        cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH },
+        orphanRemoval = true //se viene tolta una answer dalla lista, cancella quella answer
+    )
+    private List<MAnswer> answers;
 
 
     public Product getProduct() { return product; }

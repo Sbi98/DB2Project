@@ -62,13 +62,12 @@ public class CheckLogin extends HttpServlet {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Could not check credentials");
             return;
         }
-
         // If the user exists, add info to the session and go to home page, otherwise
         // show login page with error message
         if (userId == null) {
             final WebContext ctx = new WebContext(request, response, getServletContext());
             ctx.setVariable("errorMsg", "Incorrect username or password");
-            templateEngine.process("/index.html", ctx, response.getWriter());
+            templateEngine.process("/index", ctx, response.getWriter());
         } else {
             request.getSession().setAttribute("userId", userId);
             response.sendRedirect(getServletContext().getContextPath()+"/GoToHomePage");

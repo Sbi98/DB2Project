@@ -38,6 +38,15 @@ public class Product {
     private List<Review> reviews;
 
 
+    public List<MQuestion> getQuestions() { return questions; }
+
+    public List<Review> getReviews() { return reviews; }
+
+    public void addQuestion(MQuestion q) { questions.add(q); }
+
+    public void addReview(Review r) { reviews.add(r); }
+
+
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
