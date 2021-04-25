@@ -1,4 +1,4 @@
-package db2project.controllers;
+package db2project.utils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

@@ -8,7 +8,6 @@
           <element id="jpa-descriptors" facet="ejbModule/jpa/JPA" />
           <element id="module-output" name="J2EEProject" />
           <element id="module-output" name="webModule" />
-          <element id="jpa-descriptors" facet="webModule/jpa/JPA" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: org.eclipse.persistence:commonj.sdo:2.1.1" />

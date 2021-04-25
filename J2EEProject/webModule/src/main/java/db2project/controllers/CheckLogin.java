@@ -14,7 +14,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 
-@WebServlet("/CheckLogin")
+@WebServlet(name = "CheckLogin", value = "/CheckLogin")
 public class CheckLogin extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private TemplateEngine templateEngine;
@@ -51,9 +51,9 @@ public class CheckLogin extends HttpServlet {
             User user = usrService.checkCredentials(usrn, pwd);
             request.getSession().setAttribute("user", user);
             if (user.isAdmin()) {
-                response.sendRedirect(getServletContext().getContextPath()+"/GoToCreationPage");
+                response.sendRedirect(getServletContext().getContextPath()+"/admin/GoToCreationPage");
             } else {
-                response.sendRedirect(getServletContext().getContextPath()+"/GoToUserHomePage");
+                response.sendRedirect(getServletContext().getContextPath()+"/user/GoToUserHomePage");
             }
 
         } catch (Exception e) {

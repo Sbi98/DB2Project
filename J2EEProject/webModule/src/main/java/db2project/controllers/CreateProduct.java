@@ -1,22 +1,19 @@
 package db2project.controllers;
 
-import db2project.entity.User;
 import db2project.services.ProductService;
-import db2project.services.UserService;
+import db2project.utils.ImageUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.ejb.EJB;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-import org.apache.commons.text.StringEscapeUtils;
 
 
-@WebServlet("/CreateProduct")
+@WebServlet(name = "CreateProduct", value = "/admin/CreateProduct")
 @MultipartConfig
 public class CreateProduct extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -39,7 +36,7 @@ public class CreateProduct extends HttpServlet {
                 throw new Exception("Invalid Product parameters");
             }
             prodService.newProduct(name, date, imgByteArray);
-            response.sendRedirect(getServletContext().getContextPath()+"/GoToCreationPage");
+            response.sendRedirect(getServletContext().getContextPath()+"/admin/GoToCreationPage");
         } catch (Exception e) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
         }
