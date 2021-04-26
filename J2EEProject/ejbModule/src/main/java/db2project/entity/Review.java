@@ -1,6 +1,7 @@
 package db2project.entity;
 
 import javax.persistence.*;
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity
@@ -31,6 +32,20 @@ public class Review {
         orphanRemoval = true //se viene tolta una answer dalla lista, cancella quella answer
     )
     private List<MAnswer> answers;
+
+    public Review() { }
+
+    public Review(Product product, User user) {
+        this.product = product;
+        this.user = user;
+    }
+
+    public void addAnswer(MAnswer a) {
+        if (answers == null) {
+            answers = new LinkedList<>();
+        }
+        answers.add(a);
+    }
 
 
     public Product getProduct() { return product; }

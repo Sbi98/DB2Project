@@ -1,6 +1,7 @@
 package db2project.entity;
 
 import javax.persistence.*;
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity
@@ -40,6 +41,9 @@ public class User {
     public List<Review> getReviews() { return reviews; }
 
     public void addAccess(Access a) {
+        if (accesses == null) {
+            accesses = new LinkedList<>();
+        }
         accesses.add(a);
     }
 

@@ -6,7 +6,7 @@
 </head>
 <body>
 <div align="right">
-    <a th:href="@{/GoToTestPage}">Home</a> <a th:href="@{/Logout}">Logout</a>
+    <a th:href="@{/Logout}">Logout</a>
 </div>
 <h1>Welcome to the DB2Project home!</h1><br>
 
@@ -17,5 +17,10 @@
         <img width="150px" alt="prodImage" th:src="*{'data:image/png;base64,'+ pOfTheDay.getImageAsBase64()}">
     </div>
 </section>
+
+<div>
+    <a th:href="@{/user/GoToNewReviewPage}">Review the product</a>
+</div>
+
 </body>
 </html>

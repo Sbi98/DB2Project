@@ -35,8 +35,8 @@ public class CheckLogin extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String usrn = null;
-        String pwd = null;
+        String usrn;
+        String pwd;
         try {
             usrn = StringEscapeUtils.escapeJava(request.getParameter("username"));
             pwd = StringEscapeUtils.escapeJava(request.getParameter("pwd"));
@@ -55,13 +55,11 @@ public class CheckLogin extends HttpServlet {
             } else {
                 response.sendRedirect(getServletContext().getContextPath()+"/user/GoToUserHomePage");
             }
-
         } catch (Exception e) {
             e.printStackTrace();
             final WebContext ctx = new WebContext(request, response, getServletContext());
             ctx.setVariable("errorMsg", e.getMessage());
             templateEngine.process("/index", ctx, response.getWriter());
-            return;
         }
     }
 

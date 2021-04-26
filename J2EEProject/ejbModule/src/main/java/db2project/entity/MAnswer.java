@@ -19,6 +19,17 @@ public class MAnswer {
 
     private String text;
 
+    public MAnswer() {
+    }
+
+    public MAnswer(Review review, MQuestion question, String text) { //Update both side of the relationship
+        this.review = review;
+        this.question = question;
+        this.text = text;
+        review.addAnswer(this);
+        question.addAnswer(this);
+    }
+
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

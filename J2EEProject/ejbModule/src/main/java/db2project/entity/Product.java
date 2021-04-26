@@ -3,6 +3,7 @@ package db2project.entity;
 import javax.persistence.*;
 import java.util.Base64;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity
@@ -53,9 +54,19 @@ public class Product {
 
     public List<Review> getReviews() { return reviews; }
 
-    public void addQuestion(MQuestion q) { questions.add(q); }
+    public void addQuestion(MQuestion q) {
+        if (questions == null) {
+            questions = new LinkedList<>();
+        }
+        questions.add(q);
+    }
 
-    public void addReview(Review r) { reviews.add(r); }
+    public void addReview(Review r) {
+        if (reviews == null) {
+            reviews = new LinkedList<>();
+        }
+        reviews.add(r);
+    }
 
     public String getImageAsBase64() { return Base64.getMimeEncoder().encodeToString(image); }
 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Review</title>
+</head>
+<body>
+<div align="right">
+    <a th:href="@{/user/GoToUserHomePage}">Home</a> <a th:href="@{/Logout}">Logout</a>
+</div>
+<h1>Product of the day review</h1>
+<br>
+<h3 th:text="'Product of the day'"> </h3>
+<p th:text="${pOfTheDay.getName()}"></p>
+<img width="150px" alt="prodImage" th:src="*{'data:image/png;base64,'+ pOfTheDay.getImageAsBase64()}">
+<br>
+<h3 th:text="'Part '+${currentpage}+'/2'"></h3>
+<h3 th:if="${currentpage==1}" th:text="'Marketing section. All fields are mandatory'"></h3>
+<h3 th:if="${currentpage==2}" th:text="'Statistical section. All fields are optional'"></h3>
+<section>
+    <div th:if="${currentpage==1}">
+        <form th:action="@{/user/GoToNewReview2ndPage}" method="POST">
+            <fieldset>
+                <tr th:each="q : ${pOfTheDay.getQuestions()}">
+                    <p th:text="${q.getText()}"></p>
+                    <input type="text" th:id="'q'+${q.getId()}" th:name="'q'+${q.getId()}" required/>
+                </tr>
+                <br>
+                <br>
+                <input type="submit" name="Next section" value="Next section">
+            </fieldset>
+        </form>
+    </div>
+    <div th:if="${currentpage==2}">
+        <form th:action="@{/user/SaveReview}" method="POST">
+            <p>
+                Age: <input type="number" name="age"/>
+            </p>
+            <p>
+                Sex: <input type="text" name="sex"/>
+            </p>
+            <p>
+                Expertise level: <input type="text" name="level"/>
+            </p>
+            <input type="submit" name="Save" value="Save">
+        </form>
+    </div>
+</section>
+</body>
+</html>
