@@ -9,42 +9,55 @@
     <a th:href="@{/user/GoToUserHomePage}">Home</a> <a th:href="@{/Logout}">Logout</a>
 </div>
 <h1>Product of the day review</h1>
-<br>
-<h3 th:text="'Product of the day'"> </h3>
-<p th:text="${pOfTheDay.getName()}"></p>
+<h3 th:text="'Product of the day is: '+${pOfTheDay.getName()}"> </h3>
 <img width="150px" alt="prodImage" th:src="*{'data:image/png;base64,'+ pOfTheDay.getImageAsBase64()}">
-<br>
-<h3 th:text="'Part '+${currentpage}+'/2'"></h3>
-<h3 th:if="${currentpage==1}" th:text="'Marketing section. All fields are mandatory'"></h3>
-<h3 th:if="${currentpage==2}" th:text="'Statistical section. All fields are optional'"></h3>
+<br><br>
+<h3 th:text="'Section '+${rService.getCurrentPage()}+'/2'"></h3>
+<h4 th:if="${rService.getCurrentPage()==1}" th:text="'Marketing section. All fields are mandatory'"></h4>
+<h4 th:if="${rService.getCurrentPage()==2}" th:text="'Statistical section. All fields are optional'"></h4>
 <section>
-    <div th:if="${currentpage==1}">
+    <div th:if="${rService.getCurrentPage()==1}">
         <form th:action="@{/user/GoToNewReview2ndPage}" method="POST">
             <fieldset>
-                <tr th:each="q : ${pOfTheDay.getQuestions()}">
+                <span th:each="q : ${pOfTheDay.getQuestions()}">
                     <p th:text="${q.getText()}"></p>
-                    <input type="text" th:id="'q'+${q.getId()}" th:name="'q'+${q.getId()}" required/>
-                </tr>
+                    <input type="text" th:name="'a'+${q.getId()}" th:value="${rService.getAnswerTextFor(q.getId())}" required/>
+                </span>
                 <br>
                 <br>
-                <input type="submit" name="Next section" value="Next section">
+                <input type="submit" name="Next" value="Next">
             </fieldset>
         </form>
     </div>
-    <div th:if="${currentpage==2}">
+
+    <div th:if="${rService.getCurrentPage()==2}">
         <form th:action="@{/user/SaveReview}" method="POST">
             <p>
-                Age: <input type="number" name="age"/>
+                Age: <input type="number" step="1" name="age" min=0/>
             </p>
             <p>
-                Sex: <input type="text" name="sex"/>
+                Sex:
+                <select name="sex" id="sex">
+                    <option disabled selected value> -- Select an option -- </option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="-">Other</option>
+                </select>
             </p>
             <p>
-                Expertise level: <input type="text" name="level"/>
+                Expertise level:
+                <select name="level" id="level">
+                    <option disabled selected value> -- Select an option -- </option>
+                    <option value="L">Low</option>
+                    <option value="M">Medium</option>
+                    <option value="H">High</option>
+                </select>
             </p>
-            <input type="submit" name="Save" value="Save">
+            <input type="submit" name="Submit" value="Submit">
         </form>
+        <a th:href="@{/user/GoToNewReviewPage}">Previous</a>
     </div>
+    <a th:href="@{/user/CancelReview}">Cancel Review</a>
 </section>
 </body>
 </html>

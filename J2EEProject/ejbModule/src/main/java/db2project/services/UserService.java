@@ -1,6 +1,9 @@
 package db2project.services;
 
 import db2project.entity.User;
+import db2project.exceptions.UniqueConstraintViolation;
+import org.eclipse.persistence.exceptions.DatabaseException;
+import org.eclipse.persistence.exceptions.EclipseLinkException;
 
 import javax.ejb.Stateless;
 import javax.persistence.*;
@@ -25,6 +28,34 @@ public class UserService {
             throw new Exception("Can't find the specified user. Check username and password");
         } catch (PersistenceException e) {
             throw new Exception("Could not verify credentals");
+        }
+    }
+
+    public boolean willViolateUniqueConstraints(String username, String email) throws Exception {
+        List<User> users = null;
+        try {
+            users = em.createNamedQuery("User.findByUsernameOrEmail", User.class)
+                    .setParameter(1, username)
+                    .setParameter(2, email)
+                    .getResultList();
+            return !users.isEmpty();
+        } catch (PersistenceException e) {
+            throw new Exception("Could not verify constraints");
+        }
+    }
+
+    public User registerUser(String username, String pwd, String email) throws PersistenceException {
+        try {
+            User u = new User(username, pwd, email);
+            em.persist(u);
+            em.flush();
+            return u;
+        } catch (PersistenceException e) {
+            String errorMsg;
+            try {
+                errorMsg = ((EclipseLinkException) e.getCause()).getInternalException().getMessage().replaceAll("\\(conn=[0-9]+\\) ","");
+            } catch (Exception ex) {throw e;}
+            throw new PersistenceException(errorMsg);
         }
     }
 }

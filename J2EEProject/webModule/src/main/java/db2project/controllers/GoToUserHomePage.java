@@ -1,7 +1,9 @@
 package db2project.controllers;
 import db2project.entity.Product;
 import db2project.entity.User;
+import db2project.services.NewReviewService;
 import db2project.services.ProductService;
+import db2project.services.ReviewService;
 import db2project.services.UserService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -36,6 +38,11 @@ public class GoToUserHomePage extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        NewReviewService rService = (NewReviewService) request.getSession().getAttribute("rService");
+        if (rService != null) {
+            rService.remove();
+            request.getSession().removeAttribute("rService");
+        }
         Product p = prodService.getProductOfToday();
         request.getSession().setAttribute("pOfTheDay", p);
         final WebContext ctx = new WebContext(request, response, getServletContext());

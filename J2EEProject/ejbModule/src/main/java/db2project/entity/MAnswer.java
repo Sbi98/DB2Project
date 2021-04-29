@@ -19,8 +19,7 @@ public class MAnswer {
 
     private String text;
 
-    public MAnswer() {
-    }
+    public MAnswer() { }
 
     public MAnswer(Review review, MQuestion question, String text) { //Update both side of the relationship
         this.review = review;

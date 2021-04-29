@@ -1,5 +1,7 @@
 package db2project.controllers;
 
+import db2project.entity.MAnswer;
+import db2project.entity.MQuestion;
 import db2project.entity.Product;
 import db2project.entity.User;
 import db2project.services.NewReviewService;
@@ -38,11 +40,15 @@ public class GoToNewReviewPage extends HttpServlet {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "There is no product of the day");
             return;
         }
-        NewReviewService rService = new NewReviewService(p, (User) request.getSession().getAttribute("user"));
-        request.getSession().setAttribute("rService", rService);
+        NewReviewService rService = (NewReviewService) request.getSession().getAttribute("rService");
+        if (rService == null) {
+            rService = new NewReviewService(p, (User) request.getSession().getAttribute("user"));
+            request.getSession().setAttribute("rService", rService);
+        }
+        rService.firstPage();
         final WebContext ctx = new WebContext(request, response, getServletContext());
-        ctx.setVariable("currentpage", rService.getCurrentPage());
         ctx.setVariable("pOfTheDay", p);
+        ctx.setVariable("rService", rService);
         templateEngine.process("review", ctx, response.getWriter());
     }
 

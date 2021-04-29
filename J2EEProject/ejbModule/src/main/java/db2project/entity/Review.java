@@ -40,6 +40,10 @@ public class Review {
         this.user = user;
     }
 
+    public List<MAnswer> getAnswers() {
+        return answers;
+    }
+
     public void addAnswer(MAnswer a) {
         if (answers == null) {
             answers = new LinkedList<>();

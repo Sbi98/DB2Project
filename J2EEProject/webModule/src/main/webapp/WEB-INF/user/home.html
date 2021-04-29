@@ -16,9 +16,12 @@
         <p th:text="${pOfTheDay.getName()}"></p>
         <img width="150px" alt="prodImage" th:src="*{'data:image/png;base64,'+ pOfTheDay.getImageAsBase64()}">
     </div>
+    <div th:if="${pOfTheDay==null}">
+        <h3>There is no product today!</h3>
+    </div>
 </section>
 
-<div>
+<div th:if="${pOfTheDay!=null}">
     <a th:href="@{/user/GoToNewReviewPage}">Review the product</a>
 </div>
 

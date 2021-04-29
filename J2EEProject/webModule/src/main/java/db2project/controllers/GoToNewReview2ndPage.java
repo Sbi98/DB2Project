@@ -42,11 +42,11 @@ public class GoToNewReview2ndPage extends HttpServlet {
         }
         rService.secondPage();
         for (MQuestion q : p.getQuestions()) {
-            new MAnswer(rService.getReview(), q, request.getParameter("q"+q.getId()));
+            new MAnswer(rService.getReview(), q, request.getParameter("a"+q.getId()));
         }
         final WebContext ctx = new WebContext(request, response, getServletContext());
-        ctx.setVariable("currentpage", rService.getCurrentPage());
         ctx.setVariable("pOfTheDay", p);
+        ctx.setVariable("rService", rService);
         templateEngine.process("review", ctx, response.getWriter());
     }
 
