@@ -38,13 +38,18 @@ public class GoToUserHomePage extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // Rimuove l'attributo 'rService' dalla sessione
         NewReviewService rService = (NewReviewService) request.getSession().getAttribute("rService");
         if (rService != null) {
             rService.remove();
             request.getSession().removeAttribute("rService");
         }
+
+        // Ottiene il prodotto del giorno da mostrare nella homepage
         Product p = prodService.getProductOfToday();
+        // Il prodotto del giorno viene inserito nella sessione
         request.getSession().setAttribute("pOfTheDay", p);
+        // La pagina 'home.html' viene creata e mostrata all'utente
         final WebContext ctx = new WebContext(request, response, getServletContext());
         ctx.setVariable("pOfTheDay", p);
         templateEngine.process("home", ctx, response.getWriter());

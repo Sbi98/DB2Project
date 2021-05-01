@@ -8,16 +8,16 @@
     <div align="right">
         <a th:href="@{/Logout}">Logout</a>
     </div>
-    <h1> Welcome to the DB2Project home! </h1><br>
+    <h1>Welcome to the DB2Project home!</h1><br>
 
     <section>
         <div th:if="${pOfTheDay!=null}">
             <h3 th:text="'Product of the day'"> </h3>
-            <p  th:text="${pOfTheDay.getName()}"></p>
+            <p th:text="${pOfTheDay.getName()}"></p>
             <img width="150px" alt="prodImage" th:src="*{'data:image/png;base64,'+ pOfTheDay.getImageAsBase64()}">
         </div>
-        <div th:unless="${pOfTheDay!=null}">
-            <h3>There is no product of the day!</h3>
+        <div th:if="${pOfTheDay==null}">
+            <h3>There is no product today!</h3>
         </div>
     </section>
 

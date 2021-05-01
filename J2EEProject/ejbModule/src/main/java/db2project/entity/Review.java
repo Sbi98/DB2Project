@@ -51,7 +51,6 @@ public class Review {
         answers.add(a);
     }
 
-
     public Product getProduct() { return product; }
     public void setProduct(Product product) { this.product = product; }
 
@@ -72,9 +71,6 @@ public class Review {
 
     public String getLevel() { return level; }
     public void setLevel(String level) { this.level = level; }
-
-
-
 
     @Override
     public boolean equals(Object o) {

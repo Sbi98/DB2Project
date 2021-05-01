@@ -14,11 +14,11 @@ public class NewReviewService {
     private int currentPage = 1;
     private Review review;
 
-
     public NewReviewService(Product p, User u) {
         review = new Review(p, u);
     }
 
+    // Restituisce il testo della risposta data alla domanda specificata. Se non esiste, restituisce 'null'
     public String getAnswerTextFor(int question) {
         if (review == null)
             return null;
@@ -32,6 +32,7 @@ public class NewReviewService {
         return null;
     }
 
+    // Restituisce la review
     public Review getReview() { return review; }
 
     public int getCurrentPage() { return currentPage; }

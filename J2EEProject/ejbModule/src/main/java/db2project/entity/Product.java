@@ -23,7 +23,6 @@ public class Product {
     @Lob
     private byte[] image;
 
-
     @OneToMany(
         fetch = FetchType.EAGER,
         mappedBy = "product",
@@ -70,8 +69,6 @@ public class Product {
 
     public String getImageAsBase64() { return Base64.getMimeEncoder().encodeToString(image); }
 
-
-
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
@@ -83,9 +80,6 @@ public class Product {
 
     public Date getDate() { return date; }
     public void setDate(Date date) { this.date = date; }
-
-
-
 
     @Override
     public boolean equals(Object o) {

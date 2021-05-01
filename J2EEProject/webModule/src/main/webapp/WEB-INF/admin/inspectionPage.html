@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin inspection page</title>
+</head>
+<body>
+    <h1>Admin creation page</h1>
+    <div align="right">
+        <a th:href="@{/Logout}">Logout</a>
+    </div>
+
+    <section>
+        <ul  th:each="pet : ${petCollection}">
+            <li class="list-group-item">
+                <span th:text="${pet.petName}">Dapibus ac facilisis in</span>
+                <button class="badge" onclick="window.location.href='/'">Continue</button>
+                <button type="submit" class="badge">Info</button>
+            </li>
+        </ul>
+    </section>
+
+    <div th:if="${pOfTheDay!=null}">
+        <a th:href="@{/user/GoToNewReviewPage}">Review the product</a>
+    </div>
+</body>
+</html>

@@ -10,24 +10,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4dc1e564-c530-43ed-82f0-553f90e13115" name="Default Changelist" comment="tutto il mondo per la review page v0">
-      <change afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/exceptions/DBException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/exceptions/UniqueConstraintViolation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/RegisterUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/admin/inspectionPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/MAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/MAnswer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/NewReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/NewReviewService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/ProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/classes/META-INF/persistence.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReview2ndPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReview2ndPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CheckLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CheckLogin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReviewPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReviewPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToUserHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToUserHomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/Logout.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/Logout.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/RegisterUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/RegisterUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/ImageUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/ImageUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/review.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/review.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/webModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/webModule.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,13 +38,21 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -75,7 +84,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.grazie" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -95,6 +104,17 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TomEE 9.0.41" type="TomeeConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="TomEE 9.0.41" ALTERNATIVE_JRE_ENABLED="false">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -214,6 +234,9 @@
       <workItem from="1619549823852" duration="12142000" />
       <workItem from="1619618644025" duration="4363000" />
       <workItem from="1619642494382" duration="10676000" />
+      <workItem from="1619860441306" duration="18000" />
+      <workItem from="1619860483392" duration="106000" />
+      <workItem from="1619860632202" duration="13560000" />
     </task>
     <task id="LOCAL-00001" summary="Some mapping">
       <created>1619254123203</created>
@@ -315,5 +338,9 @@
     <MESSAGE value="Catena di filtri, bug risolti, namedquery prodotto del giorno, home utente v0" />
     <MESSAGE value="tutto il mondo per la review page v0" />
     <option name="LAST_COMMIT_MESSAGE" value="tutto il mondo per la review page v0" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

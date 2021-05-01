@@ -43,6 +43,7 @@ public class RegisterUser extends HttpServlet {
             usrn = StringEscapeUtils.escapeJava(request.getParameter("username"));
             pwd = StringEscapeUtils.escapeJava(request.getParameter("pwd"));
             email = StringEscapeUtils.escapeJava(request.getParameter("email"));
+            // Teoricamente impossibile, avendo ogni elemento del form l'attributo 'required'
             if (usrn == null || pwd == null || email == null || usrn.isEmpty() || pwd.isEmpty() || email.isEmpty()) {
                 throw new Exception("Missing or empty credential value");
             }
@@ -50,13 +51,19 @@ public class RegisterUser extends HttpServlet {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing credential value");
             return;
         }
+        // Se il form è stato compilato correttamente:
         try {
+            // Registra l'utente
             User user = usrService.registerUser(usrn,pwd,email);
+            // Imposta l'utente (essendosi registrato, non è un admin) nella sessione
             request.getSession().setAttribute("user", user);
+            // Porta l'utente nella homepage
             response.sendRedirect(getServletContext().getContextPath()+"/user/GoToUserHomePage");
         } catch (Exception e) {
+            // Eccezione lanciata se l'utente è già registrato, per esempio
             //e.printStackTrace();
             System.err.println("\n------------\n"+e.getMessage()+"\n------------\n");
+            // Per ricreare la pagina web che mostri anche l'errore
             final WebContext ctx = new WebContext(request, response, getServletContext());
             ctx.setVariable("errorMsg2", e.getMessage());
             templateEngine.process("index", ctx, response.getWriter());

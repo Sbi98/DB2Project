@@ -10,8 +10,8 @@
     <form action="CheckLogin" method="POST">
         <fieldset>
             <br>
-            Username: <input type="text" name="username" required><br><br>
-            Password: <input type="password" name="pwd" required><br><br>
+            Username: <input type="text"     name="username" required><br><br>
+            Password: <input type="password" name="pwd"      required><br><br>
             <br>
             <input type="submit" value="login">
             <p th:text="${errorMsg}"></p>
@@ -23,9 +23,9 @@
     <form action="RegisterUser" method="POST">
         <fieldset>
             <br>
-            Username: <input type="text" name="username" required><br><br>
-            Password: <input type="password" name="pwd" required><br><br>
-            Mail: <input type="text" name="email" required><br><br>
+            Username: <input type="text"     name="username" required><br><br>
+            Password: <input type="password" name="pwd"      required><br><br>
+            Mail:     <input type="text"     name="email"    required><br><br>
             <br>
             <input type="submit" value="register">
             <p th:text="${errorMsg2}"></p>
