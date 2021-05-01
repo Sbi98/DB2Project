@@ -29,5 +29,17 @@
     </form>
 </div>
 
+
+
+<form th:action="@{/admin/AddQuestionCreationPage}" method="POST">
+    <fieldset>
+        <input type="submit" name="Next" value="Next">
+    </fieldset>
+</form>
+
+<div>
+    <p> Valore contatore: <span th:text="${creationService.getNumberOfQuestions()}"></span> </p>
+</div>
+
 </body>
 </html>

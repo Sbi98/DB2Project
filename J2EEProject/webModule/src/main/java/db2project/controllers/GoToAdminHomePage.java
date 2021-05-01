@@ -1,25 +1,28 @@
 package db2project.controllers;
-
-import db2project.services.CreationService;
+import db2project.entity.Product;
+import db2project.services.NewReviewService;
+import db2project.services.ProductService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
+import javax.ejb.EJB;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 
-@WebServlet(name = "GoToCreationPage", value = "/admin/GoToCreationPage")
-public class GoToCreationPage extends HttpServlet {
+@WebServlet(name = "GoToAdminHomePage", value = "/admin/GoToAdminHomePage")
+public class GoToAdminHomePage extends HttpServlet {
     private TemplateEngine templateEngine;
+    @EJB(name = "db2project.services/ProductService")
+    private ProductService prodService;
 
-    public GoToCreationPage() {
-        super();
-    }
+    public GoToAdminHomePage() { super(); }
 
     public void init() {
         ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(getServletContext());
@@ -31,15 +34,13 @@ public class GoToCreationPage extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        CreationService creationService = (CreationService) request.getSession().getAttribute("creationService");
-        if (creationService == null) {
-            // Se non esiste un reviewService, viene creato e salvato nella sessione
-            creationService = new CreationService();
-            request.getSession().setAttribute("creationService", creationService);
-        }
+        // Rimuove l'attributo 'rService' dalla sessione
+        List<Product> products = prodService.getAllProducts();
+
         final WebContext ctx = new WebContext(request, response, getServletContext());
-        ctx.setVariable("creationService", creationService);
-        templateEngine.process("creationPage", ctx, response.getWriter());
+        ctx.setVariable("products", products);
+        ctx.setVariable("selection", null);
+        templateEngine.process("adminHome", ctx, response.getWriter());
     }
 
     public void destroy() { }

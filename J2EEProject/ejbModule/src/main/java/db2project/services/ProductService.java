@@ -19,6 +19,10 @@ public class ProductService {
         return p;
     }
 
+    public List<Product> getAllProducts(){
+        return (List<Product>) em.createNamedQuery("Product.getAll", Product.class).getResultList();
+    }
+
     // Crea un nuovo prodotto sul database con le informazioni specificata
     public void newProduct(String name, Date date, byte[] imgByteArray) {
         Product p = new Product(name, date, imgByteArray);

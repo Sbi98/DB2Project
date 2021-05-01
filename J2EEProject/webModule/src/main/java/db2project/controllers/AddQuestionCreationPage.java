@@ -12,12 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
-@WebServlet(name = "GoToCreationPage", value = "/admin/GoToCreationPage")
-public class GoToCreationPage extends HttpServlet {
+@WebServlet(name = "AddQuestionCreationPage", value = "/admin/AddQuestionCreationPage")
+public class AddQuestionCreationPage extends HttpServlet {
     private TemplateEngine templateEngine;
 
-    public GoToCreationPage() {
+    public AddQuestionCreationPage() {
         super();
     }
 
@@ -31,14 +30,14 @@ public class GoToCreationPage extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        CreationService creationService = (CreationService) request.getSession().getAttribute("creationService");
-        if (creationService == null) {
+        CreationService newProductService = (CreationService) request.getSession().getAttribute("newProductService");
+        if (newProductService == null) {
             // Se non esiste un reviewService, viene creato e salvato nella sessione
-            creationService = new CreationService();
-            request.getSession().setAttribute("creationService", creationService);
+            newProductService = new CreationService();
+            request.getSession().setAttribute("newProductService", newProductService);
         }
         final WebContext ctx = new WebContext(request, response, getServletContext());
-        ctx.setVariable("creationService", creationService);
+        ctx.setVariable("creationService", newProductService);
         templateEngine.process("creationPage", ctx, response.getWriter());
     }
 

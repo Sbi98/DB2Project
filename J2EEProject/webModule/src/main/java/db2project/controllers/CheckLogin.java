@@ -54,7 +54,7 @@ public class CheckLogin extends HttpServlet {
             User user = usrService.checkCredentials(usrn, pwd);
             request.getSession().setAttribute("user", user);
             if (user.isAdmin()) {
-                response.sendRedirect(getServletContext().getContextPath()+"/admin/GoToCreationPage");
+                response.sendRedirect(getServletContext().getContextPath()+"/admin/GoToAdminHomePage");
             } else {
                 response.sendRedirect(getServletContext().getContextPath()+"/user/GoToUserHomePage");
             }

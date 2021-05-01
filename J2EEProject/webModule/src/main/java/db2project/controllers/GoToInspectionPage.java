@@ -1,6 +1,5 @@
 package db2project.controllers;
 
-import db2project.services.CreationService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templatemode.TemplateMode;
@@ -12,14 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
-@WebServlet(name = "GoToCreationPage", value = "/admin/GoToCreationPage")
-public class GoToCreationPage extends HttpServlet {
+@WebServlet(name = "GoToInspectionPage", value = "/admin/GoToInspectionPage")
+public class GoToInspectionPage extends HttpServlet {
     private TemplateEngine templateEngine;
 
-    public GoToCreationPage() {
-        super();
-    }
+    public GoToInspectionPage() { super(); }
 
     public void init() {
         ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(getServletContext());
@@ -31,16 +27,15 @@ public class GoToCreationPage extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        CreationService creationService = (CreationService) request.getSession().getAttribute("creationService");
-        if (creationService == null) {
-            // Se non esiste un reviewService, viene creato e salvato nella sessione
-            creationService = new CreationService();
-            request.getSession().setAttribute("creationService", creationService);
-        }
+        // Rimuove l'attributo 'rService' dalla sessione
+
+        request.getSession().setAttribute("counter", 1);
+
         final WebContext ctx = new WebContext(request, response, getServletContext());
-        ctx.setVariable("creationService", creationService);
-        templateEngine.process("creationPage", ctx, response.getWriter());
+        ctx.setVariable("counter", 1);
+        templateEngine.process("test", ctx, response.getWriter());
     }
 
     public void destroy() { }
+
 }

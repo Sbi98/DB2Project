@@ -10,24 +10,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4dc1e564-c530-43ed-82f0-553f90e13115" name="Default Changelist" comment="tutto il mondo per la review page v0">
-      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/admin/inspectionPage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/CreationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/AddQuestionCreationPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToAdminHomePage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToInspectionPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/TestPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/admin/adminHome.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/NewReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/NewReviewService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/admin/creationPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/admin/creationPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CheckLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CheckLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReviewPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReviewPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToUserHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToUserHomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/Logout.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/Logout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/RegisterUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/RegisterUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/ImageUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/ImageUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToCreationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToCreationPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/admin/creationPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/admin/creationPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/admin/inspectionPage.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webModule/webModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/webModule.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -236,7 +236,7 @@
       <workItem from="1619642494382" duration="10676000" />
       <workItem from="1619860441306" duration="18000" />
       <workItem from="1619860483392" duration="106000" />
-      <workItem from="1619860632202" duration="13560000" />
+      <workItem from="1619860632202" duration="23070000" />
     </task>
     <task id="LOCAL-00001" summary="Some mapping">
       <created>1619254123203</created>
