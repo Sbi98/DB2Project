@@ -9,24 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4dc1e564-c530-43ed-82f0-553f90e13115" name="Default Changelist" comment="Frontend ReviewPage finito, manca la tx e i vari check. Registrazione fatta. Cambiamenti generali">
-      <change afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/exceptions/OffensiveWordsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/blockedUser.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/savedReview.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/OffensiveWords.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/OffensiveWords.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/NewReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/NewReviewService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CheckLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CheckLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReview2ndPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReview2ndPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReviewPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReviewPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToUserHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToUserHomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/SaveReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/SaveReview.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/home.html" afterDir="false" />
-    </list>
+    <list default="true" id="4dc1e564-c530-43ed-82f0-553f90e13115" name="Default Changelist" comment="Clean" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -216,6 +199,7 @@
       <workItem from="1619799375590" duration="2969000" />
       <workItem from="1619863517326" duration="7404000" />
       <workItem from="1619900328050" duration="5505000" />
+      <workItem from="1619944809643" duration="506000" />
     </task>
     <task id="LOCAL-00001" summary="Some mapping">
       <created>1619254123203</created>
@@ -294,7 +278,21 @@
       <option name="project" value="LOCAL" />
       <updated>1619695018665</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Backend ReviewPage, save review. Check offendive words. Tutto da testare">
+      <created>1619944913447</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1619944913447</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Clean">
+      <created>1619944993979</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1619944993979</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,6 +322,8 @@
     <MESSAGE value="Catena di filtri, bug risolti, namedquery prodotto del giorno, home utente v0" />
     <MESSAGE value="tutto il mondo per la review page v0" />
     <MESSAGE value="Frontend ReviewPage finito, manca la tx e i vari check. Registrazione fatta. Cambiamenti generali" />
-    <option name="LAST_COMMIT_MESSAGE" value="Frontend ReviewPage finito, manca la tx e i vari check. Registrazione fatta. Cambiamenti generali" />
+    <MESSAGE value="Backend ReviewPage, save review. Check offendive words. Tutto da testare" />
+    <MESSAGE value="Clean" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clean" />
   </component>
 </project>
