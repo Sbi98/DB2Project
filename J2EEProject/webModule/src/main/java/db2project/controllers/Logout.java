@@ -18,10 +18,13 @@ public class Logout extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // Restituisce la sessione corrente, essendo il boolean = false, se non esiste non ne crea una nuova ma restituisce null
         HttpSession session = request.getSession(false);
+        // Se era presente una sessione, la invalida. Teoricamente è sempre presente una sessione
         if (session != null) {
             session.invalidate();
         }
+        // Effettua un redirect alla pagina iniziale, ovviamente non è presente alcuna sessione
         response.sendRedirect(getServletContext().getContextPath() + "/index.html");
     }
 }

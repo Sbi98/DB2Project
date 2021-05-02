@@ -41,6 +41,7 @@ public class CheckLogin extends HttpServlet {
         try {
             usrn = StringEscapeUtils.escapeJava(request.getParameter("username"));
             pwd = StringEscapeUtils.escapeJava(request.getParameter("pwd"));
+            // Teoricamente impossibile, avendo ogni elemento del form l'attributo 'required'
             if (usrn == null || pwd == null || usrn.isEmpty() || pwd.isEmpty()) {
                 throw new Exception("Missing or empty credential value");
             }
@@ -48,16 +49,20 @@ public class CheckLogin extends HttpServlet {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing credential value");
             return;
         }
+        // Se il form è stato compilato correttamente:
         try {
+            // Verifica credenziali
             User user = usrService.checkCredentials(usrn, pwd);
             request.getSession().setAttribute("user", user);
             if (user.isAdmin()) {
-                response.sendRedirect(getServletContext().getContextPath()+"/admin/GoToCreationPage");
+                response.sendRedirect(getServletContext().getContextPath()+"/admin/GoToAdminHomePage");
             } else {
                 response.sendRedirect(getServletContext().getContextPath()+"/user/GoToUserHomePage");
             }
         } catch (Exception e) {
+            // Lanciata per esempio se l'utente specificato non esiste / password errata
             e.printStackTrace();
+            // Ricrea pagina web mostrando l'error message
             final WebContext ctx = new WebContext(request, response, getServletContext());
             ctx.setVariable("errorMsg", e.getMessage());
             templateEngine.process("/index", ctx, response.getWriter());

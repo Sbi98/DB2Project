@@ -17,6 +17,7 @@ public class UserService {
 
     public UserService() { }
 
+    // Verifica la validità delle credenziali e restituisce l'utente, altrimenti lancia un'eccezione
     public User checkCredentials(String username, String pwd) throws Exception {
         List<User> users = null;
         try {
@@ -50,13 +51,16 @@ public class UserService {
         }
     }
 
+    // Registra un nuovo utente, purché non violi alcun vincolo (come l'unicità dell'username)
     public User registerUser(String username, String pwd, String email) throws PersistenceException {
         try {
+            // Crea l'oggetto utente e lo salva sul database
             User u = new User(username, pwd, email);
             em.persist(u);
             em.flush();
             return u;
         } catch (PersistenceException e) {
+            // Se il salvataggio sul database non va a buon fine lancia un'eccezione
             String errorMsg;
             try {
                 errorMsg = ((EclipseLinkException) e.getCause()).getInternalException().getMessage().replaceAll("\\(conn=[0-9]+\\) ","");

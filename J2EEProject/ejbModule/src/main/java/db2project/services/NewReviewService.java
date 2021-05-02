@@ -30,6 +30,7 @@ public class NewReviewService {
         em.persist(review);
     }
 
+    // Restituisce il testo della risposta data alla domanda specificata. Se non esiste, restituisce 'null'
     public String getAnswerTextFor(int question) {
         if (review == null)
             return null;

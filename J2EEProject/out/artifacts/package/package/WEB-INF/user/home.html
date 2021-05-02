@@ -5,10 +5,13 @@
     <title>Home</title>
 </head>
 <body>
-<div align="right">
-    <a th:href="@{/Logout}">Logout</a>
-</div>
-<h1>Welcome to the DB2Project home!</h1><br>
+    <!-- <div align="left">
+        <a th:href="@{/user/TestPage}">testPage</a>
+    </div> -->
+    <div align="right">
+        <a th:href="@{/Logout}">Logout</a>
+    </div>
+    <h1> Welcome to the DB2Project home! </h1><br>
 
     <section>
         <div th:if="${pOfTheDay!=null}">
@@ -21,9 +24,8 @@
         </div>
     </section>
 
-<div th:if="${pOfTheDay!=null}">
-    <a th:href="@{/user/GoToNewReviewPage}">Review the product</a>
-</div>
-
+    <div th:if="${pOfTheDay!=null}">
+        <a th:href="@{/user/GoToNewReviewPage}">Review the product</a>
+    </div>
 </body>
 </html>

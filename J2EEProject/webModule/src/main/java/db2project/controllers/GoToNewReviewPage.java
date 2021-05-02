@@ -38,10 +38,12 @@ public class GoToNewReviewPage extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Product p = (Product) request.getSession().getAttribute("pOfTheDay");
+        // Se non è presente nella sessione un prodotto del giorno, restituisce un errore
         if (p == null) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "There is no product of the day");
             return;
         }
+        // Se è presente un prodotto del giorno, ottiene dalla sessione l'attributo 'rService'
         NewReviewService rService = (NewReviewService) request.getSession().getAttribute("rService");
         if (rService == null) {
             try {
@@ -54,6 +56,7 @@ public class GoToNewReviewPage extends HttpServlet {
                 return;
             }
         }
+        //rService è sicuramente diverso da null
         rService.firstPage();
         final WebContext ctx = new WebContext(request, response, getServletContext());
         ctx.setVariable("pOfTheDay", p);
