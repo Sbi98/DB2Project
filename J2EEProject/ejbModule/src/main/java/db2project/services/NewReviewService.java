@@ -1,6 +1,7 @@
 package db2project.services;
 
 import db2project.entity.*;
+import db2project.exceptions.OffensiveWordsException;
 
 import javax.ejb.Remove;
 import javax.ejb.Stateful;
@@ -15,8 +16,18 @@ public class NewReviewService {
     private Review review;
 
 
-    public NewReviewService(Product p, User u) {
+    public void createReview(Product p, User u) {
         review = new Review(p, u);
+    }
+
+    public void saveReview() throws OffensiveWordsException {
+        List<OffensiveWords> wList = em.createNamedQuery("OffensiveWords.getAll", OffensiveWords.class).getResultList();
+        for (MAnswer a : review.getAnswers()) {
+            for (OffensiveWords w : wList)
+                if (a.getText().contains(w.getWord()))
+                    throw new OffensiveWordsException();
+        }
+        em.persist(review);
     }
 
     public String getAnswerTextFor(int question) {

@@ -1,5 +1,6 @@
 package db2project.services;
 
+import db2project.entity.OffensiveWords;
 import db2project.entity.User;
 import db2project.exceptions.UniqueConstraintViolation;
 import org.eclipse.persistence.exceptions.DatabaseException;
@@ -29,6 +30,11 @@ public class UserService {
         } catch (PersistenceException e) {
             throw new Exception("Could not verify credentals");
         }
+    }
+
+    public void blockUser(User u) {
+        u.block();
+        em.merge(u);
     }
 
     public boolean willViolateUniqueConstraints(String username, String email) throws Exception {

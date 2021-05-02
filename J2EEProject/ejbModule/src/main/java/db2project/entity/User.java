@@ -76,10 +76,11 @@ public class User {
     public void setEmail(String email) { this.email = email; }
 
     public boolean isBlocked() { return isBlocked == ((byte) (1)); }
-    public void setIsBlocked(boolean isBlocked) { this.isBlocked = isBlocked ? (byte) 1 : (byte) 0; }
+    public void block() { this.isBlocked = (byte) 1; }
+    //public void setIsBlocked(boolean isBlocked) { this.isBlocked = isBlocked ? (byte) 1 : (byte) 0; }
 
     public boolean isAdmin() { return isAdmin == ((byte) (1)); }
-    public void setIsAdmin(boolean isAdmin) { this.isAdmin = isAdmin ? (byte) 1 : (byte) 0; }
+    //public void setIsAdmin(boolean isAdmin) { this.isAdmin = isAdmin ? (byte) 1 : (byte) 0; }
 
 
 

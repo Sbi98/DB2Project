@@ -9,25 +9,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4dc1e564-c530-43ed-82f0-553f90e13115" name="Default Changelist" comment="tutto il mondo per la review page v0">
-      <change afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/exceptions/DBException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/exceptions/UniqueConstraintViolation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/RegisterUser.java" afterDir="false" />
+    <list default="true" id="4dc1e564-c530-43ed-82f0-553f90e13115" name="Default Changelist" comment="Frontend ReviewPage finito, manca la tx e i vari check. Registrazione fatta. Cambiamenti generali">
+      <change afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/exceptions/OffensiveWordsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/blockedUser.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/savedReview.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/MAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/MAnswer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Review.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/OffensiveWords.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/OffensiveWords.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/NewReviewService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/NewReviewService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/classes/META-INF/persistence.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CheckLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CheckLogin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReview2ndPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReview2ndPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReviewPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReviewPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToUserHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToUserHomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/SaveReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/SaveReview.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/review.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/review.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +35,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -90,6 +88,7 @@
       <recent name="entity" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="db2project.exceptions" />
       <recent name="db2project.controllers" />
       <recent name="services" />
     </key>
@@ -213,7 +212,10 @@
       <workItem from="1619459563193" duration="269000" />
       <workItem from="1619549823852" duration="12142000" />
       <workItem from="1619618644025" duration="4363000" />
-      <workItem from="1619642494382" duration="10676000" />
+      <workItem from="1619642494382" duration="10919000" />
+      <workItem from="1619799375590" duration="2969000" />
+      <workItem from="1619863517326" duration="7404000" />
+      <workItem from="1619900328050" duration="5505000" />
     </task>
     <task id="LOCAL-00001" summary="Some mapping">
       <created>1619254123203</created>
@@ -285,7 +287,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619459988248</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Frontend ReviewPage finito, manca la tx e i vari check. Registrazione fatta. Cambiamenti generali">
+      <created>1619695018665</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1619695018665</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,6 +323,7 @@
     <MESSAGE value="Fix id generator" />
     <MESSAGE value="Catena di filtri, bug risolti, namedquery prodotto del giorno, home utente v0" />
     <MESSAGE value="tutto il mondo per la review page v0" />
-    <option name="LAST_COMMIT_MESSAGE" value="tutto il mondo per la review page v0" />
+    <MESSAGE value="Frontend ReviewPage finito, manca la tx e i vari check. Registrazione fatta. Cambiamenti generali" />
+    <option name="LAST_COMMIT_MESSAGE" value="Frontend ReviewPage finito, manca la tx e i vari check. Registrazione fatta. Cambiamenti generali" />
   </component>
 </project>

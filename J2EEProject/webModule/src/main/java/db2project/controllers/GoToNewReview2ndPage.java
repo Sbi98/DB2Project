@@ -40,6 +40,7 @@ public class GoToNewReview2ndPage extends HttpServlet {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Wrong workflow. Are you trying to cheat?");
             return;
         }
+        System.out.println(rService.getReview());
         rService.secondPage();
         for (MQuestion q : p.getQuestions()) {
             new MAnswer(rService.getReview(), q, request.getParameter("a"+q.getId()));

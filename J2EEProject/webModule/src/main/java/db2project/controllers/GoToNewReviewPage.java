@@ -10,6 +10,8 @@ import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -42,8 +44,15 @@ public class GoToNewReviewPage extends HttpServlet {
         }
         NewReviewService rService = (NewReviewService) request.getSession().getAttribute("rService");
         if (rService == null) {
-            rService = new NewReviewService(p, (User) request.getSession().getAttribute("user"));
-            request.getSession().setAttribute("rService", rService);
+            try {
+                rService = (NewReviewService) new InitialContext().lookup("java:global/package/NewReviewService!db2project.services.NewReviewService");
+                rService.createReview(p, (User) request.getSession().getAttribute("user"));
+                request.getSession().setAttribute("rService", rService);
+            } catch (NamingException e) {
+                e.printStackTrace();
+                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
+                return;
+            }
         }
         rService.firstPage();
         final WebContext ctx = new WebContext(request, response, getServletContext());

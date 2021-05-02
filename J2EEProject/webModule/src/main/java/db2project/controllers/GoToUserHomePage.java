@@ -1,5 +1,6 @@
 package db2project.controllers;
 import db2project.entity.Product;
+import db2project.entity.Review;
 import db2project.entity.User;
 import db2project.services.NewReviewService;
 import db2project.services.ProductService;
@@ -38,15 +39,15 @@ public class GoToUserHomePage extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        NewReviewService rService = (NewReviewService) request.getSession().getAttribute("rService");
-        if (rService != null) {
-            rService.remove();
-            request.getSession().removeAttribute("rService");
-        }
         Product p = prodService.getProductOfToday();
+        Integer i = 2;
+        Review r = new Review();
+        r.setAge(2);
         request.getSession().setAttribute("pOfTheDay", p);
         final WebContext ctx = new WebContext(request, response, getServletContext());
         ctx.setVariable("pOfTheDay", p);
+        ctx.setVariable("r", r);
+        ctx.setVariable("i", i);
         templateEngine.process("home", ctx, response.getWriter());
     }
 
