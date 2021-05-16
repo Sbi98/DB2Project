@@ -54,6 +54,7 @@ public class CheckLogin extends HttpServlet {
             // Verifica credenziali
             User user = usrService.checkCredentials(usrn, pwd);
             request.getSession().setAttribute("user", user);
+            usrService.newAccess(user);
             if (user.isAdmin()) {
                 response.sendRedirect(getServletContext().getContextPath()+"/admin/GoToAdminHomePage");
             } else {
@@ -61,7 +62,7 @@ public class CheckLogin extends HttpServlet {
             }
         } catch (Exception e) {
             // Lanciata per esempio se l'utente specificato non esiste / password errata
-            e.printStackTrace();
+            System.err.println(e.getMessage());
             // Ricrea pagina web mostrando l'error message
             final WebContext ctx = new WebContext(request, response, getServletContext());
             ctx.setVariable("errorMsg", e.getMessage());

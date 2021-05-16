@@ -7,10 +7,12 @@ import java.util.List;
 @Entity
 @Table(name = "user", schema = "DB2Project")
 @NamedQueries({
-    @NamedQuery(name = "User.checkCredentials", query = "SELECT r FROM User r WHERE r.username = ?1 and r.password = ?2"),
-    @NamedQuery(name = "User.findByUsername", query = "SELECT r FROM User r WHERE r.username = ?1"),
-    @NamedQuery(name = "User.findByEmail", query = "SELECT r FROM User r WHERE r.email = ?1"),
-    @NamedQuery(name = "User.findByUsernameOrEmail", query = "SELECT r FROM User r WHERE r.username = ?1 or r.email = ?2")
+    @NamedQuery(name = "User.checkCredentials", query = "SELECT u FROM User u WHERE u.username = ?1 and u.password = ?2"),
+    @NamedQuery(name = "User.findReviewersForProduct",
+                query = "SELECT u FROM User u, Review r WHERE r.user = u AND r.product.id = ?1 ORDER BY u.points DESC"),
+    @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = ?1"),
+    @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = ?1"),
+    @NamedQuery(name = "User.findByUsernameOrEmail", query = "SELECT u FROM User u WHERE u.username = ?1 or u.email = ?2")
 })
 public class User {
     @Id
@@ -21,6 +23,7 @@ public class User {
     private String email;
     private byte isBlocked;
     private byte isAdmin;
+    private long points;
 
     @OneToMany(
         fetch = FetchType.EAGER,
@@ -62,6 +65,8 @@ public class User {
     }
 
 
+    public long getPoints() { return points; }
+    public void setPoints(long points) { this.points = points; }
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }

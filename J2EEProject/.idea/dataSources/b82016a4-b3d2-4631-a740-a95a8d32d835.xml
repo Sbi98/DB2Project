@@ -1168,151 +1168,207 @@ question</ColNames>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="357" parent="330" name="word">
+    <trigger id="357" parent="329" name="newAnswerForReview">
+      <SourceTextLength>423</SourceTextLength>
+      <Definer>DB2User@%</Definer>
+      <Turn>after-row</Turn>
+      <Events>I</Events>
+    </trigger>
+    <column id="358" parent="330" name="word">
       <Position>1</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="358" parent="330" name="PRIMARY">
+    <key id="359" parent="330" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>word</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="359" parent="331" name="id">
+    <column id="360" parent="331" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="360" parent="331" name="name">
+    <column id="361" parent="331" name="name">
       <Position>2</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="361" parent="331" name="image">
+    <column id="362" parent="331" name="image">
       <Position>3</Position>
-      <DataType>blob|0s</DataType>
+      <DataType>mediumblob|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="362" parent="331" name="date">
+    <column id="363" parent="331" name="date">
       <Position>4</Position>
       <DataType>date|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="363" parent="331" name="PRIMARY">
+    <index id="364" parent="331" name="date">
+      <ColNames>date</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="365" parent="331" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="364" parent="332" name="id">
+    <key id="366" parent="331" name="date">
+      <ColNames>date</ColNames>
+      <UnderlyingIndexName>date</UnderlyingIndexName>
+    </key>
+    <column id="367" parent="332" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="365" parent="332" name="product">
+    <column id="368" parent="332" name="product">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="366" parent="332" name="user">
+    <column id="369" parent="332" name="user">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="367" parent="332" name="points">
+    <column id="370" parent="332" name="points">
       <Position>4</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
     </column>
-    <column id="368" parent="332" name="age">
+    <column id="371" parent="332" name="age">
       <Position>5</Position>
       <DataType>int(11)|0s</DataType>
     </column>
-    <column id="369" parent="332" name="sex">
+    <column id="372" parent="332" name="sex">
       <Position>6</Position>
       <DataType>char(1)|0s</DataType>
     </column>
-    <column id="370" parent="332" name="level">
+    <column id="373" parent="332" name="level">
       <Position>7</Position>
       <DataType>varchar(20)|0s</DataType>
     </column>
-    <index id="371" parent="332" name="review_prod_user_unique">
+    <index id="374" parent="332" name="review_prod_user_unique">
       <ColNames>product
 user</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="372" parent="332" name="prod_fk_idx">
+    <index id="375" parent="332" name="prod_fk_idx">
       <ColNames>product</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="373" parent="332" name="user_fk_idx">
+    <index id="376" parent="332" name="user_fk_idx">
       <ColNames>user</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="374" parent="332" name="PRIMARY">
+    <key id="377" parent="332" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="375" parent="332" name="review_prod_user_unique">
+    <key id="378" parent="332" name="review_prod_user_unique">
       <ColNames>product
 user</ColNames>
       <UnderlyingIndexName>review_prod_user_unique</UnderlyingIndexName>
     </key>
-    <foreign-key id="376" parent="332" name="review_prod_fk">
+    <foreign-key id="379" parent="332" name="review_prod_fk">
       <ColNames>product</ColNames>
       <RefTableName>product</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="377" parent="332" name="review_user_fk">
+    <foreign-key id="380" parent="332" name="review_user_fk">
       <ColNames>user</ColNames>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="378" parent="333" name="id">
+    <trigger id="381" parent="332" name="newReview">
+      <SourceTextLength>534</SourceTextLength>
+      <Definer>DB2User@%</Definer>
+      <Turn>before-row</Turn>
+      <Events>I</Events>
+    </trigger>
+    <trigger id="382" parent="332" name="cancelReview">
+      <SourceTextLength>636</SourceTextLength>
+      <Definer>DB2User@%</Definer>
+      <Turn>after-row</Turn>
+      <Events>D</Events>
+    </trigger>
+    <column id="383" parent="333" name="id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="379" parent="333" name="username">
+    <column id="384" parent="333" name="username">
       <Position>2</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="380" parent="333" name="password">
+    <column id="385" parent="333" name="password">
       <Position>3</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="381" parent="333" name="email">
+    <column id="386" parent="333" name="email">
       <Position>4</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="382" parent="333" name="isBlocked">
+    <column id="387" parent="333" name="isBlocked">
       <Position>5</Position>
       <DataType>tinyint(4)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
     </column>
-    <column id="383" parent="333" name="isAdmin">
+    <column id="388" parent="333" name="isAdmin">
       <Position>6</Position>
       <DataType>tinyint(4)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>0</DefaultExpression>
     </column>
-    <key id="384" parent="333" name="PRIMARY">
+    <column id="389" parent="333" name="points">
+      <Position>7</Position>
+      <DataType>bigint(20)|0s</DataType>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <index id="390" parent="333" name="username_UNIQUE">
+      <ColNames>username</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <index id="391" parent="333" name="email_UNIQUE">
+      <ColNames>email</ColNames>
+      <Unique>1</Unique>
+      <Type>btree</Type>
+    </index>
+    <key id="392" parent="333" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
+    <key id="393" parent="333" name="username_UNIQUE">
+      <ColNames>username</ColNames>
+      <UnderlyingIndexName>username_UNIQUE</UnderlyingIndexName>
+    </key>
+    <key id="394" parent="333" name="email_UNIQUE">
+      <ColNames>email</ColNames>
+      <UnderlyingIndexName>email_UNIQUE</UnderlyingIndexName>
+    </key>
+    <trigger id="395" parent="333" name="zeroPointsOnNewUser">
+      <SourceTextLength>18</SourceTextLength>
+      <Definer>DB2User@%</Definer>
+      <Turn>before-row</Turn>
+      <Events>I</Events>
+    </trigger>
   </database-model>
 </dataSource>

@@ -1,5 +1,7 @@
 package db2project.controllers;
 import db2project.entity.Product;
+import db2project.entity.User;
+import db2project.services.UserService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templatemode.TemplateMode;
@@ -11,11 +13,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 
 @WebServlet(name = "GoToLeaderboardPage", value = "/user/GoToLeaderboardPage")
 public class GoToLeaderboardPage extends HttpServlet {
     private TemplateEngine templateEngine;
+    @EJB(name = "db2project.services/UserService")
+    private UserService usrService;
 
     public GoToLeaderboardPage() { super(); }
 
@@ -30,8 +35,13 @@ public class GoToLeaderboardPage extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Product p = (Product) request.getSession().getAttribute("pOfTheDay");
+        if (p == null) {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "There is no product of the day");
+            return;
+        }
         final WebContext ctx = new WebContext(request, response, getServletContext());
-        ctx.setVariable("pOfTheDay", p);
+        List<User> l = usrService.getReviewersForProduct(p.getId());
+        ctx.setVariable("reviewers", l);
         templateEngine.process("leaderboard", ctx, response.getWriter());
     }
 

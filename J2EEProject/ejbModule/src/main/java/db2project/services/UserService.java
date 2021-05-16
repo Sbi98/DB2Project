@@ -1,9 +1,7 @@
 package db2project.services;
 
-import db2project.entity.OffensiveWords;
 import db2project.entity.User;
-import db2project.exceptions.UniqueConstraintViolation;
-import org.eclipse.persistence.exceptions.DatabaseException;
+import db2project.entity.Access;
 import org.eclipse.persistence.exceptions.EclipseLinkException;
 
 import javax.ejb.Stateless;
@@ -31,6 +29,17 @@ public class UserService {
         } catch (PersistenceException e) {
             throw new Exception("Could not verify credentals");
         }
+    }
+
+    public List<User> getReviewersForProduct(int pId) {
+        em.clear();
+        return em.createNamedQuery("User.findReviewersForProduct", User.class)
+                .setParameter(1, pId)
+                .getResultList();
+    }
+
+    public void newAccess(User u) {
+        em.persist(new Access(u));
     }
 
     public void blockUser(User u) {

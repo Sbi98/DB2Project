@@ -6,15 +6,15 @@
 </head>
 <body>
 <div align="right">
-    <a th:href="@{/user/GoToLeaderboardPage}">Leaderboard</a>
+    <a th:if="${pOfTheDay!=null}" th:href="@{/user/GoToLeaderboardPage}">Leaderboard</a>
     <a th:href="@{/Logout}">Logout</a>
 </div>
 <h1>Welcome to the DB2Project home!</h1><br>
 
 <section>
     <div th:if="${pOfTheDay!=null}">
-        <h3 th:text="'Product of the day'"> </h3>
-        <p  th:text="${pOfTheDay.getName()}"></p>
+        <h3 th:text="'Product of the day is:'"> </h3>
+        <p  th:text="${pOfTheDay.getName()}"></p >
         <img width="150px" alt="prodImage" th:src="*{'data:image/png;base64,'+ pOfTheDay.getImageAsBase64()}">
     </div>
     <div th:unless="${pOfTheDay!=null}">
