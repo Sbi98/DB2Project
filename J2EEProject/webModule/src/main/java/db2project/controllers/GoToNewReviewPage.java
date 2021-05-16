@@ -43,7 +43,6 @@ public class GoToNewReviewPage extends HttpServlet {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "There is no product of the day");
             return;
         }
-        // Se è presente un prodotto del giorno, ottiene dalla sessione l'attributo 'rService'
         NewReviewService rService = (NewReviewService) request.getSession().getAttribute("rService");
         if (rService == null) {
             try {

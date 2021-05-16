@@ -18,7 +18,7 @@ import java.io.IOException;
 
 
 @WebServlet(name = "SaveReview", value = "/user/SaveReview")
-public class SaveReview extends HttpServlet { //TODO
+public class SaveReview extends HttpServlet {
     private TemplateEngine templateEngine;
     @EJB(name = "db2project.services/UserService")
     UserService userService;
@@ -39,9 +39,9 @@ public class SaveReview extends HttpServlet { //TODO
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         NewReviewService rService = (NewReviewService) request.getSession().getAttribute("rService");
         try {
-            Integer age = (Integer) request.getSession().getAttribute("age");
-            String sex = (String) request.getSession().getAttribute("sex");
-            String level = (String) request.getSession().getAttribute("level");
+            Integer age = Integer.parseInt(request.getParameter("age"));
+            String sex = request.getParameter("sex");
+            String level = request.getParameter("level");
             rService.getReview().setAge(age);
             rService.getReview().setSex(sex);
             rService.getReview().setLevel(level);

@@ -6,7 +6,8 @@
 </head>
 <body>
 <div align="right">
-    <a th:href="@{/user/GoToUserHomePage}">Home</a> <a th:href="@{/Logout}">Logout</a>
+    <a th:href="@{/user/GoToUserHomePage}">Cancel review</a>
+    <a th:href="@{/Logout}">Logout</a>
 </div>
 <h1>Product of the day review</h1>
 <h3 th:text="'Product of the day is: '+${pOfTheDay.getName()}"> </h3>
@@ -32,32 +33,32 @@
 
     <div th:if="${rService.getCurrentPage()==2}">
         <form th:action="@{/user/SaveReview}" method="POST">
-            <p>
-                Age: <input type="number" step="1" name="age" min=0/>
-            </p>
-            <p>
-                Sex:
+            <fieldset>
+                <label for="age">Age: </label>
+                <input type="number" step="1" name="age" id="age" min=0/>
+                <br><br>
+                <label for="sex">Sex: </label>
                 <select name="sex" id="sex">
-                    <option disabled selected value> -- Select an option -- </option>
-                    <option value="M">Male</option>
-                    <option value="F">Female</option>
-                    <option value="-">Other</option>
+                    <option disabled selected> -- Select an option -- </option>
+                    <option value="M" >Male</option>
+                    <option value="F" >Female</option>
+                    <option value="-" >Other</option>
                 </select>
-            </p>
-            <p>
-                Expertise level:
+                <br><br>
+                <label for="level">Level: </label>
                 <select name="level" id="level">
-                    <option disabled selected value> -- Select an option -- </option>
-                    <option value="L">Low</option>
-                    <option value="M">Medium</option>
-                    <option value="H">High</option>
+                    <option disabled selected> -- Select an option -- </option>
+                    <option value="L" >Low</option>
+                    <option value="M" >Medium</option>
+                    <option value="H" >High</option>
                 </select>
-            </p>
-            <input type="submit" name="Submit" value="Submit">
+                <br><br>
+                <input type="submit" name="Submit" value="Submit">
+            </fieldset>
         </form>
+
         <a th:href="@{/user/GoToNewReviewPage}">Previous</a>
     </div>
-    <a th:href="@{/user/CancelReview}">Cancel Review</a>
 </section>
 </body>
 </html>

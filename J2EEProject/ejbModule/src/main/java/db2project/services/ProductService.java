@@ -1,6 +1,7 @@
 package db2project.services;
 
 import db2project.entity.Product;
+import db2project.entity.Review;
 import db2project.entity.User;
 
 import javax.ejb.Stateless;
@@ -13,20 +14,35 @@ public class ProductService {
     @PersistenceContext(unitName = "DB2Project")
     private EntityManager em;
 
-    // Restituisce il prodotto con il nome specificato
-    public Product findProductByName(int name) {
-        Product p = em.find(Product.class, name);
-        return p;
-    }
-
-    public List<Product> getAllProducts(){
-        return (List<Product>) em.createNamedQuery("Product.getAll", Product.class).getResultList();
+    public List<Product> getAllProducts() {
+        return em.createNamedQuery("Product.getAll", Product.class).getResultList();
     }
 
     // Crea un nuovo prodotto sul database con le informazioni specificata
     public void newProduct(String name, Date date, byte[] imgByteArray) {
         Product p = new Product(name, date, imgByteArray);
         em.persist(p);
+    }
+
+    public Review findReview(int pId, int uId) {
+        List<Review> result = em.createNamedQuery("Review.findByProductAndUser", Review.class)
+                .setParameter(1,pId)
+                .setParameter(2,uId)
+                .getResultList();
+        return result.isEmpty() ? null : result.get(0);
+    }
+
+    //Cancella la review con id revId
+    public void deleteReview(int revId) {
+        Review r = em.find(Review.class, revId);
+        if (r != null) {
+            em.remove(r);
+        }
+    }
+
+    //Cancella la review
+    public void deleteReview(Review r) {
+        em.remove(em.merge(r));
     }
 
     // Restituisce il prodotto del giorno
