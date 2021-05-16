@@ -29,15 +29,17 @@ public class AddQuestionCreationPage extends HttpServlet {
         templateResolver.setSuffix(".html");
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        CreationService newProductService = (CreationService) request.getSession().getAttribute("newProductService");
-        if (newProductService == null) {
-            // Se non esiste un reviewService, viene creato e salvato nella sessione
-            newProductService = new CreationService();
-            request.getSession().setAttribute("newProductService", newProductService);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        CreationService newCreationService = (CreationService) request.getSession().getAttribute("newProductService");
+        if (newCreationService == null) {
+            // Se non esiste un creationService, viene creato e salvato nella sessione
+            newCreationService = new CreationService();
+            request.getSession().setAttribute("newProductService", newCreationService);
         }
+
+        newCreationService.incrementNumberOfQuestions(1);
         final WebContext ctx = new WebContext(request, response, getServletContext());
-        ctx.setVariable("creationService", newProductService);
+        ctx.setVariable("creationService", newCreationService);
         templateEngine.process("creationPage", ctx, response.getWriter());
     }
 

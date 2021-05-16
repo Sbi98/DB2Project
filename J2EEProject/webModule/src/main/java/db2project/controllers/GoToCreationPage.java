@@ -33,7 +33,7 @@ public class GoToCreationPage extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         CreationService creationService = (CreationService) request.getSession().getAttribute("creationService");
         if (creationService == null) {
-            // Se non esiste un reviewService, viene creato e salvato nella sessione
+            // Se non esiste un creationService, viene creato e salvato nella sessione
             creationService = new CreationService();
             request.getSession().setAttribute("creationService", creationService);
         }

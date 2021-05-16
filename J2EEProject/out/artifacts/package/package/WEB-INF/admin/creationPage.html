@@ -10,11 +10,7 @@
     <a th:href="@{/Logout}">Logout</a>
 </div>
 
-<div align="left">
-    <a th:href="@{/admin/InspectionPage}">inspection page</a>
-</div>
-
-<div class="formdiv">
+<div class="formdiv" th:if>
     <p>Complete the form to create a new product</p>
     <form action="#" th:action="@{/admin/CreateProduct}" method="POST" enctype="multipart/form-data">
         <fieldset>
@@ -35,7 +31,7 @@
 
 
 
-<form th:action="@{/admin/AddQuestionCreationPage}" method="POST">
+<form th:action="@{/admin/AddQuestionCreationPage}" method="GET">
     <fieldset>
         <input type="submit" name="Next" value="Next">
     </fieldset>

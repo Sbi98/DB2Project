@@ -10,23 +10,25 @@
     <a th:href="@{/Logout}">Logout</a>
 </div>
 
-<div class="formdiv">
-    <p>Complete the form to create a new product</p>
-    <form action="#" th:action="@{/admin/CreateProduct}" method="POST" enctype="multipart/form-data">
-        <fieldset>
-            <p>
-                Name: <input type="text" name="name" required/>
-            </p>
-            <p>
-                Day: <input type="date" name="date" th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
-                            placeholder="yyyy-mm-dd" required />
-            </p>
-            <p>
-                Image: <input type="file" id="photoFile" name="picture">
-            </p>
-            <input type="submit" name="Create product" value="Create">
-        </fieldset>
-    </form>
+<div th:if="${rService.getCurrentPage()==1}">
+    <div class="formdiv" th:if>
+        <p>Complete the form to create a new product</p>
+        <form action="#" th:action="@{/admin/CreateProduct}" method="POST" enctype="multipart/form-data">
+            <fieldset>
+                <p>
+                    Name: <input type="text" name="name" required/>
+                </p>
+                <p>
+                    Day: <input type="date" name="date" th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
+                                placeholder="yyyy-mm-dd" required />
+                </p>
+                <p>
+                    Image: <input type="file" id="photoFile" name="picture" required>
+                </p>
+                <input type="submit" name="Create product" value="Create">
+            </fieldset>
+        </form>
+    </div>
 </div>
 
 
