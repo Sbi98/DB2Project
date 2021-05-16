@@ -1,9 +1,11 @@
 package db2project.controllers;
-import db2project.entity.Product;
+
 import db2project.entity.Review;
 import db2project.entity.User;
+import db2project.exceptions.OffensiveWordsException;
 import db2project.services.NewReviewService;
 import db2project.services.ProductService;
+import db2project.services.UserService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templatemode.TemplateMode;
@@ -17,13 +19,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet(name = "GoToUserHomePage", value = "/user/GoToUserHomePage")
-public class GoToUserHomePage extends HttpServlet {
+@WebServlet(name = "DeleteReview", value = "/user/DeleteReview")
+public class DeleteReview extends HttpServlet { //TODO
     private TemplateEngine templateEngine;
     @EJB(name = "db2project.services/ProductService")
-    private ProductService prodService;
+    ProductService prodService;
 
-    public GoToUserHomePage() { super(); }
+    public DeleteReview() {
+        super();
+    }
 
     public void init() {
         ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(getServletContext());
@@ -35,26 +39,12 @@ public class GoToUserHomePage extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        final WebContext ctx = new WebContext(request, response, getServletContext());
-        NewReviewService rService = (NewReviewService) request.getSession().getAttribute("rService");
-        if (rService != null) { //se l'utente è tornato alla home mentre stava facendo la review cancellala
-            rService.remove();
-            request.getSession().removeAttribute("rService");
-        }
-        Product p = (Product) request.getSession().getAttribute("pOfTheDay");
-        if (p == null) {
-            p = prodService.getProductOfToday();
-            request.getSession().setAttribute("pOfTheDay", p);
-        }
         Review r = (Review) request.getSession().getAttribute("pOfTheDayReview");
-        if (r == null && p != null) {
-            r = prodService.findReview(p.getId(), ((User) request.getSession().getAttribute("user")).getId());
-            request.getSession().setAttribute("pOfTheDayReview", r);
+        if (r != null) {
+            prodService.deleteReview(r);
+            request.getSession().removeAttribute("pOfTheDayReview");
         }
-        ctx.setVariable("pOfTheDay", p);
-        ctx.setVariable("pOfTheDayReview", r);
-        // La pagina 'home.html' viene creata e mostrata all'utente
-        templateEngine.process("home", ctx, response.getWriter());
+        response.sendRedirect(getServletContext().getContextPath()+"/user/GoToUserHomePage");
     }
 
     public void destroy() { }

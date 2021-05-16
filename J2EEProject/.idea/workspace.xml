@@ -9,7 +9,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4dc1e564-c530-43ed-82f0-553f90e13115" name="Default Changelist" comment="Clean" />
+    <list default="true" id="4dc1e564-c530-43ed-82f0-553f90e13115" name="Default Changelist" comment="Merge with Lele">
+      <change afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/DeleteReview.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToLeaderboardPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/leaderboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Review.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/ReviewService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/admin/creationPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/admin/creationPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/review.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/review.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReview2ndPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReview2ndPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReviewPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReviewPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToUserHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToUserHomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/SaveReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/SaveReview.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/review.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/review.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/savedReview.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/savedReview.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Optional Project Specifications V2!.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../Optional Project Specifications V2!.pdf" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -71,8 +91,8 @@
       <recent name="entity" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="db2project.exceptions" />
       <recent name="db2project.controllers" />
+      <recent name="db2project.exceptions" />
       <recent name="services" />
     </key>
   </component>
@@ -199,7 +219,10 @@
       <workItem from="1619799375590" duration="2969000" />
       <workItem from="1619863517326" duration="7404000" />
       <workItem from="1619900328050" duration="5505000" />
-      <workItem from="1619944809643" duration="506000" />
+      <workItem from="1619944809643" duration="818000" />
+      <workItem from="1619947254291" duration="346000" />
+      <workItem from="1619985615912" duration="4261000" />
+      <workItem from="1621001991960" duration="10672000" />
     </task>
     <task id="LOCAL-00001" summary="Some mapping">
       <created>1619254123203</created>
@@ -292,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619944993979</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Merge with Lele">
+      <created>1619945344788</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1619945344788</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,6 +354,7 @@
     <MESSAGE value="Frontend ReviewPage finito, manca la tx e i vari check. Registrazione fatta. Cambiamenti generali" />
     <MESSAGE value="Backend ReviewPage, save review. Check offendive words. Tutto da testare" />
     <MESSAGE value="Clean" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clean" />
+    <MESSAGE value="Merge with Lele" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge with Lele" />
   </component>
 </project>
