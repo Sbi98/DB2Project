@@ -35,6 +35,7 @@ public class Review {
         cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH },
         orphanRemoval = true //se viene tolta una answer dalla lista, cancella quella answer
     )
+    @OrderBy("question asc")
     private List<MAnswer> answers;
 
     public Review() { }

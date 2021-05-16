@@ -8,12 +8,13 @@ import java.io.IOException;
 public class LoginFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		System.out.print("Login checker filter executing ...\n");
+		//System.out.print("Login checker filter executing ...\n");
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		String loginpath = req.getServletContext().getContextPath() + "/index.html";
 		HttpSession s = req.getSession();
 		if (s.isNew() || s.getAttribute("user") == null) {
+			System.err.print("\nLogin permissions violated\n");
 			res.sendRedirect(loginpath);
 			return;
 		}

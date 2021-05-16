@@ -10,24 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4dc1e564-c530-43ed-82f0-553f90e13115" name="Default Changelist" comment="Fix trigger. Aggiunti accessi e leaderboard. Mancano (solo?) le review degli altri utenti nella home">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/b82016a4-b3d2-4631-a740-a95a8d32d835.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/b82016a4-b3d2-4631-a740-a95a8d32d835.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/J2EEProject.iml" beforeDir="false" afterPath="$PROJECT_DIR$/J2EEProject.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/ejbModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/ejbModule.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Access.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Access.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/leaderboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/leaderboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/review.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/review.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/savedReview.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/savedReview.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CheckLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CheckLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToLeaderboardPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToLeaderboardPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/RegisterUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/RegisterUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/SaveReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/SaveReview.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Review.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/CheckAdminPrivileges.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/CheckAdminPrivileges.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/LoginFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/LoginFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/leaderboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/leaderboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/webModule.iml" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/webModule.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Triggers.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Triggers.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -226,7 +216,8 @@
       <workItem from="1619985615912" duration="4261000" />
       <workItem from="1621001991960" duration="10672000" />
       <workItem from="1621183671605" duration="1572000" />
-      <workItem from="1621185260441" duration="3856000" />
+      <workItem from="1621185260441" duration="3929000" />
+      <workItem from="1621195342249" duration="1519000" />
     </task>
     <task id="LOCAL-00001" summary="Some mapping">
       <created>1619254123203</created>
@@ -326,7 +317,14 @@
       <option name="project" value="LOCAL" />
       <updated>1619945344788</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Fix trigger. Aggiunti accessi e leaderboard. Mancano (solo?) le review degli altri utenti nella home">
+      <created>1621189654328</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1621189654328</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

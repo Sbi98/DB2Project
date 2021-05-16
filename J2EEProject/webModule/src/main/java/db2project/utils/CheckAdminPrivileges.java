@@ -10,11 +10,11 @@ import java.io.IOException;
 public class CheckAdminPrivileges implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        System.out.print("Checking admin permissions...\n");
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         User u = (User) req.getSession().getAttribute("user");
         if (!u.isAdmin()) {
+            System.err.print("\nAdmin permissions violated\n");
             res.sendError(HttpServletResponse.SC_FORBIDDEN, "You are not an admin!");
             return;
         }
