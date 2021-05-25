@@ -39,7 +39,10 @@ public class SaveReview extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         NewReviewService rService = (NewReviewService) request.getSession().getAttribute("rService");
         try {
-            Integer age = Integer.parseInt(request.getParameter("age"));
+            String agestr = request.getParameter("age");
+            Integer age = null;
+            if (agestr != null && !agestr.isEmpty())
+                age = Integer.parseInt(agestr);
             String sex = request.getParameter("sex");
             String level = request.getParameter("level");
             rService.getReview().setAge(age);

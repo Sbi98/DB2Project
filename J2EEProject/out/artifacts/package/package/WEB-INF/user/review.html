@@ -32,7 +32,7 @@
     </div>
 
     <div th:if="${rService.getCurrentPage()==2}">
-        <form action="#" th:action="@{/user/SaveReview}" method="POST">
+        <form th:action="@{/user/SaveReview}" method="POST">
             <fieldset>
                 <label for="age">Age: </label>
                 <input type="number" step="1" name="age" id="age" min=0/>

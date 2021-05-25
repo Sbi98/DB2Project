@@ -31,6 +31,7 @@ public class Product {
         cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH },
         orphanRemoval = true //se viene tolta una question dalla lista, cancella quella question
     )
+    @OrderBy("id asc")
     private List<MQuestion> questions;
 
     @OneToMany(

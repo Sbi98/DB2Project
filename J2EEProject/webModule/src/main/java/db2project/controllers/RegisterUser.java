@@ -57,12 +57,13 @@ public class RegisterUser extends HttpServlet {
             User user = usrService.registerUser(usrn,pwd,email);
             // Imposta l'utente (essendosi registrato, non è un admin) nella sessione
             request.getSession().setAttribute("user", user);
+            usrService.newAccess(user);
             // Porta l'utente nella homepage
             response.sendRedirect(getServletContext().getContextPath()+"/user/GoToUserHomePage");
         } catch (Exception e) {
             // Eccezione lanciata se l'utente è già registrato, per esempio
             //e.printStackTrace();
-            System.err.println("\n------------\n"+e.getMessage()+"\n------------\n");
+            System.err.println(e.getMessage());
             // Per ricreare la pagina web che mostri anche l'errore
             final WebContext ctx = new WebContext(request, response, getServletContext());
             ctx.setVariable("errorMsg2", e.getMessage());

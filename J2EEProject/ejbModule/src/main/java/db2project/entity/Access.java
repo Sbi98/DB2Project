@@ -14,7 +14,7 @@ public class Access {
     @JoinColumn(name = "user") //nome della colonna che ha la FK a User
     private User user;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date at;
 
 
@@ -23,6 +23,11 @@ public class Access {
     public Access(User user, Date at) {
         this.user = user;
         this.at = at;
+    }
+
+    public Access(User user) {
+        this.user = user;
+        this.at = new Date();
     }
 
     public int getId() { return id; }

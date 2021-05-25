@@ -54,6 +54,7 @@ public class GoToUserHomePage extends HttpServlet {
         ctx.setVariable("pOfTheDay", p);
         ctx.setVariable("pOfTheDayReview", r);
         // La pagina 'home.html' viene creata e mostrata all'utente
+        //TODO un bel check su se la tabella domanda-risposta mostra tutte le risposte di una stessa domanda sotto quella domanda
         templateEngine.process("home", ctx, response.getWriter());
     }
 
