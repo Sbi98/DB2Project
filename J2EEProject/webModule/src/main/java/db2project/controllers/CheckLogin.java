@@ -36,6 +36,12 @@ public class CheckLogin extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // Restituisce la sessione corrente, essendo il boolean = false, se non esiste non ne crea una nuova ma restituisce null
+        HttpSession session = request.getSession(false);
+        // Se era presente una sessione, la invalida. Teoricamente è sempre presente una sessione
+        if (session != null) {
+            session.invalidate();
+        }
         String usrn;
         String pwd;
         try {
@@ -51,6 +57,7 @@ public class CheckLogin extends HttpServlet {
         }
         // Se il form è stato compilato correttamente:
         try {
+
             // Verifica credenziali
             User user = usrService.checkCredentials(usrn, pwd);
             request.getSession().setAttribute("user", user);

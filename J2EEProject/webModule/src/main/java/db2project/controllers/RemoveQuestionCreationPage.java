@@ -1,10 +1,9 @@
 package db2project.controllers;
+
 import db2project.entity.Product;
 import db2project.entity.User;
-import db2project.exceptions.OffensiveWordsException;
 import db2project.services.CreationService;
 import db2project.services.NewReviewService;
-import db2project.services.ProductService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templatemode.TemplateMode;
@@ -16,16 +15,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-
-@WebServlet(name = "GoToAdminHomePage", value = "/admin/GoToAdminHomePage")
-public class GoToAdminHomePage extends HttpServlet {
+@WebServlet(name = "RemoveQuestionCreationPage", value = "/admin/RemoveQuestionCreationPage")
+public class RemoveQuestionCreationPage extends HttpServlet {
     private TemplateEngine templateEngine;
-    @EJB(name = "db2project.services/ProductService")
-    private ProductService prodService;
 
-    public GoToAdminHomePage() { super(); }
+    public RemoveQuestionCreationPage() {
+        super();
+    }
 
     public void init() {
         ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(getServletContext());
@@ -38,22 +35,14 @@ public class GoToAdminHomePage extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         CreationService creationService = (CreationService) request.getSession().getAttribute("creationService");
-        // Se l'admin è tornato alla home mentre stava creando un prodotto va rimosso il creationService
         if(creationService != null) {
-            creationService.remove();
-            request.getSession().removeAttribute("creationService");
-        }
-
-        Product productOfTheDay = (Product) request.getSession().getAttribute("pOfTheDay");
-        if (productOfTheDay == null) {
-            productOfTheDay = prodService.getProductOfToday();
-            request.getSession().setAttribute("pOfTheDay", productOfTheDay);
-        }
+            creationService.removeQuestionAt(Integer.parseInt(request.getParameter("index")));
+        } else
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Contesto non valido: non è " +
+                    "presente un creationService nella sessione");
 
         final WebContext ctx = new WebContext(request, response, getServletContext());
-        ctx.setVariable("pOfTheDay", productOfTheDay);
-        templateEngine.process("adminHome", ctx, response.getWriter());
+        ctx.setVariable("creationService", creationService);
+        templateEngine.process("creationPage", ctx, response.getWriter());
     }
-
-    public void destroy() { }
 }
