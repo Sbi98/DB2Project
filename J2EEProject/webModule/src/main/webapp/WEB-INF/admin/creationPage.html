@@ -7,40 +7,58 @@
 <body>
 <h1>Admin creation page</h1>
 <div align="right">
+    <a th:href="@{/admin/GoToAdminHomePage}">Cancel</a>
     <a th:href="@{/Logout}">Logout</a>
 </div>
 
-<div th:if="${rService.getCurrentPage()==1}">
-    <div class="formdiv" th:if>
-        <p>Complete the form to create a new product</p>
-        <form action="#" th:action="@{/admin/CreateProduct}" method="POST" enctype="multipart/form-data">
-            <fieldset>
-                <p>
-                    Name: <input type="text" name="name" required/>
-                </p>
-                <p>
-                    Day: <input type="date" name="date" th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
-                                placeholder="yyyy-mm-dd" required />
-                </p>
-                <p>
-                    Image: <input type="file" id="photoFile" name="picture" required>
-                </p>
-                <input type="submit" name="Create product" value="Create">
-            </fieldset>
-        </form>
-    </div>
+<div th:if="${creationService.getProductName() == null}">
+    <p>Complete the form to create a new product</p>
+    <form th:action="@{/admin/AddQuestionCreationPage}" method="POST" enctype="multipart/form-data">
+        <fieldset>
+            Name: <input type="text" name="name" id="name" required/>
+            <br>
+            Day: <input type="date" name="date" th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
+                            placeholder="yyyy-mm-dd" required />
+            <br>
+            Image: <input type="file" id="photoFile" name="picture" required>
+            <input type="submit" name="Create product" value="Confirm product details">
+        </fieldset>
+    </form>
 </div>
 
+<div th:if="${!(creationService.getProductName() == null)}">
+    <h3>Product details:</h3>
+    <p th:text="'Name: '+${creationService.getProductName()}">
+    <br>
+    <p th:text="'Day: '+${creationService.getDate().toLocaleString().split(',')[0]}">
+    <br>
+    <img width="150px" alt="prodImage" th:src="*{'data:image/png;base64,'+ creationService.getImageBase64()}">
+    <br>
 
+    <h4>Questions for the customer:</h4>
+    <div th:each="q, iter: ${creationService.getQuestions()}">
+        <div>
+            <span th:text="'Question #' + ${iter.index} + ': ' + ${q}"></span>
+        </div>
+        <br>
+    </div>
 
-<form th:action="@{/admin/AddQuestionCreationPage}" method="POST">
-    <fieldset>
-        <input type="submit" name="Next" value="Next">
-    </fieldset>
-</form>
+    <form th:action="@{/admin/AddQuestionCreationPage}" method="POST">
+        <fieldset>
+            <h5>New question:</h5>
 
-<div>
-    <p> Valore contatore: <span th:text="${creationService.getNumberOfQuestions()}"></span> </p>
+            <label for="question">
+                <p th:text="'Question #'+${creationService.getQuestions().size()}">
+            </label>
+            <input type="text" name="question" id="question" required>
+            <br><br>
+            <input type="submit" name="Add question" value="Add question">
+        </fieldset>
+    </form>
+</div>
+
+<div align="left">
+    <a th:href="@{/admin/CreateProduct}">Create product</a>
 </div>
 
 </body>

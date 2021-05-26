@@ -1,11 +1,9 @@
 package db2project.controllers;
 
+import db2project.services.CreationService;
 import db2project.services.ProductService;
-import db2project.utils.ImageUtils;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.ejb.EJB;
 import javax.servlet.annotation.MultipartConfig;
@@ -19,26 +17,28 @@ public class CreateProduct extends HttpServlet {
     private static final long serialVersionUID = 1L;
     @EJB(name = "db2project.services/ProductService")
     private ProductService prodService;
-
+    private CreationService creationService;
     public CreateProduct() {
         super();
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
-            String name = request.getParameter("name");
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            Date date = sdf.parse(request.getParameter("date"));
-            Part imgFile = request.getPart("picture");
-            InputStream imgContent = imgFile.getInputStream();
-            byte[] imgByteArray = ImageUtils.readImage(imgContent); //img max of 4MB
-            if (name == null | name.isEmpty() | imgByteArray.length == 0) {
+            CreationService creationService = (CreationService) request.getSession().getAttribute("creationService");
+            System.out.println(creationService == null ? "CS NULL" : "CS NON NULL");
+            assert creationService != null;
+            String productName = creationService.getProductName();
+            Date productDate = creationService.getDate();
+            byte[] productImgByteArray = creationService.getImgByteArray();
+            if (productName == null | productImgByteArray.length == 0) {
                 throw new Exception("Invalid Product parameters");
             }
-            prodService.newProduct(name, date, imgByteArray);
-            response.sendRedirect(getServletContext().getContextPath()+"/admin/GoToCreationPage");
+            prodService.newProduct2(productName, productDate, productImgByteArray, creationService.getQuestions());
+
+
+            response.sendRedirect(getServletContext().getContextPath()+"/admin/GoToAdminHomePage");
         } catch (Exception e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, e.getMessage());
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "##" + e.getMessage());
         }
     }
 }

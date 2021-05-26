@@ -1,6 +1,7 @@
 package db2project.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,6 +26,13 @@ public class MQuestion {
         // quando viene effettuata l'operazione X su di me (MQuestion), effettuala anche a questa relazione (MAnswer)
     )
     private List<MAnswer> answers;
+
+    public MQuestion() { }
+
+    public MQuestion(Product p, String question) {
+        this.product = p;
+        this.text = question;
+    }
 
     public void addAnswer(MAnswer a) {
         if (answers == null) {

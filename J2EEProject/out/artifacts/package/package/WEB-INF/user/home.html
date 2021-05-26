@@ -29,7 +29,8 @@
     <a th:href="@{/user/DeleteReview}">Delete the review</a>
 </div>
 
-<h4>Reviews by other users:</h4>
+<br>
+<h3>Reviews by other users:</h3>
 <table>
     <tr>
         <th th:each="q : ${pOfTheDay.getQuestions()}" th:text="${q.getText()}"></th>

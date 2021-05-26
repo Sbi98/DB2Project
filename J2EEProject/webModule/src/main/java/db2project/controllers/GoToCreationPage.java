@@ -31,12 +31,9 @@ public class GoToCreationPage extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        CreationService creationService = (CreationService) request.getSession().getAttribute("creationService");
-        if (creationService == null) {
-            // Se non esiste un creationService, viene creato e salvato nella sessione
-            creationService = new CreationService();
-            request.getSession().setAttribute("creationService", creationService);
-        }
+        // Se si proviene dalla homepage dell'admin, viene reistanziato il creationService.
+        CreationService creationService = new CreationService();
+        request.getSession().setAttribute("creationService", creationService);
         final WebContext ctx = new WebContext(request, response, getServletContext());
         ctx.setVariable("creationService", creationService);
         templateEngine.process("creationPage", ctx, response.getWriter());
