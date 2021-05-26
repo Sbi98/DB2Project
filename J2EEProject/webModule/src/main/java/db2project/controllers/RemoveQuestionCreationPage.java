@@ -1,25 +1,26 @@
 package db2project.controllers;
 
+import db2project.entity.Product;
+import db2project.entity.User;
 import db2project.services.CreationService;
+import db2project.services.NewReviewService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
+import javax.ejb.EJB;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
-@WebServlet(name = "GoToCreationPage", value = "/admin/GoToCreationPage")
-public class GoToCreationPage extends HttpServlet {
+@WebServlet(name = "RemoveQuestionCreationPage", value = "/admin/RemoveQuestionCreationPage")
+public class RemoveQuestionCreationPage extends HttpServlet {
     private TemplateEngine templateEngine;
 
-    public GoToCreationPage() {
+    public RemoveQuestionCreationPage() {
         super();
     }
 
@@ -33,20 +34,15 @@ public class GoToCreationPage extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        // Se si proviene dalla homepage dell'admin, viene reistanziato il creationService.
-        try {
-            CreationService creationService = (CreationService) new InitialContext().lookup("java:global/package/CreationService!db2project.services.CreationService");
-            request.getSession().setAttribute("creationService", creationService);
-            final WebContext ctx = new WebContext(request, response, getServletContext());
-            ctx.setVariable("creationService", creationService);
-            templateEngine.process("creationPage", ctx, response.getWriter());
-        } catch (NamingException e) {
-            e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
-            return;
-        }
+        CreationService creationService = (CreationService) request.getSession().getAttribute("creationService");
+        if(creationService != null) {
+            creationService.removeQuestionAt(Integer.parseInt(request.getParameter("index")));
+        } else
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Contesto non valido: non è " +
+                    "presente un creationService nella sessione");
 
+        final WebContext ctx = new WebContext(request, response, getServletContext());
+        ctx.setVariable("creationService", creationService);
+        templateEngine.process("creationPage", ctx, response.getWriter());
     }
-
-    public void destroy() { }
 }

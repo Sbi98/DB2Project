@@ -7,6 +7,7 @@ import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
+import javax.ejb.EJB;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +22,6 @@ import java.text.SimpleDateFormat;
 @WebServlet(name = "AddQuestionCreationPage", value = "/admin/AddQuestionCreationPage")
 public class AddQuestionCreationPage extends HttpServlet {
     private TemplateEngine templateEngine;
-
     public AddQuestionCreationPage() {
         super();
     }
@@ -58,11 +58,12 @@ public class AddQuestionCreationPage extends HttpServlet {
             } else { // Se i dettagli del prodotto sono già stati inseriti:
                 creationService.addQuestion(request.getParameter("question"));
             }
+
             final WebContext ctx = new WebContext(request, response, getServletContext());
             ctx.setVariable("creationService", creationService);
             templateEngine.process("creationPage", ctx, response.getWriter());
         } catch (Exception e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "########" + e.getMessage());
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "AddQuestionCreationPage Error: " + e.getMessage());
         }
     }
 

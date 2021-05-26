@@ -29,16 +29,14 @@
 <div th:if="${!(creationService.getProductName() == null)}">
     <h3>Product details:</h3>
     <p th:text="'Name: '+${creationService.getProductName()}"></p>
-    <br>
     <p th:text="'Day: '+${creationService.getDate().toLocaleString().split(',')[0]}"></p>
-
     <img width="150px" alt="prodImage" th:src="*{'data:image/png;base64,'+ creationService.getImageBase64()}">
-
 
     <h4>Marketing questions for the customer:</h4>
     <div th:each="q, iter: ${creationService.getQuestions()}">
         <div>
-            <span th:text="'Question #' + ${iter.index} + ': ' + ${q}"></span>
+            <p th:text="'Question #' + ${iter.index} + ': ' + ${q}"></p>
+            <a th:href="@{/admin/RemoveQuestionCreationPage?index={param}(param=${iter.index})}">Remove</a>
         </div>
         <br>
     </div>

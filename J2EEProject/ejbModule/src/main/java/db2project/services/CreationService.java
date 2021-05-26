@@ -1,5 +1,6 @@
 package db2project.services;
 
+import javax.ejb.Remove;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -39,7 +40,11 @@ public class CreationService {
         this.questionCreationPhase = questionCreationPhase;
     }
 
-    public List<String> getQuestions() {
+    public void removeQuestionAt(int index) {
+        questions.remove(index);
+    }
+
+    public List<String> getQuestions(){
         return questions;
     }
 
@@ -66,5 +71,9 @@ public class CreationService {
     public void setImgByteArray(byte[] imageByteArray) {
         this.imageByteArray = imageByteArray;
         this.imageBase64 = Base64.getMimeEncoder().encodeToString(imageByteArray);
+    }
+
+    @Remove
+    public void remove() {
     }
 }

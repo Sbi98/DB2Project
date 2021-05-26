@@ -1,5 +1,7 @@
 package db2project.controllers;
 import db2project.entity.Product;
+import db2project.entity.User;
+import db2project.exceptions.OffensiveWordsException;
 import db2project.services.CreationService;
 import db2project.services.NewReviewService;
 import db2project.services.ProductService;
@@ -36,8 +38,13 @@ public class GoToAdminHomePage extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // Rimuove l'attributo 'rService' dalla sessione
-        List<Product> products = prodService.getAllProducts();
+        CreationService creationService = (CreationService) request.getSession().getAttribute("creationService");
+        if(creationService != null) {
+            creationService.remove();
+            request.getSession().removeAttribute("creationService");
+        }
 
+        List<Product> products = prodService.getAllProducts();
         final WebContext ctx = new WebContext(request, response, getServletContext());
         ctx.setVariable("products", products);
         ctx.setVariable("selection", null);

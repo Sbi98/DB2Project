@@ -4,6 +4,7 @@ import db2project.entity.MQuestion;
 import db2project.entity.Product;
 import db2project.entity.Review;
 import db2project.entity.User;
+import db2project.exceptions.UniqueConstraintViolation;
 
 import javax.ejb.Stateless;
 import javax.persistence.*;
@@ -25,12 +26,17 @@ public class ProductService {
         em.persist(p);
     }
 
-    public void newProduct2(String name, Date date, byte[] imgByteArray, List<String> questions){
-        Product p = new Product(name, date, imgByteArray);
-        for (String q : questions){
-            p.addQuestion(new MQuestion(p, q));
+    public Product newProduct(String name, Date date, byte[] imgByteArray, List<String> questions){
+        if (getProductOfDay(date) != null) {
+            Product p = new Product(name, date, imgByteArray);
+            for (String q : questions) {
+                p.addQuestion(new MQuestion(p, q));
+            }
+            em.persist(p);
+            return p;
+        } else {
+            return null;
         }
-        em.persist(p);
     }
 
     public Review findReview(int pId, int uId) {
