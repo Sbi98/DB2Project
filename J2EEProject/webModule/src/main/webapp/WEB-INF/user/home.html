@@ -34,12 +34,12 @@
 
 <div th:if="${!pOfTheDay.getReviews().isEmpty()}">
     <table>
-    <tr>
-        <th th:each="q : ${pOfTheDay.getQuestions()}" th:text="${q.getText()}"></th>
-    </tr>
-    <tr th:each="r : ${pOfTheDay.getReviews()}">
-        <td th:each="a : ${r.getAnswers()}" th:text="${a.getText()}"></td>
-    </tr>
+        <tr>
+            <th th:each="q : ${pOfTheDay.getQuestions()}" th:text="${q.getText()}"></th>
+        </tr>
+        <tr th:each="r : ${pOfTheDay.getReviews()}">
+            <td th:each="a : ${r.getAnswers()}" th:text="${a.getText()}"></td>
+        </tr>
     </table>
 </div>
 

@@ -37,17 +37,21 @@ public class GoToAdminHomePage extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        // Rimuove l'attributo 'rService' dalla sessione
         CreationService creationService = (CreationService) request.getSession().getAttribute("creationService");
+        // Se l'admin è tornato alla home mentre stava creando un prodotto va rimosso il creationService
         if(creationService != null) {
             creationService.remove();
             request.getSession().removeAttribute("creationService");
         }
 
-        List<Product> products = prodService.getAllProducts();
+        Product productOfTheDay = (Product) request.getSession().getAttribute("pOfTheDay");
+        if (productOfTheDay == null) {
+            productOfTheDay = prodService.getProductOfToday();
+            request.getSession().setAttribute("pOfTheDay", productOfTheDay);
+        }
+
         final WebContext ctx = new WebContext(request, response, getServletContext());
-        ctx.setVariable("products", products);
-        ctx.setVariable("selection", null);
+        ctx.setVariable("pOfTheDay", productOfTheDay);
         templateEngine.process("adminHome", ctx, response.getWriter());
     }
 

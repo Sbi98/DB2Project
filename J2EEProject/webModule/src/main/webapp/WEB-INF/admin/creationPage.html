@@ -15,12 +15,22 @@
     <p>Complete the form to create a new product</p>
     <form th:action="@{/admin/AddQuestionCreationPage}" method="POST" enctype="multipart/form-data">
         <fieldset>
-            Name: <input type="text" name="name" id="name" required/>
-            <br>
-            Day: <input type="date" name="date" th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
+            <label for="name">
+                Name of the product:
+            </label>
+            <input type="text" name="name" id="name" required/>
+            <br><br>
+            <label for="date">
+                Day:
+            </label>
+            <input type="date" name="date" th:attr="min=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
                             placeholder="yyyy-mm-dd" required />
-            <br>
-            Image: <input type="file" id="photoFile" name="picture" required> <br>
+            <br><br>
+            <label for="picture">
+                Picture:
+            </label>
+            <input type="file" id="picture" name="picture" required>
+            <br><br><br>
             <input type="submit" name="Create product" value="Confirm product details">
         </fieldset>
     </form>
@@ -35,7 +45,7 @@
     <h4>Marketing questions for the customer:</h4>
     <div th:each="q, iter: ${creationService.getQuestions()}">
         <div>
-            <p th:text="'Question #' + ${iter.index} + ': ' + ${q}"></p>
+            <p th:text="'Question #' + ${iter.index + 1} + ': ' + ${q}"></p>
             <a th:href="@{/admin/RemoveQuestionCreationPage?index={param}(param=${iter.index})}">Remove</a>
         </div>
         <br>
@@ -46,7 +56,7 @@
             <h5>New question:</h5>
 
             <label for="question">
-                <p th:text="'Question #'+${creationService.getQuestions().size()}">
+                <p th:text="'Question #'+${creationService.getQuestions().size() + 1}">
             </label>
             <input type="text" name="question" id="question" required>
             <br><br>

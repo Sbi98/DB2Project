@@ -14,25 +14,17 @@
     <a th:href="@{/admin/GoToCreationPage}">Create new product</a>
   </div>
 
-  <div>
-    <form th:action="@{/admin/GoToInspectionpage}" method="POST">
-      <fieldset>
-          <span th:each="q : ${pOfTheDay.getQuestions()}">
-              <p th:text="${q.getText()}"></p>
-              <input type="text" th:name="'a'+${q.getId()}" th:value="${rService.getAnswerTextFor(q.getId())}" required/>
-          </span>
-        <br>
-        <ul>
-          <li th:each="item : ${products}">
-            <input type="radio" th:field="*{selection}" th:value="${item}" />
-          </li>
-        </ul>
-        <br>
-        <input type="submit" name="Go" value="Go">
-      </fieldset>
-    </form>
-  </div>
-
+  <section>
+    <div th:if="${pOfTheDay!=null}">
+      <h3 th:text="'Product of the day is:'"> </h3>
+      <p  th:text="${pOfTheDay.getName()}"></p>
+      <a th:href="@{/admin/GoToInspectionPage?product={param}(param=${pOfTheDay.getId()})}">Inspect</a>
+      <img width="150px" alt="prodImage" th:src="*{'data:image/png;base64,'+ pOfTheDay.getImageAsBase64()}">
+    </div>
+    <div th:unless="${pOfTheDay!=null}">
+      <h3>There is no product of the day!</h3>
+    </div>
+  </section>
 
 </body>
 </html>
