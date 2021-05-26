@@ -60,8 +60,6 @@ public class CreationService {
     }
 
     public String getImageBase64() {
-        if(imageBase64.isEmpty())
-            System.out.println("Ciao");
         return imageBase64;
     }
 
