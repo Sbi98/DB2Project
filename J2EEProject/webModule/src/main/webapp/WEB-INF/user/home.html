@@ -30,9 +30,9 @@
 </div>
 
 <br>
-<h3>Reviews by other users:</h3>
 
 <div th:if="${!pOfTheDay.getReviews().isEmpty()}">
+    <h3>Reviews by other users:</h3>
     <table>
     <tr>
         <th th:each="q : ${pOfTheDay.getQuestions()}" th:text="${q.getText()}"></th>

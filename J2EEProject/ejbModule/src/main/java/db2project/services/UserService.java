@@ -23,8 +23,10 @@ public class UserService {
                     .setParameter(1, username)
                     .setParameter(2, pwd)
                     .getResultList();
-            if (users.size() == 1)
+            if (users.size() == 1) {
+                em.clear();
                 return users.get(0);
+            }
             throw new Exception("Can't find the specified user. Check username and password");
         } catch (PersistenceException e) {
             throw new Exception("Could not verify credentals");

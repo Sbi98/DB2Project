@@ -52,7 +52,7 @@ public class Product {
             //cioè della colonna che contiene il riferimento all'entità mappata dall'attributo che modella la relazione qui sotto
             inverseJoinColumns={@JoinColumn(name="user_id")}
     )
-    private List<User> usersWhoDeletedReview;
+    private List<User> repentedUsers;
 
     public Product() {}
 
@@ -71,6 +71,19 @@ public class Product {
             questions = new LinkedList<>();
         }
         questions.add(q);
+    }
+
+    public void addRepentedUser(User u) {
+        if (repentedUsers == null) {
+            repentedUsers = new LinkedList<>();
+        }
+        repentedUsers.add(u);
+    }
+
+    public void removeRepentedUser(User u) {
+        if (repentedUsers != null) {
+            repentedUsers.remove(u);
+        }
     }
 
     public void addReview(Review r) {

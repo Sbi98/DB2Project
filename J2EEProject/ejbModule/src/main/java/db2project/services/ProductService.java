@@ -41,7 +41,7 @@ public class ProductService {
         return result.isEmpty() ? null : result.get(0);
     }
 
-    //Cancella la review con id revId
+    //Cancella la review con id revId. Non usata attualmente
     public void deleteReview(int revId) {
         Review r = em.find(Review.class, revId);
         if (r != null) {
@@ -49,9 +49,19 @@ public class ProductService {
         }
     }
 
-    //Cancella la review
+    //aggiunge l'utente alla lista di chi ha cancellato la review di quel prodotto
+    public void addRepentedUser(Product p, User u) {
+        p.addRepentedUser(u);
+        em.merge(p);
+    }
+
+    //Cancella la review e aggiunge l'utente alla lista di chi ha cancellato la review di quel prodotto
     public void deleteReview(Review r) {
-        em.remove(em.merge(r));
+        addRepentedUser(r.getProduct(), r.getUser());
+        em.remove(r);
+        /*em.flush();
+        em.refresh(em.find(User.class, r.getUser().getId()));
+        em.refresh(em.find(Product.class, r.getProduct().getId()));*/
     }
 
     // Restituisce il prodotto del giorno
