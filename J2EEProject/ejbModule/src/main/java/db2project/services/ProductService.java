@@ -20,6 +20,24 @@ public class ProductService {
         return em.createNamedQuery("Product.getAll", Product.class).getResultList();
     }
 
+    public List<Product> getAllProductsBeforeToday() {
+        return getAllProductsBeforeDate(new Date());
+    }
+
+    public List<Product> getAllProductsBeforeDate(Date date) {
+        List<Product> products;
+        try {
+            // Esegue la query: "SELECT p FROM Product p WHERE p.date < d"
+            products = em.createNamedQuery("Product.getOfDay", Product.class)
+                    .setParameter(1, date)
+                    .getResultList();
+            if (!products.isEmpty())
+                return products;
+            // Se non ci sono prodotti che soddisfano il criterio
+            return null;
+        } catch (PersistenceException e) { return null; }
+    }
+
     // Crea un nuovo prodotto sul database con le informazioni specificata
     public void newProduct(String name, Date date, byte[] imgByteArray) {
         Product p = new Product(name, date, imgByteArray);

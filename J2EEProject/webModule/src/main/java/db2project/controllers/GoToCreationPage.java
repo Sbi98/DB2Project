@@ -43,9 +43,7 @@ public class GoToCreationPage extends HttpServlet {
         } catch (NamingException e) {
             e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
-            return;
         }
-
     }
 
     public void destroy() { }

@@ -43,12 +43,9 @@ public class GoToAdminHomePage extends HttpServlet {
             creationService.remove();
             request.getSession().removeAttribute("creationService");
         }
+        Product productOfTheDay = prodService.getProductOfToday();
 
-        Product productOfTheDay = (Product) request.getSession().getAttribute("pOfTheDay");
-        if (productOfTheDay == null) {
-            productOfTheDay = prodService.getProductOfToday();
-            request.getSession().setAttribute("pOfTheDay", productOfTheDay);
-        }
+        request.getSession().setAttribute("pOfTheDay", productOfTheDay);
 
         final WebContext ctx = new WebContext(request, response, getServletContext());
         ctx.setVariable("pOfTheDay", productOfTheDay);

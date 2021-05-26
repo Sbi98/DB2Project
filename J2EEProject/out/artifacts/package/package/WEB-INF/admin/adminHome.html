@@ -10,21 +10,35 @@
     <a th:href="@{/Logout}">Logout</a>
   </div>
 
-  <div align="left">
-    <a th:href="@{/admin/GoToCreationPage}">Create new product</a>
-  </div>
-
   <section>
     <div th:if="${pOfTheDay!=null}">
-      <h3 th:text="'Product of the day is:'"> </h3>
-      <p  th:text="${pOfTheDay.getName()}"></p>
-      <a th:href="@{/admin/GoToInspectionPage?product={param}(param=${pOfTheDay.getId()})}">Inspect</a>
+      <h3 th:text="'Product of the day'"> </h3>
+      <p  th:text="'Name: ' + ${pOfTheDay.getName()}"></p>
+      <p  th:text="'Date: ' + ${pOfTheDay.getDate().toLocaleString().split(',')[0]}"></p>
       <img width="150px" alt="prodImage" th:src="*{'data:image/png;base64,'+ pOfTheDay.getImageAsBase64()}">
     </div>
     <div th:unless="${pOfTheDay!=null}">
       <h3>There is no product of the day!</h3>
     </div>
   </section>
+
+  <h3>Functions</h3>
+  <a th:href="@{/admin/GoToCreationPage}">Create new product</a> <br>
+  <a th:href="@{/admin/GoToInspectionPage}">Inspect previous questionnaire data</a> <br>
+  <a th:href="@{/admin/GoToDeletionPage}">Erase product's questionnaire data</a> <br>
+
+
+
+<!--  <h4>Previous day products:</h4>
+  <div th:each="p: ${products}">
+    <div>
+      <p th:text="${p.getName()}"></p>
+      <img width="150px" alt="prodImage" th:src="*{'data:image/png;base64,'+ p.getImageAsBase64()}">
+      <a th:href="@{/admin/GoToInspectionPage?product={param}(param=${pOfTheDay.getId()})}">Inspect product</a> <br>
+      <a th:href="@{/admin/EraaseQuestionnaire?product={param}(param=${pOfTheDay.getId()})}">Erase product's questionnaire data</a> <br>
+    </div>
+    <br>
+  </div>-->
 
 </body>
 </html>
