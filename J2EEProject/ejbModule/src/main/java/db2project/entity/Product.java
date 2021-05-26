@@ -43,6 +43,17 @@ public class Product {
     )
     private List<Review> reviews;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name="deleted_reviews", //nome della jointable
+            //nome della colonna che contiene il riferimento a me
+            joinColumns={@JoinColumn(name="product_id")},
+            //nome della colonna che contiene il riferimento all'altro capo della relazione
+            //cioè della colonna che contiene il riferimento all'entità mappata dall'attributo che modella la relazione qui sotto
+            inverseJoinColumns={@JoinColumn(name="user_id")}
+    )
+    private List<User> usersWhoDeletedReview;
+
     public Product() {}
 
     public Product(String name, Date date, byte[] image) {

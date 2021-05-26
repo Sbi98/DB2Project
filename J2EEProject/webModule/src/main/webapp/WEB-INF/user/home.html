@@ -31,14 +31,17 @@
 
 <br>
 <h3>Reviews by other users:</h3>
-<table>
+
+<div th:if="${!pOfTheDay.getReviews().isEmpty()}">
+    <table>
     <tr>
         <th th:each="q : ${pOfTheDay.getQuestions()}" th:text="${q.getText()}"></th>
     </tr>
     <tr th:each="r : ${pOfTheDay.getReviews()}">
         <td th:each="a : ${r.getAnswers()}" th:text="${a.getText()}"></td>
     </tr>
-</table>
+    </table>
+</div>
 
 </body>
 </html>

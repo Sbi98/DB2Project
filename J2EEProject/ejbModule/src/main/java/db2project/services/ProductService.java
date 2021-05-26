@@ -1,5 +1,6 @@
 package db2project.services;
 
+import db2project.entity.MQuestion;
 import db2project.entity.Product;
 import db2project.entity.Review;
 import db2project.entity.User;
@@ -21,6 +22,14 @@ public class ProductService {
     // Crea un nuovo prodotto sul database con le informazioni specificata
     public void newProduct(String name, Date date, byte[] imgByteArray) {
         Product p = new Product(name, date, imgByteArray);
+        em.persist(p);
+    }
+
+    public void newProduct2(String name, Date date, byte[] imgByteArray, List<String> questions){
+        Product p = new Product(name, date, imgByteArray);
+        for (String q : questions){
+            p.addQuestion(new MQuestion(p, q));
+        }
         em.persist(p);
     }
 
