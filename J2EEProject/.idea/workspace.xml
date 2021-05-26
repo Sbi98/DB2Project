@@ -10,14 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4dc1e564-c530-43ed-82f0-553f90e13115" name="Default Changelist" comment="Fix trigger. Aggiunti accessi e leaderboard. Mancano (solo?) le review degli altri utenti nella home">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Review.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/CheckAdminPrivileges.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/CheckAdminPrivileges.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/LoginFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/LoginFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Triggers.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Triggers.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
