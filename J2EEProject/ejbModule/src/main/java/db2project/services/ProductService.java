@@ -85,17 +85,11 @@ public class ProductService {
                 System.out.println("Non è possibile cancellare i dati relativi a questionari in corso o futuri!");
                 return false;
             } else {
-                // Per ciascuna review decremento i punti dell'utente associato
-                List<Review> reviews = p.getReviews();
+                // Cancello tutte le review di quel prodotto
+                //TODO TESTA!!
                 for (Review r : p.getReviews()) {
-                    User u = r.getUser();
-                    u.setPoints(u.getPoints() - r.getPoints());
-                    u.getReviews().remove(r);
-                    em.persist(u);
-                    em.remove(r);
+                    deleteReview(r);
                 }
-                reviews.clear();
-                em.persist(p);
                 return true;
             }
         } catch (PersistenceException e) { return false; }

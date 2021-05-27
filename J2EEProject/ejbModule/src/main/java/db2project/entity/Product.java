@@ -66,6 +66,8 @@ public class Product implements Serializable {
 
     public List<Review> getReviews() { return reviews; }
 
+    public Set<User> getRepentedUsers() { return repentedUsers; }
+
     public void addRepentedUser(User u) { //updates both sides of the relationship
         if (repentedUsers == null) {
             repentedUsers = new HashSet<>();
@@ -115,8 +117,5 @@ public class Product implements Serializable {
     public Date getDate() { return date; }
     //public void setDate(Date date) { this.date = date; }
 
-    public List<User> getUsersWhoDeletedReview() {
-        return usersWhoDeletedReview;
-    }
 
 }
