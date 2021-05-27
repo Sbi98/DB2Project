@@ -1,10 +1,11 @@
 package db2project.controllers;
-import db2project.entity.Product;
+
+import db2project.entity.Review;
 import db2project.entity.User;
 import db2project.exceptions.OffensiveWordsException;
-import db2project.services.CreationService;
 import db2project.services.NewReviewService;
 import db2project.services.ProductService;
+import db2project.services.UserService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templatemode.TemplateMode;
@@ -16,40 +17,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
 
-@WebServlet(name = "GoToAdminHomePage", value = "/admin/GoToAdminHomePage")
-public class GoToAdminHomePage extends HttpServlet {
+@WebServlet(name = "EraseQuestionnaire", value = "/admin/EraseQuestionnaire")
+public class EraseQuestionnaire extends HttpServlet { //TODO
     private TemplateEngine templateEngine;
     @EJB(name = "db2project.services/ProductService")
-    private ProductService prodService;
+    ProductService productService;
 
-    public GoToAdminHomePage() { super(); }
+    public EraseQuestionnaire() {
+        super();
+    }
 
     public void init() {
         ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(getServletContext());
         templateResolver.setTemplateMode(TemplateMode.HTML);
         this.templateEngine = new TemplateEngine();
         this.templateEngine.setTemplateResolver(templateResolver);
-        templateResolver.setPrefix("/WEB-INF/admin/");
+        templateResolver.setPrefix("/WEB-INF/user/");
         templateResolver.setSuffix(".html");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        CreationService creationService = (CreationService) request.getSession().getAttribute("creationService");
-        // Se l'admin è tornato alla home mentre stava creando un prodotto va rimosso il creationService
-        if(creationService != null) {
-            creationService.remove();
-            request.getSession().removeAttribute("creationService");
-        }
-        request.getSession().removeAttribute("products");
-        Product productOfTheDay = prodService.getProductOfToday();
-        request.getSession().setAttribute("pOfTheDay", productOfTheDay);
-
-        final WebContext ctx = new WebContext(request, response, getServletContext());
-        ctx.setVariable("pOfTheDay", productOfTheDay);
-        templateEngine.process("adminHome", ctx, response.getWriter());
+        String productId = request.getParameter("product");
+        if(productService.eraseQuestionnaireData(productId))
+            response.sendRedirect(getServletContext().getContextPath()+"/admin/GoToAdminHomePage");
+        else
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "EraseQuestionnaire GET: Cannot erase " +
+                    "the questionnaire data of the selected product!\n");
     }
 
     public void destroy() { }

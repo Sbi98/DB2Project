@@ -8,16 +8,32 @@ import db2project.exceptions.UniqueConstraintViolation;
 
 import javax.ejb.Stateless;
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Stateless
 public class ProductService {
     @PersistenceContext(unitName = "DB2Project")
     private EntityManager em;
 
+    public Product getProduct(int id) {
+        return em.find(Product.class, id);
+    }
+
     public List<Product> getAllProducts() {
         return em.createNamedQuery("Product.getAll", Product.class).getResultList();
+    }
+
+    public List<Product> getAllProductsBeforeToday() {
+        return getAllProductsBeforeDate(new Date());
+    }
+
+    public List<Product> getAllProductsBeforeDate(Date date) {
+        List<Product> products;
+        try {
+            return em.createNamedQuery("Product.getBefore", Product.class)
+                    .setParameter(1, date)
+                    .getResultList();
+        } catch (PersistenceException e) { return null; }
     }
 
     // Crea un nuovo prodotto sul database con le informazioni specificata
@@ -27,7 +43,7 @@ public class ProductService {
     }
 
     public Product newProduct(String name, Date date, byte[] imgByteArray, List<String> questions){
-        if (getProductOfDay(date) != null) {
+        if (getProductOfDay(date) == null) {
             Product p = new Product(name, date, imgByteArray);
             for (String q : questions) {
                 new MQuestion(p, q);
@@ -59,6 +75,33 @@ public class ProductService {
         managedP.addRepentedUser(u);
     }
 
+    public boolean eraseQuestionnaireData(String productId){
+        try{
+            // Recupero il prodotto
+            Product p = em.find(Product.class, Integer.parseInt(productId));
+            long time = new Date().getTime();
+            // Verifico sia di data passata alla corrente
+            if (p.getDate().compareTo(new Date(time - time % (24 * 60 * 60 * 1000) - 2 * 60 * 60 * 1000)) >= 0) {
+                System.out.println("Non è possibile cancellare i dati relativi a questionari in corso o futuri!");
+                return false;
+            } else {
+                // Per ciascuna review decremento i punti dell'utente associato
+                List<Review> reviews = p.getReviews();
+                for (Review r : p.getReviews()) {
+                    User u = r.getUser();
+                    u.setPoints(u.getPoints() - r.getPoints());
+                    u.getReviews().remove(r);
+                    em.persist(u);
+                    em.remove(r);
+                }
+                reviews.clear();
+                em.persist(p);
+                return true;
+            }
+        } catch (PersistenceException e) { return false; }
+
+    }
+
     //Cancella la review e aggiunge l'utente alla lista di chi ha cancellato la review di quel prodotto
     public void deleteReview(Review r) {
         Review managedR = em.find(Review.class, r.getId());
@@ -68,8 +111,6 @@ public class ProductService {
         managedU.removeReview(managedR);
         //em.remove(managedR); non serve visto che entrambe le liste hanno l'orphan removal
     }
-
-
 
     // Restituisce il prodotto del giorno
     public Product getProductOfToday() {

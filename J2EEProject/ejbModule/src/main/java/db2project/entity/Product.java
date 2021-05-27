@@ -8,6 +8,7 @@ import java.util.*;
 @Table(name = "product", schema = "DB2Project")
 @NamedQuery(name = "Product.getOfDay", query = "SELECT p FROM Product p WHERE p.date = ?1")
 @NamedQuery(name = "Product.getAll", query = "SELECT p FROM Product p")
+@NamedQuery(name = "Product.getBefore", query = "SELECT p FROM Product p Where p.date < ?1")
 public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,9 +43,7 @@ public class Product implements Serializable {
     )
     private List<Review> reviews;
 
-    @ManyToMany(
-        fetch = FetchType.EAGER
-    )
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
         name="deleted_reviews", //nome della jointable
         //nome della colonna che contiene il riferimento a me
@@ -115,4 +114,9 @@ public class Product implements Serializable {
 
     public Date getDate() { return date; }
     //public void setDate(Date date) { this.date = date; }
+
+    public List<User> getUsersWhoDeletedReview() {
+        return usersWhoDeletedReview;
+    }
+
 }

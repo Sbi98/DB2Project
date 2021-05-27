@@ -14,16 +14,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.List;
 import java.util.Date;
+import java.util.List;
 
-@WebServlet(name = "GoToInspectionPage", value = "/admin/GoToInspectionPage")
-public class GoToInspectionPage extends HttpServlet {
+@WebServlet(name = "GoToDeletionPage", value = "/admin/GoToDeletionPage")
+public class GoToDeletionPage extends HttpServlet {
     private TemplateEngine templateEngine;
     @EJB(name = "db2project.services/ProductService")
-    private ProductService prodService;
+    private ProductService productService;
 
-    public GoToInspectionPage() { super(); }
+    public GoToDeletionPage() {
+        super();
+    }
 
     public void init() {
         ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(getServletContext());
@@ -35,33 +37,33 @@ public class GoToInspectionPage extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        //Recupera i prodotti associati a giorni passati e, se presente, il prodotto del giorno
-        List<Product> products = prodService.getAllProductsBeforeDate(new Date(new Date().getTime() + (1000 * 60 * 60 * 24)));
+        List<Product> products = productService.getAllProductsBeforeToday();
+        // List<Product> products = productService.getAllProducts();
         request.getSession().setAttribute("products", products);
-
         final WebContext ctx = new WebContext(request, response, getServletContext());
-        templateEngine.process("inspectionPage", ctx, response.getWriter());
+        ctx.setVariable("products", products);
+        templateEngine.process("deletionPage", ctx, response.getWriter());
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
             if (request.getSession().getAttribute("products") == null) {
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "GoToInspectionPage POST: Cannot find " +
+                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "GoToDeletionPage POST: Cannot find " +
                         "the products inside session!\n");
             } else {
-                Date selectedDate = (new SimpleDateFormat("yyyy-MM-dd")).parse(request.getParameter("date"));
-                System.out.println("Selected date:" + selectedDate.toString());
+                String selectedProductId = request.getParameter("selectedProduct");
+
                 final WebContext ctx = new WebContext(request, response, getServletContext());
-                ctx.setVariable("selectedDate", selectedDate);
-                ctx.setVariable("selectedProduct", prodService.getProductOfDay(selectedDate));
-                templateEngine.process("inspectionPage", ctx, response.getWriter());
+                ctx.setVariable("products", request.getSession().getAttribute("products"));
+                ctx.setVariable("selectedProduct", productService.getProduct(Integer.parseInt(selectedProductId)));
+                templateEngine.process("deletionPage", ctx, response.getWriter());
             }
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "GoToInspectionPage POST: " + e.getMessage());
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "GoToDeletionPage POST: " + e.getMessage());
         }
     }
 
-    public void destroy() { }
-
+    public void destroy() {
+    }
 }
