@@ -27,11 +27,7 @@ public class NewReviewService {
                 if (a.getText().contains(w.getWord()))
                     throw new OffensiveWordsException();
         }
-        review.getProduct().removeRepentedUser(review.getUser());
         em.persist(review);
-        /*em.flush();
-        em.refresh(em.find(User.class, review.getUser().getId()));
-        em.refresh(em.find(Product.class, review.getProduct().getId()));*/
     }
 
     // Restituisce il testo della risposta data alla domanda specificata. Se non esiste, restituisce 'null'

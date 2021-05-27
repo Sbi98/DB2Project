@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>DB2Project</title>
+    <link rel="stylesheet" type="text/css" media="all" href="mystyle.css" th:href="@{/mystyle.css}" />
 </head>
 <body>
     <h2>Login</h2>
@@ -10,9 +11,10 @@
     <form action="CheckLogin" method="POST">
         <fieldset>
             <br>
-            Username: <input type="text"     name="username" required><br><br>
-            Password: <input type="password" name="pwd"      required><br><br>
-            <br>
+            <label for="usernameL">Username: </label>
+            <input type="text" name="username" id="usernameL" required><br><br>
+            <label for="passwordL">Password: </label>
+            <input type="password" name="pwd" id="passwordL" required><br><br>
             <input type="submit" value="login">
             <p th:text="${errorMsg}"></p>
         </fieldset>
@@ -23,10 +25,12 @@
     <form action="RegisterUser" method="POST">
         <fieldset>
             <br>
-            Username: <input type="text"     name="username" required><br><br>
-            Password: <input type="password" name="pwd"      required><br><br>
-            Mail:     <input type="text"     name="email"    required><br><br>
-            <br>
+            <label for="usernameR">Username: </label>
+            <input type="text" name="username" id="usernameR" required><br><br>
+            <label for="passwordR">Password: </label>
+            <input type="password" name="pwd" id="passwordR" required><br><br>
+            <label for="email">Mail: </label>
+            <input type="text" name="email" id="email" required><br><br>
             <input type="submit" value="register">
             <p th:text="${errorMsg2}"></p>
         </fieldset>

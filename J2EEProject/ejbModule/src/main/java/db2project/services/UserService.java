@@ -17,25 +17,23 @@ public class UserService {
 
     // Verifica la validità delle credenziali e restituisce l'utente, altrimenti lancia un'eccezione
     public User checkCredentials(String username, String pwd) throws Exception {
-        List<User> users = null;
         try {
-            users = em.createNamedQuery("User.checkCredentials", User.class)
+            List<User> users = em.createNamedQuery("User.checkCredentials", User.class)
                     .setParameter(1, username)
                     .setParameter(2, pwd)
                     .getResultList();
-            if (users.size() == 1) {
-                em.clear();
+            if (users.size() == 1)
                 return users.get(0);
-            }
             throw new Exception("Can't find the specified user. Check username and password");
         } catch (PersistenceException e) {
+            System.err.println(e.getMessage());
             throw new Exception("Could not verify credentals");
         }
     }
 
     public List<User> getReviewersForProduct(int pId) {
-        em.clear();
         return em.createNamedQuery("User.findReviewersForProduct", User.class)
+                .setHint("javax.persistence.cache.storeMode", "REFRESH")
                 .setParameter(1, pId)
                 .getResultList();
     }
@@ -50,9 +48,8 @@ public class UserService {
     }
 
     public boolean willViolateUniqueConstraints(String username, String email) throws Exception {
-        List<User> users = null;
         try {
-            users = em.createNamedQuery("User.findByUsernameOrEmail", User.class)
+            List<User> users = em.createNamedQuery("User.findByUsernameOrEmail", User.class)
                     .setParameter(1, username)
                     .setParameter(2, email)
                     .getResultList();

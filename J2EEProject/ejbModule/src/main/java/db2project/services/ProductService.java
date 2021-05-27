@@ -30,7 +30,7 @@ public class ProductService {
         if (getProductOfDay(date) != null) {
             Product p = new Product(name, date, imgByteArray);
             for (String q : questions) {
-                p.addQuestion(new MQuestion(p, q));
+                new MQuestion(p, q);
             }
             em.persist(p);
             return p;
@@ -47,28 +47,29 @@ public class ProductService {
         return result.isEmpty() ? null : result.get(0);
     }
 
-    //Cancella la review con id revId. Non usata attualmente
-    public void deleteReview(int revId) {
-        Review r = em.find(Review.class, revId);
-        if (r != null) {
-            em.remove(r);
-        }
+    public void removeRepentedUser(Product p, User u) {
+        Product managedP = em.find(Product.class, p.getId());
+        User managedU = em.find(User.class, u.getId());
+        managedP.removeRepentedUser(managedU);
     }
 
     //aggiunge l'utente alla lista di chi ha cancellato la review di quel prodotto
     public void addRepentedUser(Product p, User u) {
-        p.addRepentedUser(u);
-        em.merge(p);
+        Product managedP = em.find(Product.class, p.getId());
+        managedP.addRepentedUser(u);
     }
 
     //Cancella la review e aggiunge l'utente alla lista di chi ha cancellato la review di quel prodotto
     public void deleteReview(Review r) {
-        addRepentedUser(r.getProduct(), r.getUser());
-        em.remove(r);
-        /*em.flush();
-        em.refresh(em.find(User.class, r.getUser().getId()));
-        em.refresh(em.find(Product.class, r.getProduct().getId()));*/
+        Review managedR = em.find(Review.class, r.getId());
+        Product managedP = em.find(Product.class, r.getProduct().getId());
+        User managedU = em.find(User.class, r.getUser().getId());
+        managedP.removeReview(managedR);
+        managedU.removeReview(managedR);
+        //em.remove(managedR); non serve visto che entrambe le liste hanno l'orphan removal
     }
+
+
 
     // Restituisce il prodotto del giorno
     public Product getProductOfToday() {
@@ -81,6 +82,7 @@ public class ProductService {
         try {
             // Esegue la query: "SELECT p FROM Product p WHERE p.date = d"
             products = em.createNamedQuery("Product.getOfDay", Product.class)
+                    .setHint("javax.persistence.cache.storeMode", "REFRESH")
                     .setParameter(1, d)
                     .getResultList();
             if (!products.isEmpty())

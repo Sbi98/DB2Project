@@ -1,6 +1,5 @@
 package db2project.controllers;
 
-import db2project.entity.OffensiveWords;
 import db2project.entity.User;
 import db2project.services.UserService;
 

@@ -3,6 +3,7 @@ package db2project.controllers;
 import db2project.entity.User;
 import db2project.exceptions.OffensiveWordsException;
 import db2project.services.NewReviewService;
+import db2project.services.ProductService;
 import db2project.services.UserService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -22,6 +23,8 @@ public class SaveReview extends HttpServlet {
     private TemplateEngine templateEngine;
     @EJB(name = "db2project.services/UserService")
     UserService userService;
+    @EJB(name = "db2project.services/ProductService")
+    ProductService pService;
 
     public SaveReview() {
         super();
@@ -49,6 +52,8 @@ public class SaveReview extends HttpServlet {
             rService.getReview().setSex(sex);
             rService.getReview().setLevel(level);
             rService.saveReview();
+            pService.removeRepentedUser(rService.getReview().getProduct(), (User) request.getSession().getAttribute("user"));
+            request.getSession().setAttribute("pOfTheDayReview", rService.getReview());
             final WebContext ctx = new WebContext(request, response, getServletContext());
             templateEngine.process("savedReview", ctx, response.getWriter());
         } catch (OffensiveWordsException owe) {

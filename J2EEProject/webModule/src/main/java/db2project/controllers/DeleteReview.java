@@ -42,7 +42,9 @@ public class DeleteReview extends HttpServlet { //TODO
         Review r = (Review) request.getSession().getAttribute("pOfTheDayReview");
         if (r != null) {
             prodService.deleteReview(r);
+            prodService.addRepentedUser(r.getProduct(),r.getUser());
             request.getSession().removeAttribute("pOfTheDayReview");
+            request.getSession().setAttribute("pOfTheDay", prodService.getProductOfToday());
         }
         response.sendRedirect(getServletContext().getContextPath()+"/user/GoToUserHomePage");
     }

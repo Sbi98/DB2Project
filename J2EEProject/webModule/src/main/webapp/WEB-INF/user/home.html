@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="stylesheet" type="text/css" media="all" th:href="@{/../package/mystyle.css}" />
 </head>
 <body>
 <div align="right">
@@ -15,7 +16,7 @@
     <div th:if="${pOfTheDay!=null}">
         <h3 th:text="'Product of the day is:'"> </h3>
         <p  th:text="${pOfTheDay.getName()}"></p >
-        <img width="150px" alt="prodImage" th:src="*{'data:image/png;base64,'+ pOfTheDay.getImageAsBase64()}">
+        <img width="150px" alt="prodImage" src="" th:src="*{'data:image/png;base64,'+ pOfTheDay.getImageAsBase64()}">
     </div>
     <div th:unless="${pOfTheDay!=null}">
         <h3>There is no product of the day!</h3>
@@ -34,12 +35,16 @@
 <div th:if="${!pOfTheDay.getReviews().isEmpty()}">
     <h3>Reviews by other users:</h3>
     <table>
-        <tr>
-            <th th:each="q : ${pOfTheDay.getQuestions()}" th:text="${q.getText()}"></th>
-        </tr>
-        <tr th:each="r : ${pOfTheDay.getReviews()}">
-            <td th:each="a : ${r.getAnswers()}" th:text="${a.getText()}"></td>
-        </tr>
+        <thead>
+            <tr>
+                <th th:each="q : ${pOfTheDay.getQuestions()}" th:text="${q.getText()}"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="r : ${pOfTheDay.getReviews()}">
+                <td th:each="a : ${r.getAnswers()}" th:text="${a.getText()}"></td>
+            </tr>
+        </tbody>
     </table>
 </div>
 

@@ -41,11 +41,8 @@ public class GoToUserHomePage extends HttpServlet {
             rService.remove();
             request.getSession().removeAttribute("rService");
         }
-        Product p = (Product) request.getSession().getAttribute("pOfTheDay");
-        if (p == null) {
-            p = prodService.getProductOfToday();
-            request.getSession().setAttribute("pOfTheDay", p);
-        }
+        Product p = prodService.getProductOfToday();
+        request.getSession().setAttribute("pOfTheDay", p);
         Review r = (Review) request.getSession().getAttribute("pOfTheDayReview");
         if (r == null && p != null) {
             r = prodService.findReview(p.getId(), ((User) request.getSession().getAttribute("user")).getId());
