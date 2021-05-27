@@ -46,11 +46,11 @@ public class GoToInspectionPage extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
         try {
             if (request.getSession().getAttribute("products") == null) {
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "GoToInspectionPage: Cannot find " +
+                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "GoToInspectionPage POST: Cannot find " +
                         "the products inside session!\n");
             } else {
                 Date selectedDate = (new SimpleDateFormat("yyyy-MM-dd")).parse(request.getParameter("date"));
-
+                System.out.println("Selected date:" + selectedDate.toString());
                 final WebContext ctx = new WebContext(request, response, getServletContext());
                 ctx.setVariable("selectedDate", selectedDate);
                 ctx.setVariable("selectedProduct", prodService.getProductOfDay(selectedDate));
@@ -58,7 +58,7 @@ public class GoToInspectionPage extends HttpServlet {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "GoToInspectionPage: " + e.getMessage());
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "GoToInspectionPage POST: " + e.getMessage());
         }
     }
 

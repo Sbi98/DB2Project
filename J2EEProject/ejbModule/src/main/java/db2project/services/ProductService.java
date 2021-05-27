@@ -16,6 +16,10 @@ public class ProductService {
     @PersistenceContext(unitName = "DB2Project")
     private EntityManager em;
 
+    public Product getProduct(int id) {
+        return em.find(Product.class, id);
+    }
+
     public List<Product> getAllProducts() {
         return em.createNamedQuery("Product.getAll", Product.class).getResultList();
     }
@@ -27,14 +31,9 @@ public class ProductService {
     public List<Product> getAllProductsBeforeDate(Date date) {
         List<Product> products;
         try {
-            // Esegue la query: "SELECT p FROM Product p WHERE p.date < d"
-            products = em.createNamedQuery("Product.getOfDay", Product.class)
+            return em.createNamedQuery("Product.getBefore", Product.class)
                     .setParameter(1, date)
                     .getResultList();
-            if (!products.isEmpty())
-                return products;
-            // Se non ci sono prodotti che soddisfano il criterio
-            return null;
         } catch (PersistenceException e) { return null; }
     }
 
@@ -45,14 +44,17 @@ public class ProductService {
     }
 
     public Product newProduct(String name, Date date, byte[] imgByteArray, List<String> questions){
-        if (getProductOfDay(date) != null) {
+        if (getProductOfDay(date) == null) {
             Product p = new Product(name, date, imgByteArray);
             for (String q : questions) {
                 p.addQuestion(new MQuestion(p, q));
             }
+            System.out.println("Salvo prodotto" + p == null);
             em.persist(p);
+            System.out.println("Prodotto salvato" + p == null);
             return p;
         } else {
+            System.out.println("Prodotto già presente! Nome: " + getProductOfDay(date).getName());
             return null;
         }
     }
@@ -63,6 +65,30 @@ public class ProductService {
                 .setParameter(2,uId)
                 .getResultList();
         return result.isEmpty() ? null : result.get(0);
+    }
+
+    public boolean eraseQuestionnaireData(String productId){
+        try{
+            // Recupero il prodotto
+            Product p = em.find(Product.class, Integer.parseInt(productId));
+            long time = new Date().getTime();
+            // Verifico sia di data passata alla corrente
+            if (p.getDate().compareTo(new Date(time - time % (24 * 60 * 60 * 1000) - 2 * 60 * 60 * 1000)) >= 0) {
+                System.out.println("Non è possibile cancellare i dati relativi a questionari in corso o futuri!");
+                return false;
+            } else {
+                // Per ciascuna review decremento i punti dell'utente associato
+                for (Review r : p.getReviews()) {
+                    User u = r.getUser();
+                    u.setPoints(u.getPoints() - r.getPoints());
+                    u.getReviews().remove(r);
+                    em.persist(u);
+                    em.remove(r);
+                }
+                return true;
+            }
+        } catch (PersistenceException e) { return false; }
+
     }
 
     //Cancella la review con id revId

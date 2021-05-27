@@ -35,7 +35,7 @@ public class CreateProduct extends HttpServlet {
                 if (productName == null | productImgByteArray.length == 0) {
                     throw new Exception("Invalid Product parameters");
                 }
-                if(prodService.newProduct(productName, productDate, productImgByteArray, creationService.getQuestions()) == null) {
+                if(prodService.newProduct(productName, productDate, productImgByteArray, creationService.getQuestions()) != null) {
                     response.sendRedirect(getServletContext().getContextPath() + "/admin/GoToAdminHomePage");
                 } else throw new UniqueConstraintViolation("Esiste già un prodotto per la data specificata!");
             }

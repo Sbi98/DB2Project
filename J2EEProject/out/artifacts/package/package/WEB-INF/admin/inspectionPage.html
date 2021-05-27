@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <h2>Inspection page</h2>
+    <h1>Inspection page</h1>
     <div align="right">
         <a th:href="@{/admin/GoToAdminHomePage}">Homepage</a>
         <a th:href="@{/Logout}">Logout</a>
@@ -18,48 +18,56 @@
             <label for="date">
                 Date:
             </label>
-            <input type="date" name="date" th:attr="max=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
+            <input type="date" id="date" name="date" th:attr="max=${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
                    placeholder="yyyy-mm-dd" required/>
             <br><br>
             <input type="submit" name="fetchData" value="Search product questionnaire data">
         </fieldset>
     </form>
 
-
-    <div th:if="${selectedDate != null}">
+    <div th:if="${selectedDate != null && selectedProduct == null}">
+        <h3 th:text="'There are no product with date ' + ${selectedDate.toLocaleString().split(',')[0]} + ':'"></h3>
+    </div>
+    <div th:if="${selectedDate != null && selectedProduct != null}">
         <h3 th:text="'Result for ' + ${selectedDate.toLocaleString().split(',')[0]} + ':'"></h3>
         <p th:text="'Name: '+${selectedProduct.getName()}"></p>
         <p th:text="'Day: '+${selectedProduct.getDate().toLocaleString().split(',')[0]}"></p>
         <img width="150px" alt="prodImage" th:src="*{'data:image/png;base64,'+ selectedProduct.getImageAsBase64()}">
 
-        <h4>Marketing questions for the customer</h4>
+        <h3>Marketing questions for the customer</h3>
         <div th:each="q, iter: ${selectedProduct.getQuestions()}">
             <p th:text="'Question #' + ${iter.index + 1} + ': ' + ${q.getText()}"></p>
         </div>
 
-        <h4 th:text="${selectedProduct.getReviews().isEmpty() ? 'There are no users' : 'Users'} + ' who submitted the questionnaire'"></h4>
+        <h3 th:text="${selectedProduct.getReviews().isEmpty() ? 'There are no users' : 'Users'} + ' who submitted the questionnaire'"></h3>
         <div th:each="r: ${selectedProduct.getReviews()}">
             <p th:text="${r.getUser().getUsername()}"></p>
         </div>
 
-        <h4 th:text="${selectedProduct.getUsersWhoDeletedReview().isEmpty() ? 'There are no users' : 'Users'} + ' who cencelled the questionnaire'"></h4>
+        <h3 th:text="${selectedProduct.getUsersWhoDeletedReview().isEmpty() ? 'There are no users' : 'Users'} + ' who cencelled the questionnaire'"></h3>
         <div th:each="u: ${selectedProduct.getUsersWhoDeletedReview()}">
             <p th:text="${u.getUsername()}"></p>
         </div>
 
-        <h4 th:text="${selectedProduct.getReviews().isEmpty() ? 'There are no reviews' : 'Reviews'} + ' of the selected product'"></h4>
+        <h3 th:text="${selectedProduct.getReviews().isEmpty() ? 'There are no reviews' : 'Reviews'} + ' of the selected product'"></h3>
         <div th:if="${!selectedProduct.getReviews().isEmpty()}">
             <table>
                 <tr>
-                    <th th:text="Username"></th>
+                    <th>Username</th>
                     <th th:each="q : ${selectedProduct.getQuestions()}" th:text="${q.getText()}"></th>
+                    <th>Age</th>
+                    <th>Sex</th>
+                    <th>Level</th>
                 </tr>
                 <tr th:each="r : ${selectedProduct.getReviews()}">
                     <th th:text="${r.getUser().getUsername()}"></th>
                     <td th:each="a : ${r.getAnswers()}" th:text="${a.getText()}"></td>
+                    <td th:text="${r.getAge()}"></td>
+                    <td th:text="${r.getSex()}"></td>
+                    <td th:text="${r.getLevel()}"></td>
                 </tr>
             </table>
         </div>
-
+    </div>
 </body>
 </html>
