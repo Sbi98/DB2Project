@@ -67,6 +67,8 @@ public class Product {
 
     public List<Review> getReviews() { return reviews; }
 
+    public void setReviews(List<Review> reviews) { this.reviews = reviews; }
+
     public void addQuestion(MQuestion q) {
         if (questions == null) {
             questions = new LinkedList<>();

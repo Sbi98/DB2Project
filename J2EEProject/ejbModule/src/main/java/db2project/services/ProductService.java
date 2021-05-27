@@ -8,8 +8,7 @@ import db2project.exceptions.UniqueConstraintViolation;
 
 import javax.ejb.Stateless;
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Stateless
 public class ProductService {
@@ -78,6 +77,7 @@ public class ProductService {
                 return false;
             } else {
                 // Per ciascuna review decremento i punti dell'utente associato
+                List<Review> reviews = p.getReviews();
                 for (Review r : p.getReviews()) {
                     User u = r.getUser();
                     u.setPoints(u.getPoints() - r.getPoints());
@@ -85,6 +85,8 @@ public class ProductService {
                     em.persist(u);
                     em.remove(r);
                 }
+                reviews.clear();
+                em.persist(p);
                 return true;
             }
         } catch (PersistenceException e) { return false; }
