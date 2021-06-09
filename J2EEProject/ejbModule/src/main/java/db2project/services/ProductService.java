@@ -85,10 +85,10 @@ public class ProductService {
                 System.out.println("Non è possibile cancellare i dati relativi a questionari in corso o futuri!");
                 return false;
             } else {
-                // Cancello tutte le review di quel prodotto
-                //TODO TESTA!!
-                for (Review r : p.getReviews()) {
-                    deleteReview(r);
+                // Cancello tutte le review di quel prodotto, azzero quindi il questionario
+                List<Review> reviewsToDelete = p.getReviews();
+                while(!reviewsToDelete.isEmpty()){
+                    deleteReview(reviewsToDelete.get(0));
                 }
                 return true;
             }
@@ -103,6 +103,7 @@ public class ProductService {
         User managedU = em.find(User.class, r.getUser().getId());
         managedP.removeReview(managedR);
         managedU.removeReview(managedR);
+        //em.flush();
         //em.remove(managedR); non serve visto che entrambe le liste hanno l'orphan removal
     }
 

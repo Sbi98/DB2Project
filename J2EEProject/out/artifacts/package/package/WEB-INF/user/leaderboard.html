@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Leaderboard</title>
+</head>
+<body>
+<div align="right">
+    <a th:href="@{/user/GoToUserHomePage}">Home</a>
+    <a th:href="@{/Logout}">Logout</a>
+</div>
+<h1>Leaderboard</h1><br>
+
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Points</th>
+    </tr>
+    <tr th:each="r : ${reviewers}">
+        <td th:text="${r.getUsername()}"></td>
+        <td th:text="${r.getPoints()}"></td>
+    </tr>
+</table>
+
+
+</body>
+</html>
