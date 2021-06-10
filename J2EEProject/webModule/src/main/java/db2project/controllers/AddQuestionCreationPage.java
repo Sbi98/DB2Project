@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @MultipartConfig
@@ -59,11 +58,13 @@ public class AddQuestionCreationPage extends HttpServlet {
             } else {
                 creationService.addQuestion(newQuestion);
             }
-            ctx.setVariable("creationService", creationService);
-            templateEngine.process("creationPage", ctx, response.getWriter());
         } catch (Exception e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "AddQuestionCreationPage Error: " + e.getMessage());
+            System.err.println(e.getMessage());
+            ctx.setVariable("displayMsg", e.getMessage());
+            //response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
         }
+        ctx.setVariable("creationService", creationService);
+        templateEngine.process("creationPage", ctx, response.getWriter());
     }
 
     public void destroy() { }

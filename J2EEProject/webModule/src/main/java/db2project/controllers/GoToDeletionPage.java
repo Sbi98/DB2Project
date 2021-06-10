@@ -1,6 +1,5 @@
 package db2project.controllers;
 
-import db2project.entity.Product;
 import db2project.services.ProductService;
 import db2project.utils.Utils;
 import org.thymeleaf.TemplateEngine;
@@ -14,13 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.Date;
-import java.util.List;
 
 @WebServlet(name = "GoToDeletionPage", value = "/admin/GoToDeletionPage")
 public class GoToDeletionPage extends HttpServlet {
+    private static final long serialVersionUID = 1L;
     private TemplateEngine templateEngine;
     @EJB(name = "db2project.services/ProductService")
     private ProductService productService;
@@ -45,26 +42,17 @@ public class GoToDeletionPage extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final WebContext ctx = new WebContext(request, response, getServletContext());
-        /*SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        ctx.setVariable("maxDate", sdf.format(Utils.getYesterday()));
-        ctx.setVariable("maxDateStr", Utils.getYesterday());
-        System.out.println(sdf.format(Utils.getYesterday()));
-        System.out.println(Utils.getYesterday());
-        System.out.println(Utils.getYesterday().getTime());
-        System.out.println(Instant.now().getEpochSecond());*/
         if (request.getParameter("date") == null) {
             ctx.setVariable("displayMsg", "You must select a date!");
         } else {
-            try {
-                Date selectedDate = (new SimpleDateFormat("yyyy-MM-dd")).parse(request.getParameter("date"));
-                if (!Utils.isBeforeToday(selectedDate)) {
-                    ctx.setVariable("displayMsg", "You must select a past date!");
-                } else {
-                    ctx.setVariable("selectedDate", selectedDate);
-                    ctx.setVariable("selectedProduct", productService.getProductOfDay(selectedDate));
-                }
-                templateEngine.process("deletionPage", ctx, response.getWriter());
-            } catch (Exception e) { response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage()); }
+            Date selectedDate = Utils.utcDateFromString(request.getParameter("date"));
+            if (!Utils.isBeforeToday(selectedDate)) {
+                ctx.setVariable("displayMsg", "You must select a past date!");
+            } else {
+                ctx.setVariable("selectedDate", selectedDate);
+                ctx.setVariable("selectedProduct", productService.getProductOfDay(selectedDate));
+            }
+            templateEngine.process("deletionPage", ctx, response.getWriter());
         }
     }
 

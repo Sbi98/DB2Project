@@ -1,4 +1,5 @@
 package db2project.controllers;
+
 import db2project.entity.Product;
 import db2project.entity.User;
 import db2project.services.UserService;
@@ -18,6 +19,7 @@ import java.util.List;
 
 @WebServlet(name = "GoToLeaderboardPage", value = "/user/GoToLeaderboardPage")
 public class GoToLeaderboardPage extends HttpServlet {
+    private static final long serialVersionUID = 1L;
     private TemplateEngine templateEngine;
     @EJB(name = "db2project.services/UserService")
     private UserService usrService;
@@ -36,12 +38,12 @@ public class GoToLeaderboardPage extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Product p = (Product) request.getSession().getAttribute("pOfTheDay");
         if (p == null) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "There is no product of the day");
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Wrong workflow. No product of the day in session");
             return;
         }
         final WebContext ctx = new WebContext(request, response, getServletContext());
-        List<User> l = usrService.getReviewersForProduct(p.getId());
-        ctx.setVariable("reviewers", l);
+        List<User> reviewers = usrService.getReviewersForProduct(p.getId());
+        ctx.setVariable("reviewers", reviewers);
         templateEngine.process("leaderboard", ctx, response.getWriter());
     }
 

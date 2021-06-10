@@ -15,6 +15,7 @@ import java.io.IOException;
 
 @WebServlet(name = "EraseQuestionnaire", value = "/admin/EraseQuestionnaire")
 public class EraseQuestionnaire extends HttpServlet {
+    private static final long serialVersionUID = 1L;
     private TemplateEngine templateEngine;
     @EJB(name = "db2project.services/ProductService")
     ProductService productService;
@@ -37,8 +38,7 @@ public class EraseQuestionnaire extends HttpServlet {
         if (productService.eraseQuestionnaireData(Integer.parseInt(productId)))
             response.sendRedirect(getServletContext().getContextPath()+"/admin/GoToAdminHomePage");
         else
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "EraseQuestionnaire GET: Cannot erase " +
-                    "the questionnaire data of the selected product!\n");
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Cannot erase the questionnaire data of the selected product");
     }
 
     public void destroy() { }
