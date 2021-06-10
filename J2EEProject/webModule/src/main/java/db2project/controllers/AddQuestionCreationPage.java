@@ -45,19 +45,37 @@ public class AddQuestionCreationPage extends HttpServlet {
         final WebContext ctx = new WebContext(request, response, getServletContext());
         try {
             CreationService creationService = (CreationService) request.getSession().getAttribute("creationService");
-            StringBuilder displayMsg = new StringBuilder();
+            StringBuffer displayMsg = new StringBuffer();
             if (creationService == null) {
                 // Se non esiste un creationService il workflow non è quello giusto (viene creato nella GoToCreationPage)
                 throw new Exception("Invalid Session!");
             }
-            String newQuestion = request.getParameter("question");
-            if (newQuestion == null || !newQuestion.contains("[a-zA-Z]+")){
-                displayMsg.append("The question must contain \n");
-            }
-            if (displayMsg.length() > 0) {
-                ctx.setVariable("displayMsg", displayMsg.toString());
-            } else {
-                creationService.addQuestion(newQuestion);
+            if (creationService.getProductName() == null) {
+                String name = request.getParameter("name");
+                if (name == null || name.equals(""))
+                    displayMsg.append("You must provide a name for the product\n");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date date = sdf.parse(request.getParameter("date"));
+                if (Utils.isBeforeToday(date)) {
+                    displayMsg.append("You cannot provide a date before today\n");
+                }
+                if (prodService.getProductOfDay(date) != null) {
+                    displayMsg.append("There is already a product for the selected day\n");
+                }
+                Part imgFile = request.getPart("picture");
+                if (imgFile == null || imgFile.getSize() == 0) {
+                    displayMsg.append("You must provide an image for the product\n");
+                }
+                InputStream imgContent = imgFile.getInputStream();
+                if (displayMsg.length() > 0) {
+                    ctx.setVariable("displayMsg", displayMsg.toString());
+                } else {
+                    creationService.setDate(date);
+                    creationService.setProductName(name);
+                    creationService.setImgByteArray(Utils.readImage(imgContent));
+                }
+            } else { // Se i dettagli del prodotto sono già stati inseriti:
+                creationService.addQuestion(request.getParameter("question"));
             }
             ctx.setVariable("creationService", creationService);
             templateEngine.process("creationPage", ctx, response.getWriter());
