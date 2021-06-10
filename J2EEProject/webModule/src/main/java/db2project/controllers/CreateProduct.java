@@ -5,6 +5,7 @@ import db2project.services.CreationService;
 import db2project.services.ProductService;
 
 import java.io.IOException;
+import java.time.Instant;
 import java.util.Date;
 import javax.ejb.EJB;
 import javax.servlet.annotation.MultipartConfig;
@@ -32,6 +33,9 @@ public class CreateProduct extends HttpServlet {
                 String productName = creationService.getProductName();
                 Date productDate = creationService.getDate();
                 byte[] productImgByteArray = creationService.getImgByteArray();
+                System.out.println("Data letta: "+productDate.getTime());
+                System.out.println("Data ora: "+ Instant.now().getEpochSecond());
+                System.out.println("Long time: "+new Date().getTime());
                 if (productName == null | productDate == null | productImgByteArray == null | productImgByteArray.length == 0)
                     throw new Exception("Invalid Product parameters");
                 if (prodService.newProduct(productName, productDate, productImgByteArray, creationService.getQuestions()) != null) {

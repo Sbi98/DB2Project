@@ -8,6 +8,7 @@ import db2project.exceptions.UniqueConstraintViolation;
 
 import javax.ejb.Stateless;
 import javax.persistence.*;
+import java.time.Instant;
 import java.util.*;
 
 @Stateless
@@ -41,9 +42,6 @@ public class ProductService {
     }
 
     public Product newProduct(String name, Date date, byte[] imgByteArray, List<String> questions){
-        if (getProductOfDay(date) != null) {
-            return null;
-        }
         Product p = new Product(name, date, imgByteArray);
         for (String q : questions) {
             new MQuestion(p, q);
@@ -82,9 +80,10 @@ public class ProductService {
         try {
             // Recupero il prodotto
             Product p = em.find(Product.class, productId);
-            long time = new Date().getTime();
             // Verifico sia di data passata alla corrente
-            if (p.getDate().compareTo(new Date(time - time % (24 * 60 * 60 * 1000) - 2 * 60 * 60 * 1000)) >= 0) {
+            long now = Instant.now().getEpochSecond();
+
+            if (p.getDate().getTime() >= now - now % (24 * 60 * 60 * 1000)) {
                 System.out.println("Non è possibile cancellare i dati relativi a questionari in corso o futuri!");
                 return false;
             } else {

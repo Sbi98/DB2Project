@@ -3,8 +3,20 @@ package db2project.utils;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.Instant;
+import java.util.Date;
 
-public class ImageUtils {
+public class Utils {
+
+	public static boolean isBeforeToday(Date date) {
+		long now = Instant.now().getEpochSecond();
+		return date.getTime() < now - now % (24 * 60 * 60 * 1000);
+	}
+
+	public static boolean isFromTodayOn(Date date) {
+		long now = Instant.now().getEpochSecond();
+		return date.getTime() >= now - now % (24 * 60 * 60 * 1000);
+	}
 
 	public static byte[] readImage(InputStream imageInputStream) throws IOException {
 
@@ -16,7 +28,7 @@ public class ImageUtils {
 		    MEDIUMBLOB : max 16,777,215 byte      <--- Ciò che usiamo ora
 		    LONGBLOB   : max 4,294,967,295 byte
 		*/
-		byte[] buffer = new byte[4096];// image can be maximum of 4MB TODO Non sono 4KB? Ho provato con immagine di 190KB e funziona
+		byte[] buffer = new byte[4096];// image can be maximum of 4MB
 		int bytesRead = -1;
 
 		try {
