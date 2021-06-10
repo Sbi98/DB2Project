@@ -2,7 +2,7 @@ package db2project.controllers;
 
 import db2project.services.CreationService;
 import db2project.services.ProductService;
-
+import db2project.utils.Utils;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templatemode.TemplateMode;
@@ -14,18 +14,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.Part;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Date;
 
 @MultipartConfig
-@WebServlet(name = "AddQuestionCreationPage", value = "/admin/AddQuestionCreationPage")
-public class AddQuestionCreationPage extends HttpServlet {
+@WebServlet(name = "ConfirmProductCreationPage", value = "/admin/ConfirmProductCreationPage")
+public class ConfirmProductCreationPage extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private TemplateEngine templateEngine;
     @EJB(name = "db2project.services/ProductService")
     private ProductService prodService;
 
-    public AddQuestionCreationPage() {
+    public ConfirmProductCreationPage() {
         super();
     }
 
@@ -47,10 +49,24 @@ public class AddQuestionCreationPage extends HttpServlet {
             return;
         }
         try {
-            String newQuestion = request.getParameter("question");
-            if(newQuestion.contains("[a-zA-Z]+"))
-                throw new Exception("The new question must contain text!");
-            creationService.addQuestion(newQuestion);
+            String name = request.getParameter("name");
+            if (name == null || name.equals(""))
+                throw new Exception("You must provide a name for the product");
+            String dateStr = request.getParameter("date");
+            if (dateStr == null)
+                throw new Exception("You must provide a date for the product");
+            Date date = Utils.utcDateFromString(dateStr);
+            if (Utils.isBeforeToday(date))
+                throw new Exception("You cannot provide a date before today");
+            if (prodService.getProductOfDay(date) != null)
+                throw new Exception("There is already a product for the selected day");
+            Part imgFile = request.getPart("picture");
+            if (imgFile == null || imgFile.getSize() == 0)
+                throw new Exception("You must provide an image for the product");
+            InputStream imgContent = imgFile.getInputStream();
+            creationService.setDate(date);
+            creationService.setProductName(name);
+            creationService.setImgByteArray(Utils.readImage(imgContent));
         } catch (Exception e) {
             System.err.println(e.getMessage());
             ctx.setVariable("displayMsg", e.getMessage());

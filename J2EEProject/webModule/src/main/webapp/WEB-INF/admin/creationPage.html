@@ -16,7 +16,7 @@
 
 <div th:if="${creationService.getProductName() == null}">
     <p>Complete the form to create a new product</p>
-    <form th:action="@{/admin/AddQuestionCreationPage}" method="POST" enctype="multipart/form-data">
+    <form th:action="@{/admin/ConfirmProductCreationPage}" method="POST" enctype="multipart/form-data">
         <fieldset>
             <label for="name">
                 Name of the product:

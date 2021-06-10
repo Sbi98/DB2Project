@@ -9,40 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4dc1e564-c530-43ed-82f0-553f90e13115" name="Default Changelist" comment="Fix vari">
-      <change beforePath="$PROJECT_DIR$/../DB2 Presentation PtVince.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/../DB2 Presentation PtVince.pptx" afterDir="false" />
+    <list default="true" id="4dc1e564-c530-43ed-82f0-553f90e13115" name="Default Changelist" comment="FIX LAST COMMITS">
+      <change afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/ConfirmProductCreationPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/MQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/MQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/exceptions/DBException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/admin/deletionPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/admin/deletionPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/classes/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/admin/creationPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/admin/creationPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/blockedUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/blockedUser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/leaderboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/leaderboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/review.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/review.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/savedReview.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/savedReview.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/AddQuestionCreationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/AddQuestionCreationPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CheckLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CheckLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CreateProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CreateProduct.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/DeleteReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/DeleteReview.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/EraseQuestionnaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/EraseQuestionnaire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToAdminHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToAdminHomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToCreationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToCreationPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToDeletionPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToDeletionPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToInspectionPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToInspectionPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToLeaderboardPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToLeaderboardPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReview2ndPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReview2ndPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReviewPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReviewPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToUserHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToUserHomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/Logout.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/Logout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/RegisterUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/RegisterUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/RemoveQuestionCreationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/RemoveQuestionCreationPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/SaveReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/SaveReview.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/blockedUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/blockedUser.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/leaderboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/leaderboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/review.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/review.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/savedReview.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/savedReview.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/admin/creationPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/admin/creationPage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,8 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -61,7 +37,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GithubDefaultAccount">
-    <option name="defaultAccountId" value="1b5a8fc9-aee9-4a42-81d1-ad6410f3daa1" />
+    <option name="defaultAccountId" value="4d19c366-4c4a-4bdc-ba40-bb0fa91805d9" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -118,6 +94,17 @@
     </key>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TomEE 9.0.41" type="TomeeConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="TomEE 9.0.41" ALTERNATIVE_JRE_ENABLED="false">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -250,6 +237,7 @@
       <workItem from="1622046074260" duration="35272000" />
       <workItem from="1623261844734" duration="2622000" />
       <workItem from="1623313528266" duration="32659000" />
+      <workItem from="1623361191558" duration="555000" />
     </task>
     <task id="LOCAL-00001" summary="Some mapping">
       <created>1619254123203</created>
@@ -454,7 +442,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623344750090</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="FIX LAST COMMITS">
+      <created>1623361256917</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1623361256917</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -475,7 +470,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Some changes" />
     <MESSAGE value="Check user e qualche ejb" />
     <MESSAGE value="Merge lele" />
     <MESSAGE value="Fix nomi tabelle" />
@@ -500,6 +494,7 @@
     <MESSAGE value="Fix login e vari todo" />
     <MESSAGE value="Creation page fix" />
     <MESSAGE value="Fix vari" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix vari" />
+    <MESSAGE value="FIX LAST COMMITS" />
+    <option name="LAST_COMMIT_MESSAGE" value="FIX LAST COMMITS" />
   </component>
 </project>
