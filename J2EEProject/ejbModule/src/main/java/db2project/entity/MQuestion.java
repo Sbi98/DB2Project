@@ -21,9 +21,12 @@ public class MQuestion implements Serializable {
     private String text;
 
     @OneToMany(
-        fetch = FetchType.LAZY,
+        fetch = FetchType.EAGER,
         mappedBy = "question"
-        /*cascade e orphanRemoval non necessari considerando i workflow dell'applicazione*/
+
+        /* cascade e orphanRemoval non necessari considerando i workflow dell'applicazione
+        cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH },
+        orphanRemoval = true*/
     )
     private List<MAnswer> answers;
 

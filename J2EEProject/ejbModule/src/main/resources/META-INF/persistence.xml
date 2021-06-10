@@ -15,7 +15,8 @@
         <class>db2project.entity.User</class>
         <properties>
             <property name="eclipselink.target-database" value="MySQL"/>
-            <!--property name="eclipselink.logging.level" value="FINE"/-->
+            <!--property name="eclipselink.logging.level" value="OFF"/-->
+            <!--property name="eclipselink.exception-handler" value="db2project.exceptions.DBException"/-->
         </properties>
     </persistence-unit>
 </persistence>

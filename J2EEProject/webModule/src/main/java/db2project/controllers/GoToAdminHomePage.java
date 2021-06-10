@@ -1,7 +1,9 @@
 package db2project.controllers;
-
 import db2project.entity.Product;
+import db2project.entity.User;
+import db2project.exceptions.OffensiveWordsException;
 import db2project.services.CreationService;
+import db2project.services.NewReviewService;
 import db2project.services.ProductService;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -14,11 +16,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 
 @WebServlet(name = "GoToAdminHomePage", value = "/admin/GoToAdminHomePage")
 public class GoToAdminHomePage extends HttpServlet {
-    private static final long serialVersionUID = 1L;
     private TemplateEngine templateEngine;
     @EJB(name = "db2project.services/ProductService")
     private ProductService prodService;
@@ -37,12 +39,14 @@ public class GoToAdminHomePage extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         CreationService creationService = (CreationService) request.getSession().getAttribute("creationService");
         // Se l'admin è tornato alla home mentre stava creando un prodotto va rimosso il creationService
-        if (creationService != null) {
+        if(creationService != null) {
             creationService.remove();
             request.getSession().removeAttribute("creationService");
         }
+        request.getSession().removeAttribute("products"); //TODO cos'è?
         Product productOfTheDay = prodService.getProductOfToday(); //TODO forse dalla traccia non va caricato qui
         request.getSession().setAttribute("pOfTheDay", productOfTheDay);
+
         final WebContext ctx = new WebContext(request, response, getServletContext());
         ctx.setVariable("pOfTheDay", productOfTheDay);
         templateEngine.process("adminHome", ctx, response.getWriter());

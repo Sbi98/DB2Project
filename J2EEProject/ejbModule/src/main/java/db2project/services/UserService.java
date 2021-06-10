@@ -47,6 +47,18 @@ public class UserService {
         em.merge(u);
     }
 
+    public boolean willViolateUniqueConstraints(String username, String email) throws Exception {
+        try {
+            List<User> users = em.createNamedQuery("User.findByUsernameOrEmail", User.class)
+                    .setParameter(1, username)
+                    .setParameter(2, email)
+                    .getResultList();
+            return !users.isEmpty();
+        } catch (PersistenceException e) {
+            throw new Exception("Could not verify constraints");
+        }
+    }
+
     // Registra un nuovo utente, purché non violi alcun vincolo (come l'unicità dell'username)
     public User registerUser(String username, String pwd, String email) throws PersistenceException {
         try {

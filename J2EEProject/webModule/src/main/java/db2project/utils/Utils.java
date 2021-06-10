@@ -3,11 +3,8 @@ package db2project.utils;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Date;
-import java.util.TimeZone;
 
 public class Utils {
 
@@ -19,16 +16,6 @@ public class Utils {
 	public static boolean isBeforeToday(Date date) {
 		long now = Instant.now().getEpochSecond();
 		return date.getTime() < (now - now % (24 * 60 * 60))*1000;
-	}
-
-	public static Date utcDateFromString(String s) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
-		try {
-			return sdf.parse(s);
-		} catch (ParseException e) {
-			return null;
-		}
 	}
 
 	public static byte[] readImage(InputStream imageInputStream) throws IOException {

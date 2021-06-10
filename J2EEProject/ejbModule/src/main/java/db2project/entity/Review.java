@@ -31,7 +31,7 @@ public class Review implements Serializable {
     private String level;
 
     @OneToMany(
-        fetch = FetchType.EAGER, //una review è composta da risposte, che vanno sempre caricate
+        fetch = FetchType.EAGER,
         mappedBy = "review",
         // quando viene effettuata l'operazione X su di me (Review), effettuala anche a questa relazione (MAnswer)
         cascade = { CascadeType.PERSIST }// la remove viene fatta dal trigger per aggiornare il punteggio

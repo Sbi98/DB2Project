@@ -1,5 +1,4 @@
 package db2project.controllers;
-
 import db2project.entity.Product;
 import db2project.entity.Review;
 import db2project.entity.User;
@@ -20,7 +19,6 @@ import java.io.IOException;
 
 @WebServlet(name = "GoToUserHomePage", value = "/user/GoToUserHomePage")
 public class GoToUserHomePage extends HttpServlet {
-    private static final long serialVersionUID = 1L;
     private TemplateEngine templateEngine;
     @EJB(name = "db2project.services/ProductService")
     private ProductService prodService;

@@ -14,8 +14,8 @@ import java.util.Set;
     @NamedQuery(name = "User.findReviewersForProduct",
                 query = "SELECT u FROM User u, Review r WHERE r.user = u AND r.product.id = ?1 ORDER BY u.points DESC"),
     @NamedQuery(name = "User.findByUsername", query = "SELECT u FROM User u WHERE u.username = ?1"),
-    @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = ?1")
-    //@NamedQuery(name = "User.findByUsernameOrEmail", query = "SELECT u FROM User u WHERE u.username = ?1 or u.email = ?2")
+    @NamedQuery(name = "User.findByEmail", query = "SELECT u FROM User u WHERE u.email = ?1"),
+    @NamedQuery(name = "User.findByUsernameOrEmail", query = "SELECT u FROM User u WHERE u.username = ?1 or u.email = ?2")
 })
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -30,16 +30,20 @@ public class User implements Serializable {
     private long points;
 
     @OneToMany(
-        fetch = FetchType.LAZY, //non è necessario caricare gli accessi
-        mappedBy = "user"
-        //dal workflow dell'applicazione non sono necessarie politiche di cascade/orphanRemoval
+        fetch = FetchType.EAGER, //TODO prova LAZY
+        mappedBy = "user",
+        // quando viene effettuata l'operazione X su di me (User), effettuala anche a questa relazione (Access)
+        cascade = { CascadeType.PERSIST, CascadeType.REMOVE },
+        orphanRemoval = true //se viene tolto un accesso dalla lista, cancella quell'accesso
     )
     private List<Access> accesses;
 
     @OneToMany(
-        fetch = FetchType.LAZY, //non è necessario caricare le review di un utente
-        mappedBy = "user"
-        //dal workflow dell'applicazione non sono necessarie politiche di cascade/orphanRemoval
+        fetch = FetchType.EAGER,
+        mappedBy = "user",
+        // quando viene effettuata l'operazione X su di me (User), effettuala anche a questa relazione (Review)
+        cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH },
+        orphanRemoval = true //se viene tolta una review dalla lista, cancella quella review
     )
     private List<Review> reviews;
 

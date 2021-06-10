@@ -17,7 +17,6 @@ import java.io.IOException;
 
 @WebServlet(name = "GoToCreationPage", value = "/admin/GoToCreationPage")
 public class GoToCreationPage extends HttpServlet {
-    private static final long serialVersionUID = 1L;
     private TemplateEngine templateEngine;
 
     public GoToCreationPage() {
@@ -42,7 +41,8 @@ public class GoToCreationPage extends HttpServlet {
             ctx.setVariable("creationService", creationService);
             templateEngine.process("creationPage", ctx, response.getWriter());
         } catch (NamingException e) {
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "CreationService not found\n"+e.getMessage());
+            e.printStackTrace();
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
         }
     }
 

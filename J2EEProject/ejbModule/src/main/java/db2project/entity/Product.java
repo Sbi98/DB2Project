@@ -27,26 +27,25 @@ public class Product implements Serializable {
     private byte[] image;
 
     @OneToMany(
-        fetch = FetchType.EAGER,//stando al workflow va bene EAGER perché praticamente usiamo sempre le dom di un prod
+        fetch = FetchType.EAGER,//TODO stando al workflow va bene EAGER perché praticamente usiamo sempre le dom di un prod
         mappedBy = "product",
         // quando viene effettuata l'operazione X su di me (Product), effettuala anche a questa relazione (MQuestion)
-        cascade = { CascadeType.PERSIST, CascadeType.REFRESH } //l'applicazione non prevede la remove di un prodotto
-        //orphanRemoval non necessaria perché l'applicazione non prevede la rimozione di una domanda
+        cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH },
+        orphanRemoval = true //se viene tolta una question dalla lista, cancella quella question
     )
     @OrderBy("id asc")
     private List<MQuestion> questions;
 
     @OneToMany(
-        fetch = FetchType.LAZY, //le review di un prodotto sono necessarie solo nella home dell'utente e nell'inspectionPage
-        //N.B. eclipseLink usa indirection per le lazy loading: il caricamento lazy può avvenire anche fuori da una tx
+        fetch = FetchType.EAGER, //TODO stando al workflow va bene EAGER perché praticamente usiamo sempre le rev di un prod
         mappedBy = "product",
         // quando viene effettuata l'operazione X su di me (Product), effettuala anche a questa relazione (Review)
-        cascade = { CascadeType.REFRESH },
+        cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH },
         orphanRemoval = true //se viene tolta una review dalla lista, cancella quella review
     )
     private List<Review> reviews;
 
-    @ManyToMany(fetch = FetchType.LAZY) //necessari solo nelle inspectionPage
+    @ManyToMany(fetch = FetchType.EAGER) //TODO mi sa che LAZY va bene
     @JoinTable(
         name="deleted_reviews", //nome della jointable
         //nome della colonna che contiene il riferimento a me
