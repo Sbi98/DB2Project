@@ -45,13 +45,12 @@ public class GoToUserHomePage extends HttpServlet {
         request.getSession().setAttribute("pOfTheDay", p);
         Review r = (Review) request.getSession().getAttribute("pOfTheDayReview");
         if (r == null && p != null) {
-            r = prodService.findReview(p.getId(), ((User) request.getSession().getAttribute("user")).getId());
+            r = prodService.findReviewOfUser(p.getId(), ((User) request.getSession().getAttribute("user")).getId());
             request.getSession().setAttribute("pOfTheDayReview", r);
         }
         ctx.setVariable("pOfTheDay", p);
         ctx.setVariable("pOfTheDayReview", r);
         // La pagina 'home.html' viene creata e mostrata all'utente
-        //TODO un bel check su se la tabella domanda-risposta mostra tutte le risposte di una stessa domanda sotto quella domanda
         templateEngine.process("home", ctx, response.getWriter());
     }
 

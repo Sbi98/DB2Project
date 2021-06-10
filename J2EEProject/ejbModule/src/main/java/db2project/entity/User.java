@@ -30,7 +30,7 @@ public class User implements Serializable {
     private long points;
 
     @OneToMany(
-        fetch = FetchType.EAGER,
+        fetch = FetchType.EAGER, //TODO prova LAZY
         mappedBy = "user",
         // quando viene effettuata l'operazione X su di me (User), effettuala anche a questa relazione (Access)
         cascade = { CascadeType.PERSIST, CascadeType.REMOVE },

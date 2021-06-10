@@ -28,7 +28,6 @@ public class ProductService {
     }
 
     public List<Product> getAllProductsBeforeDate(Date date) {
-        List<Product> products;
         try {
             return em.createNamedQuery("Product.getBefore", Product.class)
                     .setParameter(1, date)
@@ -36,26 +35,24 @@ public class ProductService {
         } catch (PersistenceException e) { return null; }
     }
 
-    // Crea un nuovo prodotto sul database con le informazioni specificata
     public void newProduct(String name, Date date, byte[] imgByteArray) {
         Product p = new Product(name, date, imgByteArray);
         em.persist(p);
     }
 
     public Product newProduct(String name, Date date, byte[] imgByteArray, List<String> questions){
-        if (getProductOfDay(date) == null) {
-            Product p = new Product(name, date, imgByteArray);
-            for (String q : questions) {
-                new MQuestion(p, q);
-            }
-            em.persist(p);
-            return p;
-        } else {
+        if (getProductOfDay(date) != null) {
             return null;
         }
+        Product p = new Product(name, date, imgByteArray);
+        for (String q : questions) {
+            new MQuestion(p, q);
+        }
+        em.persist(p);
+        return p;
     }
 
-    public Review findReview(int pId, int uId) {
+    public Review findReviewOfUser(int pId, int uId) {
         List<Review> result = em.createNamedQuery("Review.findByProductAndUser", Review.class)
                 .setParameter(1,pId)
                 .setParameter(2,uId)
@@ -63,10 +60,9 @@ public class ProductService {
         return result.isEmpty() ? null : result.get(0);
     }
 
-    public void removeRepentedUser(Product p, User u) {
+    public List<Review> getReviewsOfProducts(Product p) {
         Product managedP = em.find(Product.class, p.getId());
-        User managedU = em.find(User.class, u.getId());
-        managedP.removeRepentedUser(managedU);
+        return managedP.getReviews();
     }
 
     //aggiunge l'utente alla lista di chi ha cancellato la review di quel prodotto
@@ -75,8 +71,14 @@ public class ProductService {
         managedP.addRepentedUser(u);
     }
 
-    public boolean eraseQuestionnaireData(String productId){
-        try{
+    public void removeRepentedUser(Product p, User u) {
+        Product managedP = em.find(Product.class, p.getId());
+        User managedU = em.find(User.class, u.getId());
+        managedP.removeRepentedUser(managedU);
+    }
+
+    public boolean eraseQuestionnaireData(String productId) {
+        try {
             // Recupero il prodotto
             Product p = em.find(Product.class, Integer.parseInt(productId));
             long time = new Date().getTime();
@@ -93,7 +95,6 @@ public class ProductService {
                 return true;
             }
         } catch (PersistenceException e) { return false; }
-
     }
 
     //Cancella la review e aggiunge l'utente alla lista di chi ha cancellato la review di quel prodotto
