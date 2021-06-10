@@ -50,7 +50,7 @@ public class GoToNewReviewPage extends HttpServlet {
                 rService.createReview(p, (User) request.getSession().getAttribute("user"));
                 request.getSession().setAttribute("rService", rService);
             } catch (NamingException e) {
-                e.printStackTrace();
+                System.err.println(e.getMessage());
                 response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage());
                 return;
             }

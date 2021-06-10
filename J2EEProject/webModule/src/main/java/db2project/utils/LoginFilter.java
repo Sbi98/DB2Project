@@ -9,6 +9,7 @@ public class LoginFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		//System.out.print("Login checker filter executing ...\n");
+		//TODO così un admin può accedere alle pagine di un utente standard e fare review. Forse serve un altro filtro
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		String loginpath = req.getServletContext().getContextPath() + "/index.html";

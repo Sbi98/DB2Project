@@ -6,9 +6,11 @@ import java.util.*;
 
 @Entity
 @Table(name = "product", schema = "DB2Project")
-@NamedQuery(name = "Product.getOfDay", query = "SELECT p FROM Product p WHERE p.date = ?1")
-@NamedQuery(name = "Product.getAll", query = "SELECT p FROM Product p")
-@NamedQuery(name = "Product.getBefore", query = "SELECT p FROM Product p Where p.date < ?1")
+@NamedQueries({
+    @NamedQuery(name = "Product.getOfDay", query = "SELECT p FROM Product p WHERE p.date = ?1"),
+    @NamedQuery(name = "Product.getAll", query = "SELECT p FROM Product p"),
+    @NamedQuery(name = "Product.getBefore", query = "SELECT p FROM Product p Where p.date < ?1")
+})
 public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -25,7 +27,7 @@ public class Product implements Serializable {
     private byte[] image;
 
     @OneToMany(
-        fetch = FetchType.EAGER,
+        fetch = FetchType.EAGER,//TODO stando al workflow va bene EAGER perché praticamente usiamo sempre le dom di un prod
         mappedBy = "product",
         // quando viene effettuata l'operazione X su di me (Product), effettuala anche a questa relazione (MQuestion)
         cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH },
@@ -35,7 +37,7 @@ public class Product implements Serializable {
     private List<MQuestion> questions;
 
     @OneToMany(
-        fetch = FetchType.EAGER,
+        fetch = FetchType.EAGER, //TODO stando al workflow va bene EAGER perché praticamente usiamo sempre le rev di un prod
         mappedBy = "product",
         // quando viene effettuata l'operazione X su di me (Product), effettuala anche a questa relazione (Review)
         cascade = { CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH },
@@ -43,7 +45,7 @@ public class Product implements Serializable {
     )
     private List<Review> reviews;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER) //TODO mi sa che LAZY va bene
     @JoinTable(
         name="deleted_reviews", //nome della jointable
         //nome della colonna che contiene il riferimento a me

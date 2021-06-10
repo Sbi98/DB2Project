@@ -60,9 +60,10 @@ public class ProductService {
         return result.isEmpty() ? null : result.get(0);
     }
 
-    public List<Review> getReviewsOfProducts(Product p) {
-        Product managedP = em.find(Product.class, p.getId());
-        return managedP.getReviews();
+    public List<Review> getReviewsOfProduct(Product p) {
+        return em.createNamedQuery("Review.findByProduct", Review.class)
+                .setParameter(1,p.getId())
+                .getResultList();
     }
 
     //aggiunge l'utente alla lista di chi ha cancellato la review di quel prodotto

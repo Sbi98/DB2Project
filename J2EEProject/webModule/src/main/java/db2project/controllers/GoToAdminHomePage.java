@@ -43,8 +43,8 @@ public class GoToAdminHomePage extends HttpServlet {
             creationService.remove();
             request.getSession().removeAttribute("creationService");
         }
-        request.getSession().removeAttribute("products");
-        Product productOfTheDay = prodService.getProductOfToday();
+        request.getSession().removeAttribute("products"); //TODO cos'è?
+        Product productOfTheDay = prodService.getProductOfToday(); //TODO forse dalla traccia non va caricato qui
         request.getSession().setAttribute("pOfTheDay", productOfTheDay);
 
         final WebContext ctx = new WebContext(request, response, getServletContext());

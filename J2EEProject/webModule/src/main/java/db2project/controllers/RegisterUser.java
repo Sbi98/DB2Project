@@ -31,7 +31,6 @@ public class RegisterUser extends HttpServlet {
     public void init() {
         ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(getServletContext());
         templateResolver.setTemplateMode(TemplateMode.HTML);
-        //templateResolver.setPrefix("/WEB-INF/");
         templateResolver.setSuffix(".html");
         this.templateEngine = new TemplateEngine();
         this.templateEngine.setTemplateResolver(templateResolver);
@@ -43,7 +42,7 @@ public class RegisterUser extends HttpServlet {
             usrn = StringEscapeUtils.escapeJava(request.getParameter("username"));
             pwd = StringEscapeUtils.escapeJava(request.getParameter("pwd"));
             email = StringEscapeUtils.escapeJava(request.getParameter("email"));
-            // Teoricamente impossibile, avendo ogni elemento del form l'attributo 'required'
+            // Teoricamente impossibile da webpage, avendo ogni elemento del form l'attributo 'required'
             if (usrn == null || pwd == null || email == null || usrn.isEmpty() || pwd.isEmpty() || email.isEmpty()) {
                 throw new Exception("Missing or empty credential value");
             }
