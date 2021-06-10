@@ -1,13 +1,11 @@
 package db2project.controllers;
 
 import java.io.IOException;
-
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 
 @WebServlet(name = "Logout", value = "/Logout")
 public class Logout extends HttpServlet {
@@ -24,7 +22,6 @@ public class Logout extends HttpServlet {
         if (session != null) {
             session.invalidate();
         }
-        // Effettua un redirect alla pagina iniziale, ovviamente non è presente alcuna sessione
         response.sendRedirect(getServletContext().getContextPath() + "/index.html");
     }
 }

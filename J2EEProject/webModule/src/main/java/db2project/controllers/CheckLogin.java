@@ -40,20 +40,13 @@ public class CheckLogin extends HttpServlet {
         if (session != null) {
             session.invalidate();
         }
-        String usrn;
-        String pwd;
-        try {
-            usrn = StringEscapeUtils.escapeJava(request.getParameter("username"));
-            pwd = StringEscapeUtils.escapeJava(request.getParameter("pwd"));
-            // Teoricamente impossibile da webpage, avendo ogni elemento del form l'attributo 'required'
-            if (usrn == null || pwd == null || usrn.isEmpty() || pwd.isEmpty()) {
-                throw new Exception("Missing or empty credential value");
-            }
-        } catch (Exception e) {
+        String usrn = StringEscapeUtils.escapeJava(request.getParameter("username"));
+        String pwd = StringEscapeUtils.escapeJava(request.getParameter("pwd"));
+        // Teoricamente impossibile da webpage, avendo ogni elemento del form l'attributo 'required'
+        if (usrn == null || pwd == null || usrn.isEmpty() || pwd.isEmpty()) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing credential value");
             return;
         }
-        // Se il form è stato compilato correttamente:
         try {
             // Verifica credenziali
             User user = usrService.checkCredentials(usrn, pwd);
@@ -68,7 +61,7 @@ public class CheckLogin extends HttpServlet {
                 response.sendRedirect(getServletContext().getContextPath()+"/user/GoToUserHomePage");
             }
         } catch (Exception e) {
-            // Lanciata per esempio se l'utente specificato non esiste / password errata
+            // Lanciata ad esempio se l'utente specificato non esiste / password errata
             System.err.println(e.getMessage());
             // Ricrea pagina web mostrando l'error message
             final WebContext ctx = new WebContext(request, response, getServletContext());

@@ -1,11 +1,9 @@
 package db2project.controllers;
 
-import db2project.exceptions.UniqueConstraintViolation;
 import db2project.services.CreationService;
 import db2project.services.ProductService;
 
 import java.io.IOException;
-import java.time.Instant;
 import java.util.Date;
 import javax.ejb.EJB;
 import javax.servlet.annotation.MultipartConfig;
@@ -24,20 +22,18 @@ public class CreateProduct extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        try {
-            CreationService creationService = (CreationService) request.getSession().getAttribute("creationService");
-            if (creationService == null)
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Invalid workflow. CreationService not in session");
-            else {
-                String productName = creationService.getProductName();
-                Date productDate = creationService.getDate();
-                byte[] productImgByteArray = creationService.getImgByteArray();
-                if (prodService.newProduct(productName, productDate, productImgByteArray, creationService.getQuestions()) != null) {
-                    response.sendRedirect(getServletContext().getContextPath() + "/admin/GoToAdminHomePage");
-                } else throw new UniqueConstraintViolation("There is already a product for that date");
+        CreationService creationService = (CreationService) request.getSession().getAttribute("creationService");
+        if (creationService == null)
+            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Invalid workflow. CreationService not in session");
+        else {
+            String productName = creationService.getProductName();
+            Date productDate = creationService.getDate();
+            byte[] productImgByteArray = creationService.getImgByteArray();
+            if (prodService.newProduct(productName, productDate, productImgByteArray, creationService.getQuestions()) != null) {
+                response.sendRedirect(getServletContext().getContextPath() + "/admin/GoToAdminHomePage");
+            } else {
+                response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Error while creating the product");
             }
-        } catch (Exception e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Error while creating the product:\n" + e.getMessage());
         }
     }
 }
