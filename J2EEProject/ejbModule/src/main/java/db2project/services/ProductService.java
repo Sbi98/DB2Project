@@ -78,10 +78,10 @@ public class ProductService {
         managedP.removeRepentedUser(managedU);
     }
 
-    public boolean eraseQuestionnaireData(String productId) {
+    public boolean eraseQuestionnaireData(int productId) {
         try {
             // Recupero il prodotto
-            Product p = em.find(Product.class, Integer.parseInt(productId));
+            Product p = em.find(Product.class, productId);
             long time = new Date().getTime();
             // Verifico sia di data passata alla corrente
             if (p.getDate().compareTo(new Date(time - time % (24 * 60 * 60 * 1000) - 2 * 60 * 60 * 1000)) >= 0) {
@@ -89,8 +89,9 @@ public class ProductService {
                 return false;
             } else {
                 // Cancello tutte le review di quel prodotto, azzero quindi il questionario
+                //TODO qui c'era quella cosa strana. DA vedere
                 List<Review> reviewsToDelete = p.getReviews();
-                while(!reviewsToDelete.isEmpty()){
+                while(!reviewsToDelete.isEmpty()) {
                     deleteReview(reviewsToDelete.get(0));
                 }
                 return true;

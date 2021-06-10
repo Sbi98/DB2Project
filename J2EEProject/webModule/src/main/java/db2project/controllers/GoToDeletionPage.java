@@ -52,18 +52,16 @@ public class GoToDeletionPage extends HttpServlet {
                         "the products inside session!\n");
             } else {
                 String selectedProductId = request.getParameter("selectedProduct");
-
                 final WebContext ctx = new WebContext(request, response, getServletContext());
                 ctx.setVariable("products", request.getSession().getAttribute("products"));
                 ctx.setVariable("selectedProduct", productService.getProduct(Integer.parseInt(selectedProductId)));
                 templateEngine.process("deletionPage", ctx, response.getWriter());
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "GoToDeletionPage POST: " + e.getMessage());
         }
     }
 
-    public void destroy() {
-    }
+    public void destroy() { }
 }

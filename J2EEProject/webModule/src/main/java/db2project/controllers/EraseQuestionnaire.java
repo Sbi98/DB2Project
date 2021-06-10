@@ -1,13 +1,7 @@
 package db2project.controllers;
 
-import db2project.entity.Review;
-import db2project.entity.User;
-import db2project.exceptions.OffensiveWordsException;
-import db2project.services.NewReviewService;
 import db2project.services.ProductService;
-import db2project.services.UserService;
 import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
@@ -20,7 +14,7 @@ import java.io.IOException;
 
 
 @WebServlet(name = "EraseQuestionnaire", value = "/admin/EraseQuestionnaire")
-public class EraseQuestionnaire extends HttpServlet { //TODO
+public class EraseQuestionnaire extends HttpServlet {
     private TemplateEngine templateEngine;
     @EJB(name = "db2project.services/ProductService")
     ProductService productService;
@@ -40,7 +34,7 @@ public class EraseQuestionnaire extends HttpServlet { //TODO
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String productId = request.getParameter("product");
-        if(productService.eraseQuestionnaireData(productId))
+        if (productService.eraseQuestionnaireData(Integer.parseInt(productId)))
             response.sendRedirect(getServletContext().getContextPath()+"/admin/GoToAdminHomePage");
         else
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "EraseQuestionnaire GET: Cannot erase " +

@@ -35,7 +35,9 @@ public class GoToInspectionPage extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //TODO perché recupera tutti i prodotti? O meglio, ha senso, ma vogliamo farlo?
         //Recupera i prodotti associati a giorni passati e, se presente, il prodotto del giorno
+        //TODO non si può usare il metodo getProductsBeforeToday?
         List<Product> products = prodService.getAllProductsBeforeDate(new Date(new Date().getTime() + (1000 * 60 * 60 * 24)));
         request.getSession().setAttribute("products", products);
 
@@ -50,14 +52,14 @@ public class GoToInspectionPage extends HttpServlet {
                         "the products inside session!\n");
             } else {
                 Date selectedDate = (new SimpleDateFormat("yyyy-MM-dd")).parse(request.getParameter("date"));
-                System.out.println("Selected date:" + selectedDate.toString());
+                //System.out.println("Selected date:" + selectedDate.toString());
                 final WebContext ctx = new WebContext(request, response, getServletContext());
                 ctx.setVariable("selectedDate", selectedDate);
                 ctx.setVariable("selectedProduct", prodService.getProductOfDay(selectedDate));
                 templateEngine.process("inspectionPage", ctx, response.getWriter());
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "GoToInspectionPage POST: " + e.getMessage());
         }
     }

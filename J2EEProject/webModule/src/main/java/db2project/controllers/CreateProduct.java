@@ -25,17 +25,16 @@ public class CreateProduct extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         try {
             CreationService creationService = (CreationService) request.getSession().getAttribute("creationService");
-            if(creationService == null)
+            if (creationService == null)
                 response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Contesto non valido: non è " +
                         "presente un creationService nella sessione");
             else {
                 String productName = creationService.getProductName();
                 Date productDate = creationService.getDate();
                 byte[] productImgByteArray = creationService.getImgByteArray();
-                if (productName == null | productImgByteArray.length == 0) {
+                if (productName == null | productDate == null | productImgByteArray == null | productImgByteArray.length == 0)
                     throw new Exception("Invalid Product parameters");
-                }
-                if(prodService.newProduct(productName, productDate, productImgByteArray, creationService.getQuestions()) != null) {
+                if (prodService.newProduct(productName, productDate, productImgByteArray, creationService.getQuestions()) != null) {
                     response.sendRedirect(getServletContext().getContextPath() + "/admin/GoToAdminHomePage");
                 } else throw new UniqueConstraintViolation("Esiste già un prodotto per la data specificata!");
             }

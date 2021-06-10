@@ -9,16 +9,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4dc1e564-c530-43ed-82f0-553f90e13115" name="Default Changelist" comment="Presentation e mini cambi">
+    <list default="true" id="4dc1e564-c530-43ed-82f0-553f90e13115" name="Default Changelist" comment="Presentazione parte vince. Immagine ER">
+      <change beforePath="$PROJECT_DIR$/../DB2 Presentation PtVince.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/../DB2 Presentation PtVince.pptx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/ProductService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CheckLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CheckLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToAdminHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToAdminHomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReviewPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReviewPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/RegisterUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/RegisterUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/LoginFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/LoginFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Presentation.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/../Presentation.pptx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CreateProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CreateProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/EraseQuestionnaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/EraseQuestionnaire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToDeletionPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToDeletionPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToInspectionPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToInspectionPage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +224,7 @@
       <workItem from="1621195342249" duration="1519000" />
       <workItem from="1622046074260" duration="35272000" />
       <workItem from="1623261844734" duration="2622000" />
-      <workItem from="1623313528266" duration="7489000" />
+      <workItem from="1623313528266" duration="10808000" />
     </task>
     <task id="LOCAL-00001" summary="Some mapping">
       <created>1619254123203</created>
@@ -374,7 +373,21 @@
       <option name="project" value="LOCAL" />
       <updated>1623316645669</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Presentation aggiornata, due commenti al codice (VEDI TODO)">
+      <created>1623322089638</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1623322089638</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Presentazione parte vince. Immagine ER">
+      <created>1623323637495</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1623323637495</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -416,6 +429,8 @@
     <MESSAGE value="Merge con LELE" />
     <MESSAGE value="Check isBlocked al login e nuovo accesso solo se l'utente non è un admin" />
     <MESSAGE value="Presentation e mini cambi" />
-    <option name="LAST_COMMIT_MESSAGE" value="Presentation e mini cambi" />
+    <MESSAGE value="Presentation aggiornata, due commenti al codice (VEDI TODO)" />
+    <MESSAGE value="Presentazione parte vince. Immagine ER" />
+    <option name="LAST_COMMIT_MESSAGE" value="Presentazione parte vince. Immagine ER" />
   </component>
 </project>
