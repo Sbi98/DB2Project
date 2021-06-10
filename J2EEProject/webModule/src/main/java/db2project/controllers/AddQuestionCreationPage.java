@@ -23,6 +23,7 @@ import java.util.Date;
 @MultipartConfig
 @WebServlet(name = "AddQuestionCreationPage", value = "/admin/AddQuestionCreationPage")
 public class AddQuestionCreationPage extends HttpServlet {
+    private static final long serialVersionUID = 1L;
     private TemplateEngine templateEngine;
     @EJB(name = "db2project.services/ProductService")
     private ProductService prodService;

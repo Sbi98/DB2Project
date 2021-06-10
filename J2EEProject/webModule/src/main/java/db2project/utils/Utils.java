@@ -8,14 +8,14 @@ import java.util.Date;
 
 public class Utils {
 
-	public static boolean isBeforeToday(Date date) {
+	public static Date getYesterday() {
 		long now = Instant.now().getEpochSecond();
-		return date.getTime() < now - now % (24 * 60 * 60 * 1000);
+		return Date.from(Instant.ofEpochSecond(now - (now % (24 * 60 * 60)) - 24 * 60 * 60));
 	}
 
-	public static boolean isFromTodayOn(Date date) {
+	public static boolean isBeforeToday(Date date) {
 		long now = Instant.now().getEpochSecond();
-		return date.getTime() >= now - now % (24 * 60 * 60 * 1000);
+		return date.getTime() < (now - now % (24 * 60 * 60))*1000;
 	}
 
 	public static byte[] readImage(InputStream imageInputStream) throws IOException {

@@ -27,20 +27,17 @@ public class CreateProduct extends HttpServlet {
         try {
             CreationService creationService = (CreationService) request.getSession().getAttribute("creationService");
             if (creationService == null)
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Contesto non valido: non è " +
-                        "presente un creationService nella sessione");
+                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Invalid workflow. CreationService not in session");
             else {
                 String productName = creationService.getProductName();
                 Date productDate = creationService.getDate();
                 byte[] productImgByteArray = creationService.getImgByteArray();
-                if (productName == null | productDate == null | productImgByteArray == null | productImgByteArray.length == 0)
-                    throw new Exception("Invalid Product parameters");
                 if (prodService.newProduct(productName, productDate, productImgByteArray, creationService.getQuestions()) != null) {
                     response.sendRedirect(getServletContext().getContextPath() + "/admin/GoToAdminHomePage");
-                } else throw new UniqueConstraintViolation("Esiste già un prodotto per la data specificata!");
+                } else throw new UniqueConstraintViolation("There is already a product for that date");
             }
         } catch (Exception e) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Impossibile creare il prodotto:\n" + e.getMessage());
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Error while creating the product:\n" + e.getMessage());
         }
     }
 }

@@ -28,7 +28,6 @@ public class CheckLogin extends HttpServlet {
     public void init() {
         ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(getServletContext());
         templateResolver.setTemplateMode(TemplateMode.HTML);
-        //templateResolver.setPrefix("/WEB-INF/");
         templateResolver.setSuffix(".html");
         this.templateEngine = new TemplateEngine();
         this.templateEngine.setTemplateResolver(templateResolver);
@@ -46,7 +45,7 @@ public class CheckLogin extends HttpServlet {
         try {
             usrn = StringEscapeUtils.escapeJava(request.getParameter("username"));
             pwd = StringEscapeUtils.escapeJava(request.getParameter("pwd"));
-            // Teoricamente impossibile, avendo ogni elemento del form l'attributo 'required'
+            // Teoricamente impossibile da webpage, avendo ogni elemento del form l'attributo 'required'
             if (usrn == null || pwd == null || usrn.isEmpty() || pwd.isEmpty()) {
                 throw new Exception("Missing or empty credential value");
             }

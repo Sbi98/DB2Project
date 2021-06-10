@@ -11,7 +11,15 @@
   <component name="ChangeListManager">
     <list default="true" id="4dc1e564-c530-43ed-82f0-553f90e13115" name="Default Changelist" comment="Creation page fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/admin/creationPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/admin/creationPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/AddQuestionCreationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/AddQuestionCreationPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CheckLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CheckLogin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CreateProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CreateProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToDeletionPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToDeletionPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToInspectionPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToInspectionPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/admin/deletionPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/admin/deletionPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/admin/inspectionPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/admin/inspectionPage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +226,7 @@
       <workItem from="1621195342249" duration="1519000" />
       <workItem from="1622046074260" duration="35272000" />
       <workItem from="1623261844734" duration="2622000" />
-      <workItem from="1623313528266" duration="15191000" />
+      <workItem from="1623313528266" duration="20967000" />
     </task>
     <task id="LOCAL-00001" summary="Some mapping">
       <created>1619254123203</created>
@@ -402,7 +410,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623338847170</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Creation page fix">
+      <created>1623338878938</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1623338878938</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

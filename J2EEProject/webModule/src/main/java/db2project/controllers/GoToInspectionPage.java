@@ -2,6 +2,7 @@ package db2project.controllers;
 
 import db2project.entity.Product;
 import db2project.services.ProductService;
+import db2project.utils.Utils;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templatemode.TemplateMode;
@@ -35,32 +36,25 @@ public class GoToInspectionPage extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        //TODO perché recupera tutti i prodotti? O meglio, ha senso, ma vogliamo farlo?
-        //Recupera i prodotti associati a giorni passati e, se presente, il prodotto del giorno
-        //TODO non si può usare il metodo getProductsBeforeToday?
-        List<Product> products = prodService.getAllProductsBeforeDate(new Date(new Date().getTime() + (1000 * 60 * 60 * 24)));
-        request.getSession().setAttribute("products", products);
-
         final WebContext ctx = new WebContext(request, response, getServletContext());
         templateEngine.process("inspectionPage", ctx, response.getWriter());
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException{
-        try {
-            if (request.getSession().getAttribute("products") == null) {
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "GoToInspectionPage POST: Cannot find " +
-                        "the products inside session!\n");
-            } else {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        final WebContext ctx = new WebContext(request, response, getServletContext());
+        if (request.getParameter("date") == null) {
+            ctx.setVariable("displayMsg", "You must select a date!");
+        } else {
+            try {
                 Date selectedDate = (new SimpleDateFormat("yyyy-MM-dd")).parse(request.getParameter("date"));
-                //System.out.println("Selected date:" + selectedDate.toString());
-                final WebContext ctx = new WebContext(request, response, getServletContext());
-                ctx.setVariable("selectedDate", selectedDate);
-                ctx.setVariable("selectedProduct", prodService.getProductOfDay(selectedDate));
+                if (!Utils.isBeforeToday(selectedDate)) {
+                    ctx.setVariable("displayMsg", "You must select a past date!");
+                } else {
+                    ctx.setVariable("selectedDate", selectedDate);
+                    ctx.setVariable("selectedProduct", prodService.getProductOfDay(selectedDate));
+                }
                 templateEngine.process("inspectionPage", ctx, response.getWriter());
-            }
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "GoToInspectionPage POST: " + e.getMessage());
+            } catch (Exception e) { response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage()); }
         }
     }
 
