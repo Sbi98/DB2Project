@@ -48,8 +48,10 @@ public class AddQuestionCreationPage extends HttpServlet {
         }
         try {
             String newQuestion = request.getParameter("question");
-            if(newQuestion.contains("[a-zA-Z]+"))
+            if(!newQuestion.matches(".*[a-zA-Z]+.*")) {
+                System.out.println("SONO QUI");
                 throw new Exception("The new question must contain text!");
+            }
             creationService.addQuestion(newQuestion);
         } catch (Exception e) {
             System.err.println(e.getMessage());

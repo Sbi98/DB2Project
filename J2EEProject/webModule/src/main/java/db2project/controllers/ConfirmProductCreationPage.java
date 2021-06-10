@@ -50,8 +50,8 @@ public class ConfirmProductCreationPage extends HttpServlet {
         }
         try {
             String name = request.getParameter("name");
-            if (name == null || name.equals(""))
-                throw new Exception("You must provide a name for the product");
+            if (name == null || !name.matches(".*[a-zA-Z]+.*"))
+                throw new Exception("You must provide a valid name for the product");
             String dateStr = request.getParameter("date");
             if (dateStr == null)
                 throw new Exception("You must provide a date for the product");
