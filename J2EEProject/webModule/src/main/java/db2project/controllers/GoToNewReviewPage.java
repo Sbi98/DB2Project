@@ -1,7 +1,5 @@
 package db2project.controllers;
 
-import db2project.entity.MAnswer;
-import db2project.entity.MQuestion;
 import db2project.entity.Product;
 import db2project.entity.User;
 import db2project.services.NewReviewService;
@@ -21,6 +19,7 @@ import java.io.IOException;
 
 @WebServlet(name = "GoToNewReviewPage", value = "/user/GoToNewReviewPage")
 public class GoToNewReviewPage extends HttpServlet {
+    private static final long serialVersionUID = 1L;
     private TemplateEngine templateEngine;
 
     public GoToNewReviewPage() {
@@ -38,9 +37,8 @@ public class GoToNewReviewPage extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Product p = (Product) request.getSession().getAttribute("pOfTheDay");
-        // Se non è presente nella sessione un prodotto del giorno, restituisce un errore
         if (p == null) {
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "There is no product of the day");
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Wrong workflow. No product of the day in session");
             return;
         }
         NewReviewService rService = (NewReviewService) request.getSession().getAttribute("rService");
@@ -55,7 +53,6 @@ public class GoToNewReviewPage extends HttpServlet {
                 return;
             }
         }
-        //rService è sicuramente diverso da null
         rService.firstPage();
         final WebContext ctx = new WebContext(request, response, getServletContext());
         ctx.setVariable("pOfTheDay", p);

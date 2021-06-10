@@ -1,6 +1,5 @@
 package db2project.controllers;
 
-import db2project.entity.Product;
 import db2project.services.ProductService;
 import db2project.utils.Utils;
 import org.thymeleaf.TemplateEngine;
@@ -14,12 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.List;
 import java.util.Date;
 
 @WebServlet(name = "GoToInspectionPage", value = "/admin/GoToInspectionPage")
 public class GoToInspectionPage extends HttpServlet {
+    private static final long serialVersionUID = 1L;
     private TemplateEngine templateEngine;
     @EJB(name = "db2project.services/ProductService")
     private ProductService prodService;
@@ -45,19 +43,16 @@ public class GoToInspectionPage extends HttpServlet {
         if (request.getParameter("date") == null) {
             ctx.setVariable("displayMsg", "You must select a date!");
         } else {
-            try {
-                Date selectedDate = (new SimpleDateFormat("yyyy-MM-dd")).parse(request.getParameter("date"));
-                if (!Utils.isBeforeToday(selectedDate)) {
-                    ctx.setVariable("displayMsg", "You must select a past date!");
-                } else {
-                    ctx.setVariable("selectedDate", selectedDate);
-                    ctx.setVariable("selectedProduct", prodService.getProductOfDay(selectedDate));
-                }
-                templateEngine.process("inspectionPage", ctx, response.getWriter());
-            } catch (Exception e) { response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, e.getMessage()); }
+            Date selectedDate = Utils.utcDateFromString(request.getParameter("date"));
+            if (!Utils.isBeforeToday(selectedDate)) {
+                ctx.setVariable("displayMsg", "You must select a past date!");
+            } else {
+                ctx.setVariable("selectedDate", selectedDate);
+                ctx.setVariable("selectedProduct", prodService.getProductOfDay(selectedDate));
+            }
+            templateEngine.process("inspectionPage", ctx, response.getWriter());
         }
     }
 
     public void destroy() { }
-
 }

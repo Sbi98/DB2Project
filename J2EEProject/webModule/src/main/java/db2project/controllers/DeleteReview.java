@@ -1,13 +1,8 @@
 package db2project.controllers;
 
 import db2project.entity.Review;
-import db2project.entity.User;
-import db2project.exceptions.OffensiveWordsException;
-import db2project.services.NewReviewService;
 import db2project.services.ProductService;
-import db2project.services.UserService;
 import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
@@ -20,7 +15,8 @@ import java.io.IOException;
 
 
 @WebServlet(name = "DeleteReview", value = "/user/DeleteReview")
-public class DeleteReview extends HttpServlet { //TODO
+public class DeleteReview extends HttpServlet {
+    private static final long serialVersionUID = 1L;
     private TemplateEngine templateEngine;
     @EJB(name = "db2project.services/ProductService")
     ProductService prodService;
@@ -44,7 +40,7 @@ public class DeleteReview extends HttpServlet { //TODO
             prodService.deleteReview(r);
             prodService.addRepentedUser(r.getProduct(),r.getUser());
             request.getSession().removeAttribute("pOfTheDayReview");
-            request.getSession().setAttribute("pOfTheDay", prodService.getProductOfToday());
+            //request.getSession().setAttribute("pOfTheDay", prodService.getProductOfToday());
         }
         response.sendRedirect(getServletContext().getContextPath()+"/user/GoToUserHomePage");
     }

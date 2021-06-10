@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 @WebServlet(name = "GoToNewReview2ndPage", value = "/user/GoToNewReview2ndPage")
 public class GoToNewReview2ndPage extends HttpServlet {
+    private static final long serialVersionUID = 1L;
     private TemplateEngine templateEngine;
 
     public GoToNewReview2ndPage() {

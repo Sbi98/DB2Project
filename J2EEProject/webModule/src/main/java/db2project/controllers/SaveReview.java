@@ -5,11 +5,11 @@ import db2project.exceptions.OffensiveWordsException;
 import db2project.services.NewReviewService;
 import db2project.services.ProductService;
 import db2project.services.UserService;
+
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-
 import javax.ejb.EJB;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +20,7 @@ import java.io.IOException;
 
 @WebServlet(name = "SaveReview", value = "/user/SaveReview")
 public class SaveReview extends HttpServlet {
+    private static final long serialVersionUID = 1L;
     private TemplateEngine templateEngine;
     @EJB(name = "db2project.services/UserService")
     UserService userService;
