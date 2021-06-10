@@ -13,6 +13,8 @@
         <a th:href="@{/Logout}">Logout</a>
     </div>
 
+    <p style="color:#FF0000"; th:text="${displayMsg}"></p><br>
+
     <p>Select a date and access product questionnaire data</p>
     <form th:action="@{/admin/GoToInspectionPage}" method="POST">
         <fieldset>
@@ -27,29 +29,29 @@
     </form>
 
     <div th:if="${selectedDate != null && selectedProduct == null}">
-        <h3 th:text="'There are no product with date ' + ${selectedDate.toLocaleString().split(',')[0]} + ':'"></h3>
+        <h3 th:text="'There are no product with date ' + ${selectedDate.toLocaleString().split(',')[0]}"></h3>
     </div>
     <div th:if="${selectedDate != null && selectedProduct != null}">
         <h3 th:text="'Result for ' + ${selectedDate.toLocaleString().split(',')[0]} + ':'"></h3>
         <p th:text="'Name: '+${selectedProduct.getName()}"></p>
         <p th:text="'Day: '+${selectedProduct.getDate().toLocaleString().split(',')[0]}"></p>
         <img width="150px" alt="prodImage" th:src="*{'data:image/png;base64,'+ selectedProduct.getImageAsBase64()}">
-
+        <br>
         <h3>Marketing questions for the customer</h3>
         <div th:each="q, iter: ${selectedProduct.getQuestions()}">
             <p th:text="'Question #' + ${iter.index + 1} + ': ' + ${q.getText()}"></p>
         </div>
-
+        <br>
         <h3 th:text="${selectedProduct.getReviews().isEmpty() ? 'There are no users' : 'Users'} + ' who submitted the questionnaire'"></h3>
         <div th:each="r: ${selectedProduct.getReviews()}">
             <p th:text="${r.getUser().getUsername()}"></p>
         </div>
-
-        <h3 th:text="${selectedProduct.getRepentedUsers().isEmpty() ? 'There are no users' : 'Users'} + ' who cencelled the questionnaire'"></h3>
+        <br>
+        <h3 th:text="${selectedProduct.getRepentedUsers().isEmpty() ? 'There are no users' : 'Users'} + ' who cancelled the questionnaire'"></h3>
         <div th:each="u: ${selectedProduct.getRepentedUsers()}">
             <p th:text="${u.getUsername()}"></p>
         </div>
-
+        <br>
         <h3 th:text="${selectedProduct.getReviews().isEmpty() ? 'There are no reviews' : 'Reviews'} + ' of the selected product'"></h3>
         <div th:if="${!selectedProduct.getReviews().isEmpty()}">
             <table>
