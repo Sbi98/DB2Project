@@ -12,7 +12,7 @@
     <a th:href="@{/Logout}">Logout</a>
 </div>
 
-<p th:text="${displayMsg}"></p>
+<p style="color:#FF0000"; th:text="${displayMsg}"></p><br>
 
 <div th:if="${creationService.getProductName() == null}">
     <p>Complete the form to create a new product</p>
