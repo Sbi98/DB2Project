@@ -59,14 +59,15 @@ public class CheckLogin extends HttpServlet {
             // Verifica credenziali
             User user = usrService.checkCredentials(usrn, pwd);
             if (user.isAdmin()) {
+                request.getSession().setAttribute("user", user);
                 response.sendRedirect(getServletContext().getContextPath()+"/admin/GoToAdminHomePage");
             } else {
                 if (user.isBlocked())
                     throw new Exception("This user has been blocked!");
                 usrService.newAccess(user);
+                request.getSession().setAttribute("user", user);
                 response.sendRedirect(getServletContext().getContextPath()+"/user/GoToUserHomePage");
             }
-            request.getSession().setAttribute("user", user);
         } catch (Exception e) {
             // Lanciata per esempio se l'utente specificato non esiste / password errata
             System.err.println(e.getMessage());
