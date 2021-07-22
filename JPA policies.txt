@@ -1,0 +1,6 @@
+Un Access viene aggiunto nella lista di accessi dell'utente nel costruttore
+Una MAnswer viene aggiunta nella lista di answer della review e della domanda corrispondente nel costruttore
+Una MQuestion viene aggiunta nella lista di question del prodotto nel costruttore
+Quando a un prodotto viene aggiunto/tolto un repentedUser aggiorna anche l'altro lato della relazione
+Una Review viene aggiunta alla lista di review del prodotto e dell'utente nel costruttore
+
