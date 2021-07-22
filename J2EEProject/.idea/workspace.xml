@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4dc1e564-c530-43ed-82f0-553f90e13115" name="Default Changelist" comment="Pulizia generale. Alcuni fix. Cascade, orphan e fetchType aggiornati ovunque (da testare)">
+    <list default="true" id="4dc1e564-c530-43ed-82f0-553f90e13115" name="Default Changelist" comment="Merge">
       <change afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/CheckUserPrivileges.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DB2 Presentation PtVince.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/../DB2 Presentation PtVince.pptx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
