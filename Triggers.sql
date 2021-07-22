@@ -24,6 +24,7 @@ begin
 	end if;
 	set new.points = tmp_points;
 	set curr_points = (select points from DB2Project.user U where U.id = new.user); 
+	delete from DB2Project.deleted_reviews where user_id = new.user and product_id = new.product;
 	update DB2Project.user U set points = curr_points + tmp_points where U.id = new.user;
 end; $$
 DELIMITER ;

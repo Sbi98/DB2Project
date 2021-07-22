@@ -8,20 +8,11 @@
         </descriptors>
         <webroots>
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
-          <root url="file://$MODULE_DIR$/src/main/resources/CSS" relative="/CSS" />
         </webroots>
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
         </sourceRoots>
-      </configuration>
-    </facet>
-    <facet type="jpa" name="JPA">
-      <configuration>
-        <setting name="validation-enabled" value="true" />
-        <setting name="provider-name" value="EclipseLink" />
-        <datasource-mapping />
-        <naming-strategy-map />
       </configuration>
     </facet>
   </component>

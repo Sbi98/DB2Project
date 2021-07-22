@@ -55,15 +55,15 @@ public class SaveReview extends HttpServlet {
             rService.saveReview();
             pService.removeRepentedUser(rService.getReview().getProduct(), (User) request.getSession().getAttribute("user"));
             request.getSession().setAttribute("pOfTheDayReview", rService.getReview());
+            request.getSession().removeAttribute("rService");
             final WebContext ctx = new WebContext(request, response, getServletContext());
             templateEngine.process("savedReview", ctx, response.getWriter());
         } catch (OffensiveWordsException owe) {
             userService.blockUser((User) request.getSession().getAttribute("user"));
             request.getSession().invalidate();
-            response.sendRedirect(getServletContext().getContextPath()+"/user/blockedUser.html");
+            response.sendRedirect(getServletContext().getContextPath()+"/blockedUser.html");
         }
         rService.remove();
-        request.getSession().removeAttribute("rService");
     }
 
     public void destroy() { }

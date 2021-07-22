@@ -38,8 +38,9 @@ public class User implements Serializable {
 
     @OneToMany(
         fetch = FetchType.LAZY, //non è necessario caricare le review di un utente
-        mappedBy = "user"
-        //dal workflow dell'applicazione non sono necessarie politiche di cascade/orphanRemoval
+        mappedBy = "user",
+        orphanRemoval = true
+        //dal workflow dell'applicazione non sono necessarie politiche di cascade
     )
     private List<Review> reviews;
 

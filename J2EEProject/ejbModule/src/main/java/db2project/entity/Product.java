@@ -40,7 +40,7 @@ public class Product implements Serializable {
         fetch = FetchType.LAZY, //le review di un prodotto sono necessarie solo nella home dell'utente e nell'inspectionPage
         //N.B. eclipseLink usa indirection per le lazy loading: il caricamento lazy può avvenire anche fuori da una tx
         mappedBy = "product",
-        // quando viene effettuata l'operazione X su di me (Product), effettuala anche a questa relazione (Review)
+        // quando viene effettuata l'operazione X su di me (Product), effettuala anche alle Review
         cascade = { CascadeType.REFRESH },
         orphanRemoval = true //se viene tolta una review dalla lista, cancella quella review
     )

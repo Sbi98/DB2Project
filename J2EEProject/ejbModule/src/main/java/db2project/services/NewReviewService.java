@@ -20,7 +20,25 @@ public class NewReviewService {
         review = new Review(p, u);
     }
 
+
+    private boolean isOffensive(String s) {
+        return em.createNativeQuery("SELECT e.word FROM offensive_words e WHERE ?1 LIKE CONCAT('%',e.word,'%')")
+                .setParameter(1, s)
+                .getResultList().size() > 0;
+    }
+
+
     public void saveReview() throws OffensiveWordsException {
+        for (MAnswer a : review.getAnswers()) {
+            if (isOffensive(a.getText()))
+                throw new OffensiveWordsException();
+        }
+        em.persist(review);
+    }
+
+
+    //TODO vecchia offensiveWords
+    /*public void saveReview() throws OffensiveWordsException {
         List<OffensiveWords> wList = em.createNamedQuery("OffensiveWords.getAll", OffensiveWords.class).getResultList();
         for (MAnswer a : review.getAnswers()) {
             for (OffensiveWords w : wList)
@@ -28,7 +46,7 @@ public class NewReviewService {
                     throw new OffensiveWordsException();
         }
         em.persist(review);
-    }
+    }*/
 
     // Restituisce il testo della risposta data alla domanda specificata. Se non esiste, restituisce 'null'
     public String getAnswerTextFor(int question) {

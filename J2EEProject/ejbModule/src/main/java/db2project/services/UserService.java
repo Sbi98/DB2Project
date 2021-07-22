@@ -43,8 +43,8 @@ public class UserService {
     }
 
     public void blockUser(User u) {
-        u.block();
-        em.merge(u);
+        User managedU = em.find(User.class, u.getId());
+        managedU.block();
     }
 
     // Registra un nuovo utente, purché non violi alcun vincolo (come l'unicità dell'username)
