@@ -9,40 +9,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4dc1e564-c530-43ed-82f0-553f90e13115" name="Default Changelist" comment="Fix vari">
+    <list default="true" id="4dc1e564-c530-43ed-82f0-553f90e13115" name="Default Changelist" comment="Pulizia generale. Alcuni fix. Cascade, orphan e fetchType aggiornati ovunque (da testare)">
+      <change afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/CheckUserPrivileges.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DB2 Presentation PtVince.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/../DB2 Presentation PtVince.pptx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/MQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/MQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/exceptions/DBException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/admin/deletionPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/admin/deletionPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/classes/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/AddQuestionCreationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/AddQuestionCreationPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CheckLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CheckLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CreateProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/CreateProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ejbModule/src/main/java/db2project/services/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/META-INF/ejb-jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/admin/adminHome.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/admin/creationPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/admin/deletionPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/admin/inspectionPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/classes/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/blockedUser.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/leaderboard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/review.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/user/savedReview.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/WEB-INF/web.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/package/package/mystyle.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/DeleteReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/DeleteReview.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/EraseQuestionnaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/EraseQuestionnaire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToAdminHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToAdminHomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToCreationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToCreationPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToDeletionPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToDeletionPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToInspectionPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToInspectionPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToLeaderboardPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToLeaderboardPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReview2ndPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReview2ndPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReviewPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToNewReviewPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToUserHomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/GoToUserHomePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/Logout.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/Logout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/RegisterUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/RegisterUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/RemoveQuestionCreationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/RemoveQuestionCreationPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/SaveReview.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/controllers/SaveReview.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/java/db2project/utils/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/blockedUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/blockedUser.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/leaderboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/leaderboard.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/review.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/review.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/savedReview.html" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/user/savedReview.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webModule/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +62,9 @@
     <option name="FILTER_DEBUG" value="true" />
     <option name="CUSTOM_FILTER" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="2" />
+  </component>
   <component name="ProjectId" id="1r6xkuQD0ZDjn3GOU1wARIHMM56" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -86,6 +81,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="jdk.selected.JAVA_MODULE" value="corretto-11" />
@@ -93,6 +89,7 @@
     <property name="project.structure.last.edited" value="Facets" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -112,6 +109,7 @@
       <recent name="entity" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="db2project.utils" />
       <recent name="db2project.controllers" />
       <recent name="db2project.exceptions" />
       <recent name="services" />
@@ -250,6 +248,11 @@
       <workItem from="1622046074260" duration="35272000" />
       <workItem from="1623261844734" duration="2622000" />
       <workItem from="1623313528266" duration="32659000" />
+      <workItem from="1623359331599" duration="396000" />
+      <workItem from="1625171778914" duration="1863000" />
+      <workItem from="1625173786398" duration="480000" />
+      <workItem from="1626191767407" duration="711000" />
+      <workItem from="1626944303703" duration="1351000" />
     </task>
     <task id="LOCAL-00001" summary="Some mapping">
       <created>1619254123203</created>
@@ -454,7 +457,14 @@
       <option name="project" value="LOCAL" />
       <updated>1623344750090</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Pulizia generale. Alcuni fix. Cascade, orphan e fetchType aggiornati ovunque (da testare)">
+      <created>1623359713724</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1623359713724</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -475,7 +485,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="true" />
-    <MESSAGE value="Some changes" />
     <MESSAGE value="Check user e qualche ejb" />
     <MESSAGE value="Merge lele" />
     <MESSAGE value="Fix nomi tabelle" />
@@ -500,6 +509,7 @@
     <MESSAGE value="Fix login e vari todo" />
     <MESSAGE value="Creation page fix" />
     <MESSAGE value="Fix vari" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix vari" />
+    <MESSAGE value="Pulizia generale. Alcuni fix. Cascade, orphan e fetchType aggiornati ovunque (da testare)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pulizia generale. Alcuni fix. Cascade, orphan e fetchType aggiornati ovunque (da testare)" />
   </component>
 </project>

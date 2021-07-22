@@ -4,7 +4,6 @@ import db2project.entity.MQuestion;
 import db2project.entity.Product;
 import db2project.entity.Review;
 import db2project.entity.User;
-import db2project.exceptions.UniqueConstraintViolation;
 
 import javax.ejb.Stateless;
 import javax.persistence.*;

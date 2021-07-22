@@ -2,9 +2,6 @@ package db2project.controllers;
 
 import db2project.entity.Review;
 import db2project.services.ProductService;
-import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.templatemode.TemplateMode;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 import javax.ejb.EJB;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +14,6 @@ import java.io.IOException;
 @WebServlet(name = "DeleteReview", value = "/user/DeleteReview")
 public class DeleteReview extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private TemplateEngine templateEngine;
     @EJB(name = "db2project.services/ProductService")
     ProductService prodService;
 
@@ -26,12 +22,6 @@ public class DeleteReview extends HttpServlet {
     }
 
     public void init() {
-        ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(getServletContext());
-        templateResolver.setTemplateMode(TemplateMode.HTML);
-        this.templateEngine = new TemplateEngine();
-        this.templateEngine.setTemplateResolver(templateResolver);
-        templateResolver.setPrefix("/WEB-INF/user/");
-        templateResolver.setSuffix(".html");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
