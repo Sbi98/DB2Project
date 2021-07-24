@@ -1,10 +1,5 @@
 use DB2Project;
 
-create or replace trigger zeroPointsOnNewUser
-before insert on DB2Project.user
-for each row
-set new.points = 0;
-
 DELIMITER $$
 create or replace trigger newReview
 before insert on DB2Project.review
@@ -113,3 +108,9 @@ begin
 	update DB2Project.user U set points = curr_points - tmp_points where U.id = old.user;
 end; $$
 DELIMITER ;
+
+
+create or replace trigger zeroPointsOnNewUser
+before insert on DB2Project.user
+for each row
+set new.points = 0;

@@ -9,7 +9,6 @@
         <class>db2project.entity.MQuestion</class>
         <class>db2project.entity.Access</class>
         <class>db2project.entity.MAnswer</class>
-        <class>db2project.entity.OffensiveWords</class>
         <class>db2project.entity.Product</class>
         <class>db2project.entity.Review</class>
         <class>db2project.entity.User</class>

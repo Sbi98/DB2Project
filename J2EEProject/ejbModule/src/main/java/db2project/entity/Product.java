@@ -38,10 +38,9 @@ public class Product implements Serializable {
 
     @OneToMany(
         fetch = FetchType.LAZY, //le review di un prodotto sono necessarie solo nella home dell'utente e nell'inspectionPage
-        //N.B. eclipseLink usa indirection per le lazy loading: il caricamento lazy può avvenire anche fuori da una tx
+        //N.B. eclipseLink usa indirection per le fetch lazy: il caricamento può avvenire anche fuori da una tx
         mappedBy = "product",
-        // quando viene effettuata l'operazione X su di me (Product), effettuala anche alle Review
-        cascade = { CascadeType.REFRESH },
+        cascade = { CascadeType.REFRESH }, //la refresh su un prodotto viene propagata alle review
         orphanRemoval = true //se viene tolta una review dalla lista, cancella quella review
     )
     private List<Review> reviews;
@@ -52,7 +51,6 @@ public class Product implements Serializable {
         //nome della colonna che contiene il riferimento a me
         joinColumns={@JoinColumn(name="product_id")},
         //nome della colonna che contiene il riferimento all'altro capo della relazione
-        //cioè della colonna che contiene il riferimento all'entità mappata dall'attributo che modella la relazione qui sotto
         inverseJoinColumns={@JoinColumn(name="user_id")}
     )
     private Set<User> repentedUsers;

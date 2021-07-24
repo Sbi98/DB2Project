@@ -33,7 +33,7 @@ public class Review implements Serializable {
     @OneToMany(
         fetch = FetchType.EAGER, //una review è composta da risposte, che vanno sempre caricate
         mappedBy = "review",
-        // quando viene effettuata l'operazione X su di me (Review), effettuala anche a questa relazione (MAnswer)
+        // quando viene effettuata la persist su di me (Review), effettuala anche alle answer
         cascade = { CascadeType.PERSIST }// la remove viene fatta dal trigger per aggiornare il punteggio
     )
     @OrderBy("question asc")

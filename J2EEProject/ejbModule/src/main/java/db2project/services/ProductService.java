@@ -75,14 +75,17 @@ public class ProductService {
         managedP.removeRepentedUser(managedU);
     }
 
+    public boolean isBeforeToday(Date date) {
+        long now = Instant.now().getEpochSecond();
+        return date.getTime() < (now - now % (24 * 60 * 60))*1000;
+    }
+
     public boolean eraseQuestionnaireData(int productId) {
         try {
             // Recupero il prodotto
             Product p = em.find(Product.class, productId);
             // Verifico sia di data passata alla corrente
-            long now = Instant.now().getEpochSecond();
-
-            if (p.getDate().getTime() >= now - now % (24 * 60 * 60 * 1000)) {
+            if (!isBeforeToday(p.getDate())) {
                 System.out.println("Non è possibile cancellare i dati relativi a questionari in corso o futuri!");
                 return false;
             } else {
@@ -103,7 +106,6 @@ public class ProductService {
         User managedU = em.find(User.class, r.getUser().getId());
         managedP.removeReview(managedR);
         managedU.removeReview(managedR);
-        //em.flush();
         //em.remove(managedR); non serve visto che entrambe le liste hanno l'orphan removal
     }
 
