@@ -36,18 +36,6 @@ public class NewReviewService {
         em.persist(review);
     }
 
-
-    //TODO vecchia offensiveWords
-    /*public void saveReview() throws OffensiveWordsException {
-        List<OffensiveWords> wList = em.createNamedQuery("OffensiveWords.getAll", OffensiveWords.class).getResultList();
-        for (MAnswer a : review.getAnswers()) {
-            for (OffensiveWords w : wList)
-                if (a.getText().contains(w.getWord()))
-                    throw new OffensiveWordsException();
-        }
-        em.persist(review);
-    }*/
-
     // Restituisce il testo della risposta data alla domanda specificata. Se non esiste, restituisce 'null'
     public String getAnswerTextFor(int question) {
         if (review == null)
@@ -75,3 +63,19 @@ public class NewReviewService {
 
     public NewReviewService() { }
 }
+
+
+
+
+
+
+//offensiveWords a mano
+/*public void saveReview() throws OffensiveWordsException {
+    List<OffensiveWords> wList = em.createNamedQuery("OffensiveWords.getAll", OffensiveWords.class).getResultList();
+    for (MAnswer a : review.getAnswers()) {
+        for (OffensiveWords w : wList)
+            if (a.getText().contains(w.getWord()))
+                throw new OffensiveWordsException();
+    }
+    em.persist(review);
+}*/

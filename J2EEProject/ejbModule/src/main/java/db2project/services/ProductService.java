@@ -87,7 +87,6 @@ public class ProductService {
                 return false;
             } else {
                 // Cancello tutte le review di quel prodotto, azzero quindi il questionario
-                //TODO qui c'era quella cosa strana. DA vedere
                 List<Review> reviewsToDelete = p.getReviews();
                 while(!reviewsToDelete.isEmpty()) {
                     deleteReview(reviewsToDelete.get(0));
