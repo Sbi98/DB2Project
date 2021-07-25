@@ -15,11 +15,12 @@ public class CheckUserPrivileges implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
         HttpSession s = req.getSession();
+        //If there user is not logged or there's a new session, go to index
         if (s.isNew() || s.getAttribute("user") == null) {
             System.err.print("\nLogin permissions violated\n");
             res.sendRedirect(req.getServletContext().getContextPath() + "/index.html");
             return;
-        } else {
+        } else { //Else check if the user in the session is an admin
             User u = (User) req.getSession().getAttribute("user");
             if (u.isAdmin()) {
                 System.err.print("\nUser permissions violated\n");
