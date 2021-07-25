@@ -23,23 +23,6 @@ public class ProductService {
         return em.createNamedQuery("Product.getAll", Product.class).getResultList();
     }
 
-    public List<Product> getAllProductsBeforeToday() {
-        return getAllProductsBeforeDate(new Date());
-    }
-
-    public List<Product> getAllProductsBeforeDate(Date date) {
-        try {
-            return em.createNamedQuery("Product.getBefore", Product.class)
-                    .setParameter(1, date)
-                    .getResultList();
-        } catch (PersistenceException e) { return null; }
-    }
-
-    public void newProduct(String name, Date date, byte[] imgByteArray) {
-        Product p = new Product(name, date, imgByteArray);
-        em.persist(p);
-    }
-
     public Product newProduct(String name, Date date, byte[] imgByteArray, List<String> questions){
         Product p = new Product(name, date, imgByteArray);
         for (String q : questions) {
@@ -130,6 +113,24 @@ public class ProductService {
             // Se non c'è un prodotto del giorno restituisce null
             return null;
         } catch (PersistenceException e) { return null; }
+    }
+
+    // Metodi e overload di newProduct, utilizzati per testing
+    public List<Product> getAllProductsBeforeToday() {
+        return getAllProductsBeforeDate(new Date());
+    }
+
+    public List<Product> getAllProductsBeforeDate(Date date) {
+        try {
+            return em.createNamedQuery("Product.getBefore", Product.class)
+                    .setParameter(1, date)
+                    .getResultList();
+        } catch (PersistenceException e) { return null; }
+    }
+
+    public void newProduct(String name, Date date, byte[] imgByteArray) {
+        Product p = new Product(name, date, imgByteArray);
+        em.persist(p);
     }
 
 }
