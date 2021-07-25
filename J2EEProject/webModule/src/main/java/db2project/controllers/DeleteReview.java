@@ -28,6 +28,7 @@ public class DeleteReview extends HttpServlet {
         Review r = (Review) request.getSession().getAttribute("pOfTheDayReview");
         if (r != null) {
             prodService.deleteReview(r);
+            // If an user removes a review, then he is one of the "repented users"
             prodService.addRepentedUser(r.getProduct(),r.getUser());
             request.getSession().removeAttribute("pOfTheDayReview");
             //request.getSession().setAttribute("pOfTheDay", prodService.getProductOfToday());

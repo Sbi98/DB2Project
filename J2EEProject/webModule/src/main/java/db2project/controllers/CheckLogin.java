@@ -48,7 +48,7 @@ public class CheckLogin extends HttpServlet {
             return;
         }
         try {
-            // Verifica credenziali
+            // Verify credential, then returns an User object
             User user = usrService.checkCredentials(usrn, pwd);
             if (user.isAdmin()) {
                 request.getSession().setAttribute("user", user);
@@ -56,6 +56,7 @@ public class CheckLogin extends HttpServlet {
             } else {
                 if (user.isBlocked())
                     throw new Exception("This user has been blocked!");
+                // Log the new user's access
                 usrService.newAccess(user);
                 request.getSession().setAttribute("user", user);
                 response.sendRedirect(getServletContext().getContextPath()+"/user/GoToUserHomePage");

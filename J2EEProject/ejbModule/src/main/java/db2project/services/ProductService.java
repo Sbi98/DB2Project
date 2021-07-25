@@ -63,12 +63,14 @@ public class ProductService {
                 .getResultList();
     }
 
-    //aggiunge l'utente alla lista di chi ha cancellato la review di quel prodotto
+    // Aggiunge l'utente alla lista di chi ha cancellato la review di quel prodotto
     public void addRepentedUser(Product p, User u) {
         Product managedP = em.find(Product.class, p.getId());
         managedP.addRepentedUser(u);
     }
 
+    // Rimuove l'utente dai repentedUsers del prodotto (metodo chiamato in seguito all'aggiunta di una nuova review
+    // del prodotto da parte dell'utente)
     public void removeRepentedUser(Product p, User u) {
         Product managedP = em.find(Product.class, p.getId());
         User managedU = em.find(User.class, u.getId());
@@ -82,7 +84,7 @@ public class ProductService {
 
     public boolean eraseQuestionnaireData(int productId) {
         try {
-            // Recupero il prodotto
+            // Recupero il prodotto dall'id
             Product p = em.find(Product.class, productId);
             // Verifico sia di data passata alla corrente
             if (!isBeforeToday(p.getDate())) {

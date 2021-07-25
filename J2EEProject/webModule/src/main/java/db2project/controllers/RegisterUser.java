@@ -48,6 +48,7 @@ public class RegisterUser extends HttpServlet {
         try {
             User user = usrService.registerUser(usrn,pwd,email);
             request.getSession().setAttribute("user", user);
+            // Log the first user's access
             usrService.newAccess(user);
             response.sendRedirect(getServletContext().getContextPath()+"/user/GoToUserHomePage");
         } catch (PersistenceException e) {

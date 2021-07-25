@@ -36,13 +36,16 @@ public class GoToLeaderboardPage extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // Ottiene il prodotto del giorno, la leaderboard mostra una classifica dei punti degli utenti che hanno
+        // inserito una review per il prodotto del giorno
         Product p = (Product) request.getSession().getAttribute("pOfTheDay");
         if (p == null) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Wrong workflow. No product of the day in session");
             return;
         }
-        final WebContext ctx = new WebContext(request, response, getServletContext());
         List<User> reviewers = usrService.getReviewersForProduct(p.getId());
+
+        final WebContext ctx = new WebContext(request, response, getServletContext());
         ctx.setVariable("reviewers", reviewers);
         templateEngine.process("leaderboard", ctx, response.getWriter());
     }

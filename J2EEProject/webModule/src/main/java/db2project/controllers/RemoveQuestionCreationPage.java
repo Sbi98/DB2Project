@@ -34,10 +34,11 @@ public class RemoveQuestionCreationPage extends HttpServlet {
         CreationService creationService = (CreationService) request.getSession().getAttribute("creationService");
         if (creationService == null) {
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Wrong workflow. CreationService not in session");
+        } else {
+            creationService.removeQuestionAt(Integer.parseInt(request.getParameter("index")));
+            final WebContext ctx = new WebContext(request, response, getServletContext());
+            ctx.setVariable("creationService", creationService);
+            templateEngine.process("creationPage", ctx, response.getWriter());
         }
-        creationService.removeQuestionAt(Integer.parseInt(request.getParameter("index")));
-        final WebContext ctx = new WebContext(request, response, getServletContext());
-        ctx.setVariable("creationService", creationService);
-        templateEngine.process("creationPage", ctx, response.getWriter());
     }
 }

@@ -39,12 +39,15 @@ public class GoToUserHomePage extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final WebContext ctx = new WebContext(request, response, getServletContext());
         NewReviewService rService = (NewReviewService) request.getSession().getAttribute("rService");
-        if (rService != null) { //se l'utente è tornato alla home mentre stava facendo la review cancellala
+        if (rService != null) {
+            // Se l'utente è tornato alla home durante l'inserimento della review cancellala rimuovendo il rService
+            // dalla session.
             rService.remove();
             request.getSession().removeAttribute("rService");
         }
         Product p = prodService.getProductOfToday();
         request.getSession().setAttribute("pOfTheDay", p);
+        // Recupera, se esiste, la review dell'utente al prodotto del giorno
         Review r = (Review) request.getSession().getAttribute("pOfTheDayReview");
         if (r == null && p != null) {
             r = prodService.findReviewOfUser(p.getId(), ((User) request.getSession().getAttribute("user")).getId());

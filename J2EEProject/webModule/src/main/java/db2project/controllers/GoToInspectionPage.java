@@ -45,6 +45,7 @@ public class GoToInspectionPage extends HttpServlet {
         } else {
             Date selectedDate = Utils.utcDateFromString(request.getParameter("date"));
             if (!Utils.isBeforeToday(selectedDate)) {
+                // È possibile visionare solo le risposte a questionari antecedenti ad oggi
                 ctx.setVariable("displayMsg", "You must select a past date!");
             } else {
                 ctx.setVariable("selectedDate", selectedDate);

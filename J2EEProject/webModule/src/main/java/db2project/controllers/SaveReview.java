@@ -52,8 +52,12 @@ public class SaveReview extends HttpServlet {
             rService.getReview().setAge(age);
             rService.getReview().setSex(sex);
             rService.getReview().setLevel(level);
+            // Salva la review dopo aver verificato la presenza di parole offensive
             rService.saveReview();
+            // Nel caso l'utente fosse un repented user (aveva inserito una review al prodotto, che poi ha cancellato,
+            // all'aggiunta della nuova review del prodotto, rimuovi l'utente dai repented_users
             pService.removeRepentedUser(rService.getReview().getProduct(), (User) request.getSession().getAttribute("user"));
+
             request.getSession().setAttribute("pOfTheDayReview", rService.getReview());
             request.getSession().removeAttribute("rService");
             final WebContext ctx = new WebContext(request, response, getServletContext());

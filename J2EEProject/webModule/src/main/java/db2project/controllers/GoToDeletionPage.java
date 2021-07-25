@@ -47,6 +47,7 @@ public class GoToDeletionPage extends HttpServlet {
         } else {
             Date selectedDate = Utils.utcDateFromString(request.getParameter("date"));
             if (!Utils.isBeforeToday(selectedDate)) {
+                // È possibile eliminare cancellare le risposte a questionari solo se antecedenti ad oggi
                 ctx.setVariable("displayMsg", "You must select a past date!");
             } else {
                 ctx.setVariable("selectedDate", selectedDate);
