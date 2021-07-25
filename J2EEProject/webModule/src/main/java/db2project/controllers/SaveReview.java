@@ -59,6 +59,7 @@ public class SaveReview extends HttpServlet {
             final WebContext ctx = new WebContext(request, response, getServletContext());
             templateEngine.process("savedReview", ctx, response.getWriter());
         } catch (OffensiveWordsException owe) {
+            System.out.println(owe.getMessage());
             userService.blockUser((User) request.getSession().getAttribute("user"));
             request.getSession().invalidate();
             response.sendRedirect(getServletContext().getContextPath()+"/blockedUser.html");

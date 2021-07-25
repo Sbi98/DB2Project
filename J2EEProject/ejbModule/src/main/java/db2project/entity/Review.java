@@ -8,8 +8,10 @@ import java.util.List;
 @Entity
 @Table(name = "review", schema = "DB2Project")
 @NamedQueries({
-    @NamedQuery(name = "Review.findByProduct", query = "SELECT r FROM Review r WHERE r.product.id = ?1"),
-    @NamedQuery(name = "Review.findByProductAndUser", query = "SELECT r FROM Review r WHERE r.product.id = ?1 and r.user.id = ?2"),
+    @NamedQuery(name = "Review.findByProduct",
+                query = "SELECT r FROM Review r WHERE r.product.id = ?1"),
+    @NamedQuery(name = "Review.findByProductAndUser",
+                query = "SELECT r FROM Review r WHERE r.product.id = ?1 and r.user.id = ?2"),
 })
 public class Review implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -54,7 +56,7 @@ public class Review implements Serializable {
 
 
 
-    protected void addAnswer(MAnswer a) { //Usato solo nel construttore di MAnswer per aggiornare l'altro lato della relazione
+    protected void addAnswer(MAnswer a) { //Usato solo nel costruttore di MAnswer per aggiornare l'altro lato della relazione
         if (answers == null) {
             answers = new LinkedList<>();
         }

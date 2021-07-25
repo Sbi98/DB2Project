@@ -68,7 +68,7 @@
     </form>
 </div>
 
-<div th:if="${!(creationService.getProductName() == null)}">
+<div th:if="${!(creationService.getProductName() == null) && creationService.getQuestions().size() > 0}">
     <a th:href="@{/admin/CreateProduct}">Create product</a>
 </div>
 

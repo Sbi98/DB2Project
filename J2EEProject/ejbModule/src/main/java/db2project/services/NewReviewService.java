@@ -31,7 +31,7 @@ public class NewReviewService {
     public void saveReview() throws OffensiveWordsException {
         for (MAnswer a : review.getAnswers()) {
             if (isOffensive(a.getText()))
-                throw new OffensiveWordsException();
+                throw new OffensiveWordsException("OFFENSIVE" + a.getText());
         }
         em.persist(review);
     }

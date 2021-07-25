@@ -7,9 +7,12 @@ import java.util.*;
 @Entity
 @Table(name = "product", schema = "DB2Project")
 @NamedQueries({
-    @NamedQuery(name = "Product.getOfDay", query = "SELECT p FROM Product p WHERE p.date = ?1"),
-    @NamedQuery(name = "Product.getAll", query = "SELECT p FROM Product p"),
-    @NamedQuery(name = "Product.getBefore", query = "SELECT p FROM Product p Where p.date < ?1")
+    @NamedQuery(name = "Product.getOfDay",
+            query = "SELECT p FROM Product p WHERE p.date = ?1"),
+    @NamedQuery(name = "Product.getAll",
+            query = "SELECT p FROM Product p"),
+    @NamedQuery(name = "Product.getBefore",
+            query = "SELECT p FROM Product p Where p.date < ?1")
 })
 public class Product implements Serializable {
     private static final long serialVersionUID = 1L;
