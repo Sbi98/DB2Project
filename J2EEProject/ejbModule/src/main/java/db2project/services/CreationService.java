@@ -13,7 +13,6 @@ import java.util.List;
 public class CreationService {
     @PersistenceContext(unitName = "DB2Project")
     private EntityManager em;
-    private boolean questionCreationPhase = false;
     private String productName;
     private Date date;
     private byte[] imageByteArray;
@@ -30,14 +29,6 @@ public class CreationService {
 
     public void setProductName(String productName) {
         this.productName = productName;
-    }
-
-    public boolean isQuestionCreationPhase() {
-        return questionCreationPhase;
-    }
-
-    public void setQuestionCreationPhase(boolean questionCreationPhase) {
-        this.questionCreationPhase = questionCreationPhase;
     }
 
     public void removeQuestionAt(int index) {
