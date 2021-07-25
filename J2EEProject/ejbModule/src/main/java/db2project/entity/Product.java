@@ -9,8 +9,10 @@ import java.util.*;
 @NamedQueries({
     @NamedQuery(name = "Product.getOfDay",
             query = "SELECT p FROM Product p WHERE p.date = ?1"),
+    // Not used since not efficient, implemented for testing
     @NamedQuery(name = "Product.getAll",
             query = "SELECT p FROM Product p"),
+    // Not used since not efficient, implemented for testing
     @NamedQuery(name = "Product.getBefore",
             query = "SELECT p FROM Product p Where p.date < ?1")
 })
