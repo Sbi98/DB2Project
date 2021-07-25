@@ -22,7 +22,7 @@ public class MQuestion implements Serializable {
     @OneToMany(
         fetch = FetchType.LAZY,
         mappedBy = "question"
-        /*cascade e orphanRemoval non necessari considerando i workflow dell'applicazione*/
+        //cascade e orphanRemoval non necessari considerando il workflow dell'applicazione
     )
     private List<MAnswer> answers;
 
