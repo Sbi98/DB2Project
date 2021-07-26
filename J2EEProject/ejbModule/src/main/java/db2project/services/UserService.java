@@ -31,13 +31,6 @@ public class UserService {
         }
     }
 
-    public List<User> getReviewersForProduct(int pId) {
-        return em.createNamedQuery("User.findReviewersForProduct", User.class)
-                .setHint("javax.persistence.cache.storeMode", "REFRESH")
-                .setParameter(1, pId)
-                .getResultList();
-    }
-
     public void newAccess(User u) {
         em.persist(new Access(u));
     }
@@ -53,7 +46,6 @@ public class UserService {
             // Crea l'oggetto utente e lo salva sul database
             User u = new User(username, pwd, email);
             em.persist(u);
-            em.flush();
             return u;
         } catch (PersistenceException e) {
             // Se il salvataggio sul database non va a buon fine lancia un'eccezione
@@ -63,6 +55,14 @@ public class UserService {
             } catch (Exception ex) {throw e;}
             throw new PersistenceException(errorMsg);
         }
+    }
+
+
+    public List<User> getReviewersForProduct(int pId) {
+        return em.createNamedQuery("User.findReviewersForProduct", User.class)
+                .setHint("javax.persistence.cache.storeMode", "REFRESH")
+                .setParameter(1, pId)
+                .getResultList();
     }
 
 }

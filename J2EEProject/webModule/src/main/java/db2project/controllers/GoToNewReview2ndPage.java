@@ -43,7 +43,7 @@ public class GoToNewReview2ndPage extends HttpServlet {
         }
         rService.secondPage();
         for (MQuestion q : p.getQuestions()) {
-            // Istanzia le answers alle domande mandatorie
+            // Istanzia le answers alle domande obbligatorie
             new MAnswer(rService.getReview(), q, request.getParameter("a"+q.getId()));
         }
         final WebContext ctx = new WebContext(request, response, getServletContext());

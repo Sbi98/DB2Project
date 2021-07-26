@@ -34,7 +34,6 @@ public class Product implements Serializable {
     @OneToMany(
         fetch = FetchType.EAGER,//stando al workflow va bene EAGER perché praticamente usiamo sempre le dom di un prod
         mappedBy = "product",
-        // quando viene effettuata l'operazione X su di me (Product), effettuala anche a questa relazione (MQuestion)
         cascade = { CascadeType.PERSIST, CascadeType.REFRESH } //l'applicazione non prevede la remove di un prodotto
         //orphanRemoval non necessaria perché l'applicazione non prevede la rimozione di una domanda
     )
